@@ -1,20 +1,33 @@
 import React from 'react';
+import WelcomeIcon from '../assets/Images/welcomeIcon.png';
 
-const Welcome = () => {
+type WelcomeProps = {
+  setCurrentStep: any;
+  setCompleted: any;
+  currentStep: number;
+  steps: any;
+};
+const Welcome = ({ setCurrentStep, setCompleted, currentStep, steps }: WelcomeProps) => {
   return (
-    <div className="ml-8 p-24 bg-white rounded-2xl ">
+    <div className="ml-8 p-20 bg-white rounded-2xl ">
       <div className="pr-24 pl-24">
-        <div className="items-center text-center text-black-600 relative pr-28 pl-28">
-          <div className="font-bold text-lg mt-auto mb-4 mr-auto ml-auto h-20 w-20 text-gray-700 rounded-full bg-gray-200 py-20 px-20 flex items-center justify-center font-mono">
-            <div className="font-bold text-lg h-16 w-16 text-gray-700 rounded-full bg-gray-400 py-16 px-16 flex items-center justify-center font-mono">
-              ICON
-            </div>
-          </div>
-          <b className="text-lg font-serif">Welcome!</b>
-          <p>Happy to see you here. Lets start your onboarding journey.</p>
-          <p>We ensure, you&apos;ll be assisted at every step.</p>
-          <button className="bg-sky-800  hover:bg-gray-900 text-white font-bold mt-12 py-2 px-4 rounded">
-            Start Onboarding
+        <div className="items-center text-center text-black relative pr-28 pl-28">
+          <img
+            src={WelcomeIcon}
+            alt="welcome icon"
+            className="flex items-center text-center h-52 w-52 mr-auto ml-auto mt-auto mb-6"
+          />
+          <b className="text-lg font-semibold">Welcome!</b>
+          <p className="font-normal">Happy to see you here. Lets start your onboarding journey.</p>
+          <p className="font-normal">We ensure, you&apos;ll be assisted at every step.</p>
+          <button
+            className="bg-sky  hover:bg-black text-white font-bold mt-8 py-2 px-4 rounded"
+            onClick={() => {
+              currentStep === steps.length + 1
+                ? setCompleted(true)
+                : setCurrentStep((prev: any) => prev + 1);
+            }}>
+            {currentStep === steps.length + 1 ? 'Done' : 'Start Onboarding'}
           </button>
         </div>
       </div>

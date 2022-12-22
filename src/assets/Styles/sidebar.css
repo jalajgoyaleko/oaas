@@ -1,0 +1,19 @@
+.step-item {
+  @apply relative w-60;
+}
+
+.step-item:not(:first-child)::before {
+  @apply content-[''] block bg-gray absolute -top-14 left-4 h-full w-0.5 border border-gray;
+}
+
+.step {
+  @apply w-8 h-8 mb-2 flex items-center justify-center z-10 relative text-black bg-gray rounded-full font-semibold;
+}
+
+.active .step {
+  @apply bg-sky text-white;
+}
+
+.complete .step {
+  @apply bg-green text-white;
+}

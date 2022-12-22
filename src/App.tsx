@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from './components/Header';
+import Header from './components/Common/Header';
 import HomePage from './components/HomePage';
 
 function App() {
   return (
-    <div className="bg-gray-200">
+    <div className="bg-gray">
       <Header />
       <HomePage />
     </div>

@@ -2,7 +2,15 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    colors: {
+      white: 'white',
+      black: '#0C243B',
+      gray: '#F2F2F2',
+      darkgray: '#D4D4D4',
+      sky: '#1F5AA7',
+      green: '#00C341',
+      orange: '#FE9F00'
+    },
     container: {
       center: true,
       padding: {
