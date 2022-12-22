@@ -4,7 +4,7 @@ import HomePage from './components/HomePage';
 
 function App() {
   return (
-    <div className="bg-gray">
+    <div>
       <Header />
       <HomePage />
     </div>
