@@ -7,9 +7,14 @@ module.exports = {
       black: '#0C243B',
       gray: '#F2F2F2',
       darkgray: '#D4D4D4',
+      extrdarkgray: '#555555',
       sky: '#1F5AA7',
       green: '#00C341',
-      orange: '#FE9F00'
+      orange: '#FE9F00',
+      red: '#FF4040',
+    },
+    boxShadow: {
+      '3xl': '0 35px 60px -15px #00C34133',
     },
     container: {
       center: true,

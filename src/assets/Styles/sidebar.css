@@ -1,5 +1,5 @@
 .step-item {
-  @apply relative w-60;
+  @apply flex flex-col relative w-60;
 }
 
 .step-item:not(:first-child)::before {
@@ -16,4 +16,14 @@
 
 .complete .step {
   @apply bg-green text-white;
+}
+
+.alert .overlay {
+  @apply flex fixed h-full w-full items-center justify-center;
+}
+.overlay {
+  @apply bg-white blur-sm;
+}
+.alert-content {
+  @apply absolute items-center;
 }
