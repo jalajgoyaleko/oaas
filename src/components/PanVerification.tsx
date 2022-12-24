@@ -4,8 +4,12 @@ import imageicon from '../assets/icons/imageicon.svg';
 import filledcamera from '../assets/icons/filledcamera.svg';
 import crossicon from '../assets/icons/cross.svg';
 
-type PanVerificationProps = { uploadedImage: any; setUploadedImage: any };
-const PanVerification = ({ uploadedImage, setUploadedImage }: PanVerificationProps) => {
+type PanVerificationProps = { uploadedImage: number; setUploadedImage: any; setFetchData: any };
+const PanVerification = ({
+  uploadedImage,
+  setUploadedImage,
+  setFetchData
+}: PanVerificationProps) => {
   return (
     <form className="mt-10">
       <div className="relative">
@@ -27,6 +31,7 @@ const PanVerification = ({ uploadedImage, setUploadedImage }: PanVerificationPro
               className="flex absolute text-white text-xs left-[63%] bottom-1.5 bg-sky hover:bg-black focus:ring-4 focus:outline-none focus:ring-sky font-medium rounded-md pl-2 pr-2 py-[6px] dark:bg-sky dark:hover:bg-black dark:focus:ring-sky"
               onClick={() => {
                 setUploadedImage((prev: any) => prev + 1);
+                setFetchData(true);
               }}>
               <img src={imageicon} className="w-[18px] h-[18px] mr-2" />
               Browse
@@ -59,14 +64,14 @@ const PanVerification = ({ uploadedImage, setUploadedImage }: PanVerificationPro
                 <span className="font-semibold text-black">Your PAN Details</span>
                 <div>Below are the details as per PAN record.</div>
               </div>
-              <div className="flex justify-between w-[50%]">
+              <div className="flex justify-between w-[50%] mt-8 mb-4">
                 <div>
-                  <div className="text-extrdarkgray font-xs">Your Full Name</div>
-                  <div>Priyanka Kothari</div>
+                  <div className="text-extrdarkgray text-xs">Your Full Name</div>
+                  <div className="text-black text-md font-semibold mt-2">Priyanka Kothari</div>
                 </div>
                 <div>
-                  <div className="text-extrdarkgray font-xs">PAN</div>
-                  <div className="text-extrdarkgray font-xs">AAGPQ3801C</div>
+                  <div className="text-extrdarkgray text-xs">PAN</div>
+                  <div className="text-black text-md font-semibold mt-2">AAGPQ3801C</div>
                 </div>
               </div>
             </div>

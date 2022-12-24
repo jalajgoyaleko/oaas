@@ -20,7 +20,7 @@ const Welcome = ({ setCurrentStep, setCompleted, currentStep, steps }: WelcomePr
         <p className="font-normal">Happy to see you here. Lets start your onboarding journey.</p>
         <p className="font-normal">We ensure, you&apos;ll be assisted at every step.</p>
         <button
-          className="bg-sky  hover:bg-black text-white font-bold mt-8 py-2 px-4 rounded"
+          className="bg-sky hover:bg-black text-white font-bold mt-8 py-2 px-8 rounded"
           onClick={() => {
             currentStep === steps.length + 1
               ? setCompleted(true)

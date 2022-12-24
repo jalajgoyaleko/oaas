@@ -24,6 +24,8 @@
 .overlay {
   @apply bg-white blur-sm;
 }
-.alert-content {
-  @apply absolute items-center;
+
+.containerboxover {
+  @apply flex flex-col w-full h-full ;
 }
+

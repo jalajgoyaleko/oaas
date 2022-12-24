@@ -46,7 +46,7 @@ const SupersetComponent = ({
       : setCurrentStep((prev: any) => prev);
     setPanStatus(true);
     btnName === 'Next' ? setPanStatusResult('Good Match') : setPanStatusResult('Matching Failed');
-    btnName === 'Submit' ? setFinish(true) : '';
+    currentStep === 8 ? setFinish(true) : '';
   };
   return (
     <div className="p-8">
@@ -69,7 +69,7 @@ const SupersetComponent = ({
       )}
       {children}
       <button
-        className="bg-sky  hover:bg-black text-white font-semibold mt-8 py-2 px-4 rounded"
+        className="bg-sky hover:bg-black text-white font-semibold mt-8 py-2 px-8 rounded"
         onClick={handleStepbtn}>
         {btnName}
       </button>
