@@ -178,7 +178,7 @@ const HomePage = () => {
                   <div className="z-20 absolute top-0 backdrop-blur-lg left-0 bottom-0 right-0 rounded-2xl flex flex-col items-center justify-center">
                     <span className="w-32 h-32 items-center justify-center flex rounded-full border-4 border-green">
                       <span
-                        className="w-24 h-24 items-center justify-center flex rounded-full bg-white"
+                        className="w-24 h-24 items-center justify-center flex rounded-full bg-white drop-shadow-2xl"
                         onClick={() => {
                           setFetchData(false);
                         }}>
