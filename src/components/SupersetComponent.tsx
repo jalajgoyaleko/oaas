@@ -1,12 +1,13 @@
 import React from 'react';
+import ButtonGlobal from './Common/ButtonGlobal';
 
 type SupersetComponentProps = {
   pagename: string;
-  setCurrentStep: any;
-  setCompleted: any;
+  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
+  setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
   currentStep: number;
-  steps: any;
-  setStatus: any;
+  steps: string[];
+  setStatus: React.Dispatch<React.SetStateAction<string>>;
   children?: React.ReactNode;
   btnName: string;
   setPanStatus?: any;
@@ -35,15 +36,15 @@ const SupersetComponent = ({
   setFinish
 }: SupersetComponentProps) => {
   const handleStatus = () => {
-    setCurrentStep((prev: any) => prev + 1);
+    setCurrentStep((prev) => prev + 1);
     setStatus('Skipped');
   };
   const handleStepbtn = () => {
     currentStep === steps.length + 1
       ? setCompleted(true)
       : panStatus === true && panStatusResult === 'Matching Failed' && finish === false
-      ? setCurrentStep((prev: any) => prev + 1)
-      : setCurrentStep((prev: any) => prev);
+      ? setCurrentStep((prev) => prev + 1)
+      : setCurrentStep((prev) => prev);
     setPanStatus(true);
     btnName === 'Next' ? setPanStatusResult('Good Match') : setPanStatusResult('Matching Failed');
     currentStep === 8 ? setFinish(true) : '';
@@ -68,17 +69,17 @@ const SupersetComponent = ({
         ''
       )}
       {children}
-      <button
+      <ButtonGlobal
         className="bg-sky hover:bg-black text-white font-semibold mt-8 py-2 px-8 rounded"
         onClick={handleStepbtn}>
         {btnName}
-      </button>
+      </ButtonGlobal>
       {currentStep === steps.length + 1 || currentStep === 7 ? (
         ''
       ) : (
-        <button className="font-semibold ml-10" onClick={handleStatus}>
+        <ButtonGlobal className="font-semibold ml-10" onClick={handleStatus}>
           Skip this step
-        </button>
+        </ButtonGlobal>
       )}
     </div>
   );

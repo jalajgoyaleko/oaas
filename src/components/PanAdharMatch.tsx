@@ -1,5 +1,5 @@
 import React from 'react';
-import thumup from '../assets/icons/thumup.svg';
+import thumb from '../assets/icons/thumb.svg';
 import thumpdown from '../assets/icons/thumpdown.svg';
 
 type PanAdhaMatchProps = { panStatus: boolean; panStatusResult: string };
@@ -15,7 +15,7 @@ const PanAdharMatch = ({ panStatus, panStatusResult }: PanAdhaMatchProps) => {
       ) : panStatusResult === 'Matching Failed' ? (
         <div className="flex justify-between items-center">
           <span className="mt-4 rounded-full flex w-16 h-16 items-center justify-center border-2 border-green">
-            <img src={thumup} alt="tumpup icon" className="w-7 h-7" />
+            <img src={thumb} alt="tumpup icon" className="w-7 h-7" />
           </span>
           <span className="ml-5 mt-2">
             <span className="text-lg font-semibold text-green">Good match</span>{' '}

@@ -1,12 +1,13 @@
 import React from 'react';
-import thumup from '../assets/icons/thumup.svg';
+import thumb from '../assets/icons/thumb.svg';
 import retry from '../assets/Images/retry.png';
+import ButtonGlobal from './Common/ButtonGlobal';
 
 const OnboardingStatus = () => {
   return (
     <div className="flex justify-between mt-8">
       <span className="rounded-full flex w-16 h-16 items-center justify-center border-2 border-green">
-        <img src={thumup} alt="tumpup icon" className="w-7 h-7" />
+        <img src={thumb} alt="tumpup icon" className="w-7 h-7" />
       </span>
       <span className="flex flex-col ml-5">
         <span className="text-lg font-semibold text-green">64% Completed</span>{' '}
@@ -18,9 +19,9 @@ const OnboardingStatus = () => {
             <div className="text-sm text-extrdarkgray">Skipped</div>
             <div className="text-md text-black font-bold">Aadhaar Verification</div>
           </span>
-          <button className="flex items-center justify-center bg-sky  hover:bg-black text-white font-semibold w-28 h-8 px-5 rounded">
+          <ButtonGlobal className="flex items-center justify-center bg-sky  hover:bg-black text-white font-semibold w-28 h-8 px-5 rounded">
             <img src={retry} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
-          </button>
+          </ButtonGlobal>
         </span>
         <span className="flex mt-8 mb-4 items-center justify-between w-[60%]">
           <span className="flex-col">

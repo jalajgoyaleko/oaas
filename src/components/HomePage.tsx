@@ -11,6 +11,7 @@ import OnboardingStatus from './OnboardingStatus';
 import LoctionCapture from './LoctionCapture';
 import alert from './../assets/Images/alert.png';
 import tickmark from './../assets/icons/tickmark.svg';
+import ButtonGlobal from './Common/ButtonGlobal';
 
 const HomePage = () => {
   const steps = [
@@ -22,17 +23,17 @@ const HomePage = () => {
     'Video KYC',
     'Onboarding Status'
   ];
-  const [currentStep, setCurrentStep] = useState(0);
-  const [completed, setCompleted] = useState(false);
-  const [status, setStatus] = useState('In Progress');
-  const [uploadedImage, setUploadedImage] = useState(0);
-  const [panStatus, setPanStatus] = useState(false);
-  const [fetchData, setFetchData] = useState(false);
-  const [finish, setFinish] = useState(false);
-  const [panStatusResult, setPanStatusResult] = useState('Good Match');
+  const [currentStep, setCurrentStep] = useState<number>(0);
+  const [completed, setCompleted] = useState<boolean>(false);
+  const [status, setStatus] = useState<string>('In Progress');
+  const [uploadedImage, setUploadedImage] = useState<number>(0);
+  const [panStatus, setPanStatus] = useState<boolean>(false);
+  const [fetchData, setFetchData] = useState<boolean>(false);
+  const [finish, setFinish] = useState<boolean>(false);
+  const [panStatusResult, setPanStatusResult] = useState<string>('Good Match');
 
   return (
-    <div className="md:container h-screens pt-7 w-screens">
+    <div className="md:container lg:container h-screens py-7 w-screens">
       <div className="flex items-center">
         <div className="containerboxover relative">
           <div className="boxover">
@@ -211,13 +212,13 @@ const HomePage = () => {
                 Your onboarding process can not be completed without Aadhaar verification. Please
                 complete the same to proceed.
               </span>
-              <button
+              <ButtonGlobal
                 className="bg-sky  hover:bg-black text-white font-semibold mt-8 py-2 px-8 rounded"
                 onClick={() => {
                   setFinish(false);
                 }}>
                 Go Back
-              </button>
+              </ButtonGlobal>
             </div>
           ) : (
             ''

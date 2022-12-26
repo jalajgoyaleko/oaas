@@ -1,11 +1,12 @@
 import React from 'react';
 import WelcomeIcon from '../assets/Images/welcomeIcon.png';
+import ButtonGlobal from './Common/ButtonGlobal';
 
 type WelcomeProps = {
-  setCurrentStep: any;
-  setCompleted: any;
+  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
+  setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
   currentStep: number;
-  steps: any;
+  steps: string[];
 };
 const Welcome = ({ setCurrentStep, setCompleted, currentStep, steps }: WelcomeProps) => {
   return (
@@ -19,15 +20,15 @@ const Welcome = ({ setCurrentStep, setCompleted, currentStep, steps }: WelcomePr
         <b className="text-lg font-semibold">Welcome!</b>
         <p className="font-normal">Happy to see you here. Lets start your onboarding journey.</p>
         <p className="font-normal">We ensure, you&apos;ll be assisted at every step.</p>
-        <button
+        <ButtonGlobal
           className="bg-sky hover:bg-black text-white font-bold mt-8 py-2 px-8 rounded"
           onClick={() => {
             currentStep === steps.length + 1
               ? setCompleted(true)
-              : setCurrentStep((prev: any) => prev + 1);
+              : setCurrentStep((prev) => prev + 1);
           }}>
           {currentStep === steps.length + 1 ? 'Done' : 'Start Onboarding'}
-        </button>
+        </ButtonGlobal>
       </div>
     </div>
   );

@@ -1,13 +1,14 @@
 import React from 'react';
 import '../../assets/Styles/sidebar.css';
 import CompleteMark from '../../assets/icons/completemark.svg';
+import ButtonGlobal from './ButtonGlobal';
 
 type StepperProps = {
   currentStep: number;
-  steps: any;
+  steps: string[];
   completed: boolean;
   status: string;
-  setCurrentStep: any;
+  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
 };
 const Sidebar = ({ currentStep, steps, completed, status, setCurrentStep }: StepperProps) => {
   return (
@@ -43,7 +44,7 @@ const Sidebar = ({ currentStep, steps, completed, status, setCurrentStep }: Step
       <div className="pt-5 pr-5 pb-5 pl-5 bg-white rounded-b-2xl">
         {steps?.map((step: any, i: any) => {
           return (
-            <button
+            <ButtonGlobal
               key={i}
               className={`step-item ${currentStep === i + 1 && 'active'} ${
                 (i + 1 < currentStep || completed) && 'complete'
@@ -65,7 +66,7 @@ const Sidebar = ({ currentStep, steps, completed, status, setCurrentStep }: Step
                   <p className="text-black ml-2 pb-2">{step}</p>
                   {currentStep === i + 1 ? (
                     <div
-                      className={`w-[80px] rounded-full h-[20px] ml-2 text-xs text-center ${
+                      className={`w-[80px] rounded-full h-[20px] ml-2 text-xs flex justify-center items-center ${
                         status === 'Skipped'
                           ? 'text-red bg-white border-red border-2'
                           : 'text-white bg-orange'
@@ -79,7 +80,7 @@ const Sidebar = ({ currentStep, steps, completed, status, setCurrentStep }: Step
                   )}
                 </span>
               </span>
-            </button>
+            </ButtonGlobal>
           );
         })}
       </div>
