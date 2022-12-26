@@ -1,0 +1,45 @@
+.step-item {
+  @apply flex flex-col relative w-60;
+}
+
+.step-item:not(:first-child)::before {
+  @apply content-[''] block bg-gray absolute -top-14 left-4 h-full w-0.5 border border-gray;
+}
+
+.step {
+  @apply w-8 h-8 mb-2 flex items-center justify-center z-10 relative text-black bg-gray rounded-full font-semibold;
+}
+
+.active .step {
+  @apply bg-sky text-white;
+}
+
+.complete .step {
+  @apply bg-green text-white;
+}
+
+.alert .overlay {
+  @apply flex fixed h-full w-full items-center justify-center;
+}
+.overlay {
+  @apply bg-white blur-sm;
+}
+
+.containerboxover {
+  @apply flex flex-col w-full h-full;
+}
+.cancel {
+  @apply flex absolute text-xs -right-2.5 -top-2.5 bg-black hover:bg-black focus:outline-none font-medium rounded-full pl-2 pr-2 py-[8px] dark:bg-sky;
+}
+
+.documentimgstyle {
+  @apply block w-full p-3 pl-11 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed;
+}
+
+.documentbtn {
+  @apply flex absolute text-white text-xs bottom-1.5 bg-sky hover:bg-black focus:ring-4 focus:outline-none focus:ring-sky font-medium rounded-md pl-2 pr-2 py-[6px];
+}
+
+.videoKyc {
+  @apply block w-full py-3 pl-2 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed;
+}
