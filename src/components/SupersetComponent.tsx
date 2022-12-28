@@ -69,11 +69,15 @@ const SupersetComponent = ({
         ''
       )}
       {children}
-      <ButtonGlobal
-        className="bg-sky hover:bg-black text-white font-semibold mt-8 py-2 px-8 rounded"
-        onClick={handleStepbtn}>
-        {btnName}
-      </ButtonGlobal>
+      {currentStep !== 1 ? (
+        <ButtonGlobal
+          className="bg-sky hover:bg-black text-white font-semibold mt-8 py-2 px-8 rounded"
+          onClick={handleStepbtn}>
+          {btnName}
+        </ButtonGlobal>
+      ) : (
+        ''
+      )}
       {currentStep === steps.length + 1 || currentStep === 7 ? (
         ''
       ) : (

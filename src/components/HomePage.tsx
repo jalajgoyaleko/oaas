@@ -66,7 +66,7 @@ const HomePage = () => {
                     pagename="Location Capturing"
                     setFinish={setFinish}
                     finish={finish}>
-                    <LoctionCapture />
+                    <LoctionCapture setCurrentStep={setCurrentStep} />
                   </SupersetComponent>
                 ) : currentStep === 2 ? (
                   <SupersetComponent
