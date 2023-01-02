@@ -17,14 +17,15 @@ type SupersetComponentProps = {
   tagLine?: string;
   finish?: boolean;
   setFinish?: any;
+  capturelocationData?: any;
+  capturelocation?: any;
+  setCapturelocationData?: React.Dispatch<React.SetStateAction<any | null>>;
+  setCapturelocation?: React.Dispatch<React.SetStateAction<number>>;
 };
 const SupersetComponent = ({
   pagename,
-  setCurrentStep,
-  setCompleted,
   currentStep,
   steps,
-  setStatus,
   children,
   btnName,
   setPanStatus,
@@ -33,7 +34,14 @@ const SupersetComponent = ({
   panStatusResult,
   tagLine,
   finish,
-  setFinish
+  setFinish,
+  capturelocationData,
+  capturelocation,
+  setCurrentStep,
+  setCompleted,
+  setStatus,
+  setCapturelocationData,
+  setCapturelocation
 }: SupersetComponentProps) => {
   const handleStatus = () => {
     setCurrentStep((prev) => prev + 1);
@@ -49,6 +57,12 @@ const SupersetComponent = ({
     btnName === 'Next' ? setPanStatusResult('Good Match') : setPanStatusResult('Matching Failed');
     currentStep === 8 ? setFinish(true) : '';
   };
+  const captureLocation = () => {
+    setCapturelocation?.((prev) => prev + 1);
+  };
+  const handleOnclick = capturelocation === 0 ? captureLocation : handleStepbtn;
+  console.log(capturelocationData);
+
   return (
     <div className="p-8">
       <div className="text-[24px] font-semibold">{pagename}</div>
@@ -69,15 +83,14 @@ const SupersetComponent = ({
         ''
       )}
       {children}
-      {currentStep !== 1 ? (
-        <ButtonGlobal
-          className="bg-sky hover:bg-black text-white font-semibold mt-8 py-2 px-8 rounded"
-          onClick={handleStepbtn}>
-          {btnName}
-        </ButtonGlobal>
-      ) : (
-        ''
-      )}
+      <ButtonGlobal
+        className="bg-sky hover:bg-black text-white font-semibold mt-8 py-2 px-8 rounded"
+        capturelocation={capturelocation}
+        setCapturelocationData={setCapturelocationData}
+        onClick={handleOnclick}>
+        {btnName}
+      </ButtonGlobal>
+
       {currentStep === steps.length + 1 || currentStep === 7 ? (
         ''
       ) : (

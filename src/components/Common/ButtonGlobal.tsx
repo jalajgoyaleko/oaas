@@ -3,7 +3,7 @@ import UseGeoLocation from '../CustomHooks/UseGeoLocation';
 
 type BtnProps = {
   className: string;
-  onClick?: () => void;
+  onClick?: any;
   children?: React.ReactNode;
   key?: number;
   capturelocation?: any;
@@ -12,10 +12,10 @@ type BtnProps = {
 
 const ButtonGlobal = ({
   className,
-  onClick,
   children,
   key,
   capturelocation,
+  onClick,
   setCapturelocationData
 }: BtnProps) => {
   const handlecall = () => {

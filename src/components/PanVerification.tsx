@@ -5,57 +5,71 @@ import filledcamera from '../assets/icons/filledcamera.svg';
 import crossicon from '../assets/icons/cross.svg';
 import InputGlobal from './Common/InputGlobal';
 import ButtonGlobal from './Common/ButtonGlobal';
+import Camera from './Common/Camera';
 
 type PanVerificationProps = {
   uploadedImage: number;
+  cameraStatus: boolean;
+  imge: string | null;
+  setImg: React.Dispatch<React.SetStateAction<string | null>>;
+  setCameraStatus: React.Dispatch<React.SetStateAction<boolean>>;
   setUploadedImage: React.Dispatch<React.SetStateAction<number>>;
   setFetchData: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const PanVerification = ({
   uploadedImage,
+  cameraStatus,
   setUploadedImage,
-  setFetchData
+  setFetchData,
+  setCameraStatus,
+  imge,
+  setImg
 }: PanVerificationProps) => {
   return (
     <form className="mt-10">
       <div className="relative">
         {uploadedImage === 0 ? (
-          <>
-            <img
-              src={camera}
-              className="absolute w-7 h-7 top-1/2 transform -translate-y-1/2 left-3"
-            />
-            <InputGlobal
-              type="search"
-              id="search"
-              className="documentimgstyle"
-              placeholder="Drag and drop copy of PAN Card or you can"
-            />
-            <ButtonGlobal
-              className="documentbtn left-[63%]"
-              onClick={() => {
-                setUploadedImage((prev: any) => prev + 1);
-                setFetchData(true);
-              }}>
-              <img src={imageicon} className="w-[18px] h-[18px] mr-2" />
-              Browse
-            </ButtonGlobal>
-            <ButtonGlobal className="documentbtn right-2.5">
-              <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
-            </ButtonGlobal>
-          </>
+          cameraStatus === true ? (
+            <Camera setCameraStatus={setCameraStatus} imge={imge} setImg={setImg} />
+          ) : (
+            <span>
+              <img
+                src={camera}
+                className="absolute w-[1.9rem] h-[1.7rem] top-1/2 transform -translate-y-1/2 left-[0.5rem]"
+              />
+              <InputGlobal
+                type="search"
+                id="search"
+                className="documentimgstyle"
+                placeholder="Drag and drop copy of PAN Card or you can"
+              />
+              <ButtonGlobal
+                className="documentbtn left-[63%]"
+                onClick={() => {
+                  setUploadedImage((prev: any) => prev + 1);
+                  setFetchData(true);
+                }}>
+                <img src={imageicon} className="w-[22px] h-[18px] mr-[0.2rem]" />
+                Browse
+              </ButtonGlobal>
+              <ButtonGlobal
+                className="documentbtn right-2.5"
+                onClick={() => {
+                  setCameraStatus(true);
+                }}>
+                <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
+              </ButtonGlobal>
+            </span>
+          )
         ) : uploadedImage === 1 ? (
           <>
-            <InputGlobal
-              type="search"
-              id="search"
-              className="block w-full p-3 text-sm text-extrdarkgray border border-darkgray rounded-md"
-              placeholder="Drag and drop copy of PAN Card or you can"
-            />
+            <div className="relative max-w-[36.2rem] p-3 text-sm text-black border border-darkgray rounded-md">
+              <span className="max-w[36rem]">{imge?.slice(0, 40)}</span>
+            </div>
             <ButtonGlobal
               className="cancel"
               onClick={() => {
-                setUploadedImage((prev: number) => prev + 1);
+                setCameraStatus(true);
               }}>
               <img src={crossicon} className="w-[9px] h-[9px]" />
             </ButtonGlobal>

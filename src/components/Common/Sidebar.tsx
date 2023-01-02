@@ -59,7 +59,7 @@ const Sidebar = ({ currentStep, steps, completed, status, setCurrentStep }: Step
                   ) : currentStep < i + 1 ? (
                     i + 1
                   ) : (
-                    <img src={CompleteMark} alt="complete mark" className="w-[15px] h-[15px]" />
+                    <img src={CompleteMark} alt="complete mark" className="w-[15px] h-[11px]" />
                   )}
                 </span>{' '}
                 <span>

@@ -31,6 +31,10 @@ const HomePage = () => {
   const [fetchData, setFetchData] = useState<boolean>(false);
   const [finish, setFinish] = useState<boolean>(false);
   const [panStatusResult, setPanStatusResult] = useState<string>('Good Match');
+  const [capturelocationData, setCapturelocationData] = useState<any | null>();
+  const [capturelocation, setCapturelocation] = useState<number>(0);
+  const [cameraStatus, setCameraStatus] = useState(false);
+  const [imge, setImg] = useState<string | null>(null);
 
   return (
     <div className="md:container lg:container h-screens py-7 w-screens">
@@ -55,18 +59,22 @@ const HomePage = () => {
                   />
                 ) : currentStep === 1 ? (
                   <SupersetComponent
-                    setCurrentStep={setCurrentStep}
-                    setCompleted={setCompleted}
                     currentStep={currentStep}
                     steps={steps}
-                    setStatus={setStatus}
                     btnName="Start Location Capture"
                     panStatus={true}
                     panStatusResult="Matching Failed"
                     pagename="Location Capturing"
+                    finish={finish}
+                    capturelocationData={capturelocationData}
+                    capturelocation={capturelocation}
                     setFinish={setFinish}
-                    finish={finish}>
-                    <LoctionCapture setCurrentStep={setCurrentStep} />
+                    setCurrentStep={setCurrentStep}
+                    setCompleted={setCompleted}
+                    setStatus={setStatus}
+                    setCapturelocationData={setCapturelocationData}
+                    setCapturelocation={setCapturelocation}>
+                    <LoctionCapture capturelocationData={capturelocationData} />
                   </SupersetComponent>
                 ) : currentStep === 2 ? (
                   <SupersetComponent
@@ -86,6 +94,10 @@ const HomePage = () => {
                       uploadedImage={uploadedImage}
                       setUploadedImage={setUploadedImage}
                       setFetchData={setFetchData}
+                      cameraStatus={cameraStatus}
+                      setCameraStatus={setCameraStatus}
+                      imge={imge}
+                      setImg={setImg}
                     />
                   </SupersetComponent>
                 ) : currentStep === 3 ? (
@@ -102,7 +114,13 @@ const HomePage = () => {
                     tagLine="Upload your Aadhar Copy front and back to verify yourself. Accepted format are "
                     setFinish={setFinish}
                     finish={finish}>
-                    <AdharVerifiction setUploadedImage={setUploadedImage} />
+                    <AdharVerifiction
+                      setUploadedImage={setUploadedImage}
+                      cameraStatus={cameraStatus}
+                      setCameraStatus={setCameraStatus}
+                      imge={imge}
+                      setImg={setImg}
+                    />
                   </SupersetComponent>
                 ) : currentStep === 4 ? (
                   <SupersetComponent
@@ -154,7 +172,12 @@ const HomePage = () => {
                 to complete the eKYC process."
                     setFinish={setFinish}
                     finish={finish}>
-                    <VideoKYC />
+                    <VideoKYC
+                      cameraStatus={cameraStatus}
+                      setCameraStatus={setCameraStatus}
+                      imge={imge}
+                      setImg={setImg}
+                    />
                   </SupersetComponent>
                 ) : (
                   <SupersetComponent
@@ -184,7 +207,7 @@ const HomePage = () => {
                           setFetchData(false);
                         }}>
                         <span className="w-24 h-24 items-center justify-center flex flex-col rounded-full">
-                          <img src={tickmark} alt="complete mark" className="w-10 h-10" />
+                          <img src={tickmark} alt="complete mark" className="w-[3rem] h-[2.3rem]" />
                           <div className="text-green">70%</div>
                         </span>
                       </span>
