@@ -37,7 +37,7 @@ const HomePage = () => {
   const [imge, setImg] = useState<string | null>(null);
 
   return (
-    <div className="md:container lg:container h-screens py-7 w-screens">
+    <div className="h-screens py-7 w-full px-24">
       <div className="flex items-center">
         <div className="containerboxover relative">
           <div className="boxover">

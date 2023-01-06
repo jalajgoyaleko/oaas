@@ -16,7 +16,7 @@ const Business = () => {
           <img
             src={downarrowfilled}
             alt="downarrowfilled"
-            className="w-[0.7rem] h-[0.5rem] flex absolute left-[56%]"
+            className="w-[0.7rem] h-[0.5rem] flex absolute left-[60%]"
           />
         </ButtonGlobal>
       </div>

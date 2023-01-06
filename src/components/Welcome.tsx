@@ -17,7 +17,7 @@ const Welcome = ({ setCurrentStep, setCompleted, currentStep, steps }: WelcomePr
           alt="welcome icon"
           className="flex items-center text-center h-52 w-52 mr-auto ml-auto mt-auto mb-6"
         />
-        <b className="text-lg font-semibold">Welcome!</b>
+        <b className="text-[24px]">Welcome!</b>
         <p className="font-normal">Happy to see you here. Lets start your onboarding journey.</p>
         <p className="font-normal">We ensure, you&apos;ll be assisted at every step.</p>
         <ButtonGlobal

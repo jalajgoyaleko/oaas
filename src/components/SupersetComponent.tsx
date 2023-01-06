@@ -65,7 +65,7 @@ const SupersetComponent = ({
 
   return (
     <div className="p-8">
-      <div className="text-[24px] font-semibold">{pagename}</div>
+      <div className="text-[24px]">{pagename}</div>
       {currentStep === 2 ||
       currentStep === 3 ||
       currentStep === 5 ||

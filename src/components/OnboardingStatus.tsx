@@ -10,10 +10,8 @@ const OnboardingStatus = () => {
         <img src={thumb} alt="tumpup icon" className="w-7 h-7" />
       </span>
       <span className="flex flex-col ml-5">
-        <span className="text-lg font-semibold text-green">64% Completed</span>{' '}
-        <div className="mt-1 font-semibold text-md">
-          4 Steps completed, 1 step skipped, 1 step disqualified{' '}
-        </div>
+        <span className="text-lg font-semibold text-green">64% Completed</span>
+        <div className="mt-1 text-md">4 Steps completed, 1 step skipped, 1 step disqualified</div>
         <span className="flex mt-8 items-center justify-between w-[80%]">
           <span className="flex-col">
             <div className="text-sm text-extrdarkgray">Skipped</div>

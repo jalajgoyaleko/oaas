@@ -63,7 +63,7 @@ const PanVerification = ({
           )
         ) : uploadedImage === 1 ? (
           <>
-            <div className="relative max-w-[36.2rem] p-3 text-sm text-black border border-darkgray rounded-md">
+            <div className="relative p-3 text-sm text-black border border-darkgray rounded-md">
               <span className="max-w[36rem]">{imge?.slice(0, 40)}</span>
             </div>
             <ButtonGlobal
