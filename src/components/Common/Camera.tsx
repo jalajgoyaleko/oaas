@@ -1,11 +1,11 @@
 import React, { useCallback, useRef } from 'react';
 import Webcam from 'react-webcam';
 import ButtonGlobal from './ButtonGlobal';
+import filledcamera from '../../assets/icons/filledcamera.svg';
+import retry from '../../assets/Images/retry.png';
+import { useStore } from '../../store/zustand';
 
 type CameraProps = {
-  setCameraStatus?: React.Dispatch<React.SetStateAction<boolean>>;
-  imge?: string | null;
-  setImg?: React.Dispatch<React.SetStateAction<string | null>>;
   mediaRecorderRef?: any | null;
   capturing?: boolean;
   setCapturing?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,9 +14,6 @@ type CameraProps = {
   type?: string;
 };
 const Camera = ({
-  setCameraStatus,
-  imge,
-  setImg,
   capturing,
   setCapturing,
   mediaRecorderRef,
@@ -24,6 +21,7 @@ const Camera = ({
   setRecordedChunks,
   type
 }: CameraProps) => {
+  const { imge, setImg, setManageVeriyStep, setManageVeriyStepback } = useStore();
   const videoConstraints = {
     width: { min: 1280 },
     height: { min: 720 },
@@ -41,14 +39,16 @@ const Camera = ({
       const formData = new FormData();
 
       formData.append('images', blob);
-      setImg?.(imageSrc);
+      setImg(imageSrc);
+      setManageVeriyStep();
     },
     [webcamRef]
   );
 
   const handleRetake = (e: any) => {
     e.preventDefault();
-    setImg?.(null);
+    setImg(null);
+    setManageVeriyStepback();
   };
 
   const handleDataAvailable = useCallback(({ data }) => {
@@ -100,30 +100,24 @@ const Camera = ({
     <span>
       {imge === null ? (
         <>
-          <span className="flex justify-center">
+          <span className="flex">
             <Webcam
               audio={false}
               mirrored={true}
-              height={550}
-              width={550}
+              height={590}
+              width={590}
               ref={webcamRef}
               screenshotFormat="image/jpeg"
               videoConstraints={videoConstraints}
+              className="rounded-[10px]"
             />
           </span>
           {type !== 'videoRecord' ? (
-            <span className="flex justify-center items-center">
+            <span className="flex justify-end mt-3">
               <ButtonGlobal
                 onClick={capture}
-                className="bg-sky text-white block w-[47%] p-3 pl-11 rounded-md mt-2 mr-2">
-                Capture photo
-              </ButtonGlobal>
-              <ButtonGlobal
-                onClick={() => {
-                  setCameraStatus?.((prev: any) => !prev);
-                }}
-                className="bg-sky text-white block w-[47%] p-3 pl-11 rounded-md mt-2">
-                Turn off Camera
+                className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
               </ButtonGlobal>
             </span>
           ) : (
@@ -153,20 +147,12 @@ const Camera = ({
         </>
       ) : (
         <>
-          <img src={imge} alt="screenshot" />
-
-          <span className="flex justify-center items-center">
+          <img src={imge} alt="screenshot" className="rounded-[10px]" />
+          <span className="flex justify-end mt-3">
             <ButtonGlobal
               onClick={handleRetake}
-              className="bg-sky text-white block w-[35%] p-3 rounded-md mt-2 mr-2">
-              Retake
-            </ButtonGlobal>
-            <ButtonGlobal
-              onClick={() => {
-                setCameraStatus?.((prev: any) => !prev);
-              }}
-              className="bg-sky text-white block w-[35%] p-3 rounded-md mt-2">
-              Done
+              className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+              <img src={retry} className="w-[16px] h-[16px] mr-1" /> Re-Capture
             </ButtonGlobal>
           </span>
         </>

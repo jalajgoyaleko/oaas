@@ -1,12 +1,13 @@
 import React from 'react';
 import thumb from '../assets/icons/thumb.svg';
 import thumpdown from '../assets/icons/thumpdown.svg';
+import { useStore } from '../store/zustand';
 
-type PanAdhaMatchProps = { panStatus: boolean; panStatusResult: string };
-const PanAdharMatch = ({ panStatus, panStatusResult }: PanAdhaMatchProps) => {
+const PanAdharMatch = () => {
+  const { panStatus, panStatusResult } = useStore();
   return (
     <>
-      {panStatus === false ? (
+      {panStatus === 0 ? (
         <ul className="list-disc pt-2 pl-5">
           <li className="pb-2">Please click the button below to start matching your details.</li>
           <li className="pb-2">It is required to for verification purpose.</li>

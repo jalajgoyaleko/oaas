@@ -2,15 +2,13 @@ import React from 'react';
 import '../../assets/Styles/sidebar.css';
 import CompleteMark from '../../assets/icons/completemark.svg';
 import ButtonGlobal from './ButtonGlobal';
+import { useStore } from '../../store/zustand';
 
 type StepperProps = {
-  currentStep: number;
   steps: string[];
-  completed: boolean;
-  status: string;
-  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
 };
-const Sidebar = ({ currentStep, steps, completed, status, setCurrentStep }: StepperProps) => {
+const Sidebar = ({ steps }: StepperProps) => {
+  const { currentStep, completed, status, setCurrentStep } = useStore();
   return (
     <div className="bg-white rounded-2xl">
       <div className="p-5 bg-sky rounded-t-2xl">

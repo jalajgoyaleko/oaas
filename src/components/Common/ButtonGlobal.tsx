@@ -1,4 +1,5 @@
 import React from 'react';
+import { useStore } from '../../store/zustand';
 import UseGeoLocation from '../CustomHooks/UseGeoLocation';
 
 type BtnProps = {
@@ -6,26 +7,21 @@ type BtnProps = {
   onClick?: any;
   children?: React.ReactNode;
   key?: number;
-  capturelocation?: any;
-  setCapturelocationData?: React.Dispatch<React.SetStateAction<any | null>>;
+  disabled?: boolean;
 };
 
-const ButtonGlobal = ({
-  className,
-  children,
-  key,
-  capturelocation,
-  onClick,
-  setCapturelocationData
-}: BtnProps) => {
-  const handlecall = () => {
+const ButtonGlobal = ({ className, children, key, onClick, disabled }: BtnProps) => {
+  const { capturelocation, setCapturelocationData } = useStore();
+  const hndlCapturLoction = () => {
     const location = UseGeoLocation();
-    setCapturelocationData?.(location);
+    setCapturelocationData(location);
   };
-  capturelocation === 1 ? handlecall() : '';
+  console.log('capturelocation', capturelocation);
+
+  capturelocation === 1 ? hndlCapturLoction() : '';
 
   return (
-    <button className={className} onClick={onClick} key={key}>
+    <button className={className} onClick={onClick} key={key} disabled={disabled}>
       {children}
     </button>
   );

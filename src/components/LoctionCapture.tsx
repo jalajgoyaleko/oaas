@@ -1,12 +1,6 @@
 import React from 'react';
 
-type LocationProps = {
-  capturelocationData?: any;
-};
-const LoctionCapture = ({ capturelocationData }: LocationProps) => {
-  const data = capturelocationData?.coordinates;
-  console.log('data', data);
-
+const LoctionCapture = () => {
   return (
     <ul className="list-disc pt-2 pl-5">
       <li className="pb-2">

@@ -33,11 +33,11 @@
 }
 
 .documentimgstyle {
-  @apply block w-full p-3 pl-11 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed;
+  @apply p-8 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed flex flex-col justify-center items-center;
 }
 
 .documentbtn {
-  @apply flex absolute text-white text-xs bottom-1.5 bg-sky hover:bg-black focus:ring-4 focus:outline-none focus:ring-sky font-medium rounded-md pl-2 pr-2 py-[6px];
+  @apply text-white text-xs bottom-1.5 bg-sky hover:bg-black focus:ring-4 focus:outline-none focus:ring-sky font-medium rounded-md pl-2 pr-2 py-[6px] w-fit flex mr-2 justify-center items-center;
 }
 
 .videoKyc {

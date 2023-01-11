@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Sidebar from './Common/Sidebar';
 import SupersetComponent from './SupersetComponent';
 import Welcome from './Welcome';
@@ -12,6 +12,7 @@ import LoctionCapture from './LoctionCapture';
 import alert from './../assets/Images/alert.png';
 import tickmark from './../assets/icons/tickmark.svg';
 import ButtonGlobal from './Common/ButtonGlobal';
+import { useStore } from '../store/zustand';
 
 const HomePage = () => {
   const steps = [
@@ -23,18 +24,7 @@ const HomePage = () => {
     'Video KYC',
     'Onboarding Status'
   ];
-  const [currentStep, setCurrentStep] = useState<number>(0);
-  const [completed, setCompleted] = useState<boolean>(false);
-  const [status, setStatus] = useState<string>('In Progress');
-  const [uploadedImage, setUploadedImage] = useState<number>(0);
-  const [panStatus, setPanStatus] = useState<boolean>(false);
-  const [fetchData, setFetchData] = useState<boolean>(false);
-  const [finish, setFinish] = useState<boolean>(false);
-  const [panStatusResult, setPanStatusResult] = useState<string>('Good Match');
-  const [capturelocationData, setCapturelocationData] = useState<any | null>();
-  const [capturelocation, setCapturelocation] = useState<number>(0);
-  const [cameraStatus, setCameraStatus] = useState(false);
-  const [imge, setImg] = useState<string | null>(null);
+  const { currentStep, panStatus, fetchData, finish, setFinish, setFetchData } = useStore();
 
   return (
     <div className="h-screens py-7 w-full px-24">
@@ -42,159 +32,65 @@ const HomePage = () => {
         <div className="containerboxover relative">
           <div className="boxover">
             <div className="flex justify-between">
-              <Sidebar
-                currentStep={currentStep}
-                steps={steps}
-                completed={completed}
-                status={status}
-                setCurrentStep={setCurrentStep}
-              />
+              <Sidebar steps={steps} />
               <div className="flex w-full rounded-2xl ml-8 bg-white relative">
                 {currentStep === 0 ? (
-                  <Welcome
-                    setCurrentStep={setCurrentStep}
-                    setCompleted={setCompleted}
-                    currentStep={currentStep}
-                    steps={steps}
-                  />
+                  <Welcome steps={steps} />
                 ) : currentStep === 1 ? (
                   <SupersetComponent
-                    currentStep={currentStep}
                     steps={steps}
                     btnName="Start Location Capture"
-                    panStatus={true}
-                    panStatusResult="Matching Failed"
-                    pagename="Location Capturing"
-                    finish={finish}
-                    capturelocationData={capturelocationData}
-                    capturelocation={capturelocation}
-                    setFinish={setFinish}
-                    setCurrentStep={setCurrentStep}
-                    setCompleted={setCompleted}
-                    setStatus={setStatus}
-                    setCapturelocationData={setCapturelocationData}
-                    setCapturelocation={setCapturelocation}>
-                    <LoctionCapture capturelocationData={capturelocationData} />
+                    pagename="Location Capturing">
+                    <LoctionCapture />
                   </SupersetComponent>
                 ) : currentStep === 2 ? (
                   <SupersetComponent
-                    setCurrentStep={setCurrentStep}
-                    setCompleted={setCompleted}
-                    currentStep={currentStep}
                     steps={steps}
-                    setStatus={setStatus}
                     btnName="Verify PAN"
-                    panStatus={true}
-                    panStatusResult="Matching Failed"
                     pagename="PAN Verification"
-                    tagLine="Upload your PAN copy to verify your business. Accepted format are "
-                    setFinish={setFinish}
-                    finish={finish}>
-                    <PanVerification
-                      uploadedImage={uploadedImage}
-                      setUploadedImage={setUploadedImage}
-                      setFetchData={setFetchData}
-                      cameraStatus={cameraStatus}
-                      setCameraStatus={setCameraStatus}
-                      imge={imge}
-                      setImg={setImg}
-                    />
+                    tagLine="Upload your PAN copy to verify your business. Accepted format are ">
+                    <PanVerification />
                   </SupersetComponent>
                 ) : currentStep === 3 ? (
                   <SupersetComponent
-                    setCurrentStep={setCurrentStep}
-                    setCompleted={setCompleted}
-                    currentStep={currentStep}
                     steps={steps}
-                    setStatus={setStatus}
                     btnName="Verify Aadhaar"
-                    panStatus={true}
-                    panStatusResult="Matching Failed"
                     pagename="Aadhaar Verification"
-                    tagLine="Upload your Aadhar Copy front and back to verify yourself. Accepted format are "
-                    setFinish={setFinish}
-                    finish={finish}>
-                    <AdharVerifiction
-                      setUploadedImage={setUploadedImage}
-                      cameraStatus={cameraStatus}
-                      setCameraStatus={setCameraStatus}
-                      imge={imge}
-                      setImg={setImg}
-                    />
+                    tagLine="Upload your Aadhar Copy front and back to verify yourself. Accepted format are ">
+                    <AdharVerifiction />
                   </SupersetComponent>
                 ) : currentStep === 4 ? (
                   <SupersetComponent
-                    setCurrentStep={setCurrentStep}
-                    setCompleted={setCompleted}
-                    currentStep={currentStep}
                     steps={steps}
-                    setStatus={setStatus}
-                    btnName={`${panStatus === false ? 'Start Matching' : 'Next'}`}
-                    setPanStatus={setPanStatus}
-                    setPanStatusResult={setPanStatusResult}
-                    panStatus={true}
-                    panStatusResult={panStatusResult}
-                    pagename="PAN - Aadhaar Matching"
-                    setFinish={setFinish}
-                    finish={finish}>
-                    <PanAdharMatch panStatus={true} panStatusResult={panStatusResult} />
+                    btnName={`${
+                      panStatus === 0 ? 'Start Matching' : panStatus === 1 ? 'Next' : 'Retry'
+                    }`}
+                    pagename="PAN - Aadhaar Matching">
+                    <PanAdharMatch />
                   </SupersetComponent>
                 ) : currentStep === 5 ? (
                   <SupersetComponent
-                    setCurrentStep={setCurrentStep}
-                    setCompleted={setCompleted}
-                    currentStep={currentStep}
                     steps={steps}
-                    setStatus={setStatus}
                     btnName="Next"
-                    panStatus={true}
-                    panStatusResult="Matching Failed"
                     pagename="Business Details"
-                    tagLine="Upload your PAN copy to verify your business. Accepted format are "
-                    setFinish={setFinish}
-                    finish={finish}>
+                    tagLine="Upload your PAN copy to verify your business. Accepted format are ">
                     <Business />
                   </SupersetComponent>
                 ) : currentStep === 6 ? (
                   <SupersetComponent
-                    setCurrentStep={setCurrentStep}
-                    setCompleted={setCompleted}
-                    currentStep={currentStep}
                     steps={steps}
-                    setStatus={setStatus}
-                    btnName={'Next'}
-                    setPanStatus={setPanStatus}
-                    panStatus={panStatus}
-                    setPanStatusResult={setPanStatusResult}
-                    panStatusResult="Matching Failed"
+                    btnName="Next"
                     pagename="Video KYC"
                     tagLine="Thanks for completing your personal and address verification. Take a selfie of 5-10 seconds
-                to complete the eKYC process."
-                    setFinish={setFinish}
-                    finish={finish}>
-                    <VideoKYC
-                      cameraStatus={cameraStatus}
-                      setCameraStatus={setCameraStatus}
-                      imge={imge}
-                      setImg={setImg}
-                    />
+                to complete the eKYC process.">
+                    <VideoKYC />
                   </SupersetComponent>
                 ) : (
                   <SupersetComponent
-                    setCurrentStep={setCurrentStep}
-                    setCompleted={setCompleted}
-                    currentStep={currentStep}
                     steps={steps}
-                    setStatus={setStatus}
                     btnName="Submit"
-                    setPanStatus={setPanStatus}
-                    panStatus={panStatus}
-                    setPanStatusResult={setPanStatusResult}
-                    panStatusResult={panStatusResult}
                     pagename="Onboarding Status"
-                    tagLine="Below are the details of the completion status of your onboarding."
-                    setFinish={setFinish}
-                    finish={finish}>
+                    tagLine="Below are the details of the completion status of your onboarding.">
                     <OnboardingStatus />
                   </SupersetComponent>
                 )}

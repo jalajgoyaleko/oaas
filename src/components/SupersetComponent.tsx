@@ -1,67 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useStore } from '../store/zustand';
 import ButtonGlobal from './Common/ButtonGlobal';
+import Modal from './Common/Modal';
 
 type SupersetComponentProps = {
   pagename: string;
-  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
-  setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
-  currentStep: number;
   steps: string[];
-  setStatus: React.Dispatch<React.SetStateAction<string>>;
   children?: React.ReactNode;
   btnName: string;
-  setPanStatus?: any;
-  panStatus: boolean;
-  setPanStatusResult?: any;
-  panStatusResult?: string;
   tagLine?: string;
-  finish?: boolean;
-  setFinish?: any;
-  capturelocationData?: any;
-  capturelocation?: any;
-  setCapturelocationData?: React.Dispatch<React.SetStateAction<any | null>>;
-  setCapturelocation?: React.Dispatch<React.SetStateAction<number>>;
 };
 const SupersetComponent = ({
   pagename,
-  currentStep,
   steps,
   children,
   btnName,
-  setPanStatus,
-  panStatus,
-  setPanStatusResult,
-  panStatusResult,
-  tagLine,
-  finish,
-  setFinish,
-  capturelocationData,
-  capturelocation,
-  setCurrentStep,
-  setCompleted,
-  setStatus,
-  setCapturelocationData,
-  setCapturelocation
+  tagLine
 }: SupersetComponentProps) => {
+  const {
+    currentStep,
+    panStatus,
+    finish,
+    capturelocation,
+    capturelocationData,
+    setCapturelocation,
+    setPanStatusResult,
+    setFinish,
+    setPanStatus,
+    setCurrentStep,
+    setCompleted,
+    setStatus,
+    manageVeriyStep
+  } = useStore();
+  const [showModal, setShowModal] = useState<boolean>(false);
+
   const handleStatus = () => {
-    setCurrentStep((prev) => prev + 1);
+    setCurrentStep(currentStep + 1);
     setStatus('Skipped');
   };
   const handleStepbtn = () => {
     currentStep === steps.length + 1
       ? setCompleted(true)
-      : panStatus === true && panStatusResult === 'Matching Failed' && finish === false
-      ? setCurrentStep((prev) => prev + 1)
-      : setCurrentStep((prev) => prev);
-    setPanStatus(true);
+      : panStatus === 0 || panStatus === 1 || (panStatus === 2 && finish === false)
+      ? setCurrentStep(currentStep + 1)
+      : setCurrentStep(currentStep);
+    setPanStatus(panStatus === 2 ? panStatus : panStatus + 1);
     btnName === 'Next' ? setPanStatusResult('Good Match') : setPanStatusResult('Matching Failed');
     currentStep === 8 ? setFinish(true) : '';
   };
+
   const captureLocation = () => {
-    setCapturelocation?.((prev) => prev + 1);
+    setCapturelocation(capturelocationData + 1);
   };
   const handleOnclick = capturelocation === 0 ? captureLocation : handleStepbtn;
-  console.log(capturelocationData);
+
+  const showInfromation = () => {
+    setShowModal(true);
+  };
 
   return (
     <div className="p-8">
@@ -84,10 +79,19 @@ const SupersetComponent = ({
       )}
       {children}
       <ButtonGlobal
-        className="bg-sky hover:bg-black text-white font-semibold mt-8 py-2 px-8 rounded"
-        capturelocation={capturelocation}
-        setCapturelocationData={setCapturelocationData}
-        onClick={handleOnclick}>
+        className={
+          (manageVeriyStep === 0 && btnName === 'Verify PAN') || btnName === 'Verify Aadhaar'
+            ? 'bg-darkgray text-white mt-8 py-2 px-8 rounded'
+            : 'bg-sky hover:bg-black text-white font-semibold mt-8 py-2 px-8 rounded'
+        }
+        onClick={
+          btnName === 'Verify PAN' || btnName === 'Verify Aadhaar' ? showInfromation : handleOnclick
+        }
+        disabled={
+          (manageVeriyStep === 0 && btnName === 'Verify PAN') || btnName === 'Verify Aadhaar'
+            ? true
+            : false
+        }>
         {btnName}
       </ButtonGlobal>
 
@@ -98,6 +102,26 @@ const SupersetComponent = ({
           Skip this step
         </ButtonGlobal>
       )}
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        handleOnclick={handleOnclick}
+        attentionmsg={
+          btnName === 'Verify PAN' ? (
+            <>
+              Are you sure you want to upload this PAN. You will <br /> get only two attempts for
+              PAN verification
+            </>
+          ) : btnName === 'Verify Aadhaar' ? (
+            <>
+              Are you sure you want to upload this Aadhaar. You will <br /> get only one attempt for
+              Aadhaar verification.
+            </>
+          ) : (
+            ''
+          )
+        }
+      />
     </div>
   );
 };
