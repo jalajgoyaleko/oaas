@@ -10,10 +10,12 @@ type Zustand = {
   finish: boolean;
   panStatusResult: string;
   capturelocation: number;
-  capturelocationData: any | null;
+  capturelocationData: any;
   imge: any | null;
+  cameraStatus: boolean;
+  manageVeriyStep: number;
   setImg: (input: any) => void;
-  setCapturelocationData: (input: object) => void;
+  setCapturelocationData: (input: any) => void;
   setCapturelocation: (input: number) => void;
   setPanStatusResult: (input: string) => void;
   setFinish: (input: boolean) => void;
@@ -23,8 +25,6 @@ type Zustand = {
   setStatus: (input: string) => void;
   setCompleted: (input: boolean) => void;
   setCurrentStep: (input: number) => void;
-  cameraStatus: boolean;
-  manageVeriyStep: number;
   setCameraStatus: (input: boolean) => void;
   setManageVeriyStep: () => void;
   setManageVeriyStepback: () => void;

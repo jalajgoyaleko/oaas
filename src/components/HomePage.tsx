@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from './Common/Sidebar';
 import SupersetComponent from './SupersetComponent';
 import Welcome from './Welcome';
@@ -26,6 +26,8 @@ const HomePage = () => {
   ];
   const { currentStep, panStatus, fetchData, finish, setFinish, setFetchData } = useStore();
 
+  const [capturelocationData, setCapturelocationData] = useState<any | null>();
+  const [capturelocation, setCapturelocation] = useState<number>(0);
   return (
     <div className="h-screens py-7 w-full px-24">
       <div className="flex items-center">
@@ -40,7 +42,11 @@ const HomePage = () => {
                   <SupersetComponent
                     steps={steps}
                     btnName="Start Location Capture"
-                    pagename="Location Capturing">
+                    pagename="Location Capturing"
+                    capturelocationData={capturelocationData}
+                    capturelocation={capturelocation}
+                    setCapturelocationData={setCapturelocationData}
+                    setCapturelocation={setCapturelocation}>
                     <LoctionCapture />
                   </SupersetComponent>
                 ) : currentStep === 2 ? (

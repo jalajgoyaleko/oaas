@@ -12,10 +12,12 @@ module.exports = {
       green: '#00C341',
       orange: '#FE9F00',
       red: '#FF4040',
+      lightred: '#FF40401A',
       pink: '#FF4081'
     },
     boxShadow: {
-      '3xl': '0 35px 60px -15px #00C34133'
+      '3xl': '0 35px 60px -15px #00C34133',
+      '2xl': '0px 0px 7px -2px #1F5AA7'
     },
     container: {
       center: true,

@@ -9,21 +9,26 @@ type SupersetComponentProps = {
   children?: React.ReactNode;
   btnName: string;
   tagLine?: string;
+  capturelocationData?: any;
+  capturelocation?: any;
+  setCapturelocationData?: React.Dispatch<React.SetStateAction<any | null>>;
+  setCapturelocation?: React.Dispatch<React.SetStateAction<number>>;
 };
 const SupersetComponent = ({
   pagename,
   steps,
   children,
   btnName,
-  tagLine
+  tagLine,
+  capturelocationData,
+  capturelocation,
+  setCapturelocationData,
+  setCapturelocation
 }: SupersetComponentProps) => {
   const {
     currentStep,
     panStatus,
     finish,
-    capturelocation,
-    capturelocationData,
-    setCapturelocation,
     setPanStatusResult,
     setFinish,
     setPanStatus,
@@ -50,13 +55,14 @@ const SupersetComponent = ({
   };
 
   const captureLocation = () => {
-    setCapturelocation(capturelocationData + 1);
+    setCapturelocation?.((prev) => prev + 1);
   };
   const handleOnclick = capturelocation === 0 ? captureLocation : handleStepbtn;
 
   const showInfromation = () => {
     setShowModal(true);
   };
+  console.log(capturelocationData);
 
   return (
     <div className="p-8">
@@ -91,7 +97,9 @@ const SupersetComponent = ({
           (manageVeriyStep === 0 && btnName === 'Verify PAN') || btnName === 'Verify Aadhaar'
             ? true
             : false
-        }>
+        }
+        capturelocation={capturelocation}
+        setCapturelocationData={setCapturelocationData}>
         {btnName}
       </ButtonGlobal>
 

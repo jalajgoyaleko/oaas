@@ -4,6 +4,8 @@ import ButtonGlobal from './ButtonGlobal';
 import filledcamera from '../../assets/icons/filledcamera.svg';
 import retry from '../../assets/Images/retry.png';
 import { useStore } from '../../store/zustand';
+import camera from '../../assets/icons/camera.svg';
+import imageicon from '../../assets/icons/imageicon.svg';
 
 type CameraProps = {
   mediaRecorderRef?: any | null;
@@ -12,6 +14,8 @@ type CameraProps = {
   recordedChunks?: any;
   setRecordedChunks?: React.Dispatch<React.SetStateAction<any>>;
   type?: string;
+  cameraType?: string;
+  handleCamera?: (input: string) => void;
 };
 const Camera = ({
   capturing,
@@ -19,9 +23,18 @@ const Camera = ({
   mediaRecorderRef,
   recordedChunks,
   setRecordedChunks,
-  type
+  type,
+  cameraType,
+  handleCamera
 }: CameraProps) => {
-  const { imge, setImg, setManageVeriyStep, setManageVeriyStepback } = useStore();
+  const {
+    imge,
+    setImg,
+    setManageVeriyStep,
+    setManageVeriyStepback,
+    uploadedImage,
+    setUploadedImage
+  } = useStore();
   const videoConstraints = {
     width: { min: 1280 },
     height: { min: 720 },
@@ -95,25 +108,94 @@ const Camera = ({
       setRecordedChunks?.([]);
     }
   }, [recordedChunks]);
+  console.log('type, cameratype', type, cameraType);
 
   return (
     <span>
       {imge === null ? (
         <>
           <span className="flex">
-            <Webcam
-              audio={false}
-              mirrored={true}
-              height={590}
-              width={590}
-              ref={webcamRef}
-              screenshotFormat="image/jpeg"
-              videoConstraints={videoConstraints}
-              className="rounded-[10px]"
-            />
+            {type === 'Pan' ? (
+              <Webcam
+                audio={false}
+                mirrored={true}
+                height={590}
+                width={590}
+                ref={webcamRef}
+                screenshotFormat="image/jpeg"
+                videoConstraints={videoConstraints}
+                className="rounded-[10px]"
+              />
+            ) : cameraType === 'front' ? (
+              <>
+                <Webcam
+                  audio={false}
+                  mirrored={true}
+                  height={340}
+                  width={340}
+                  ref={webcamRef}
+                  screenshotFormat="image/jpeg"
+                  videoConstraints={videoConstraints}
+                  className="rounded-[10px]"
+                />
+                <div className="documentimgstyle w-[40%] h-[190px] ml-4">
+                  <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
+                  <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
+                  <div className="flex">
+                    <ButtonGlobal
+                      className="documentbtn mt-4"
+                      onClick={() => {
+                        setUploadedImage(uploadedImage + 1);
+                      }}>
+                      <img src={imageicon} className="w-[18px] h-[18px] mr-2" />
+                      Browse
+                    </ButtonGlobal>
+                    <ButtonGlobal
+                      className="documentbtn mt-4"
+                      onClick={() => handleCamera?.('back')}>
+                      <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
+                    </ButtonGlobal>
+                  </div>
+                </div>
+              </>
+            ) : cameraType === 'back' ? (
+              <>
+                <div className="documentimgstyle w-[40%] h-[190px] mr-4">
+                  <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
+                  <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
+                  <div className="flex">
+                    <ButtonGlobal
+                      className="documentbtn mt-4"
+                      onClick={() => {
+                        setUploadedImage(uploadedImage + 1);
+                      }}>
+                      <img src={imageicon} className="w-[18px] h-[18px] mr-2" />
+                      Browse
+                    </ButtonGlobal>
+                    <ButtonGlobal
+                      className="documentbtn mt-4"
+                      onClick={() => handleCamera?.('back')}>
+                      <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
+                    </ButtonGlobal>
+                  </div>
+                </div>
+                <Webcam
+                  audio={false}
+                  mirrored={true}
+                  height={340}
+                  width={340}
+                  ref={webcamRef}
+                  screenshotFormat="image/jpeg"
+                  videoConstraints={videoConstraints}
+                  className="rounded-[10px]"
+                />
+              </>
+            ) : (
+              ''
+            )}
           </span>
           {type !== 'videoRecord' ? (
-            <span className="flex justify-end mt-3">
+            <span className={`flex ${type === 'Pan' ? 'justify-end' : 'justify-center'} mt-3`}>
               <ButtonGlobal
                 onClick={capture}
                 className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
