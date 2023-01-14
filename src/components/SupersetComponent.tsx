@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStore } from '../store/zustand';
 import ButtonGlobal from './Common/ButtonGlobal';
 import Modal from './Common/Modal';
@@ -10,9 +10,7 @@ type SupersetComponentProps = {
   btnName: string;
   tagLine?: string;
   capturelocationData?: any;
-  capturelocation?: any;
   setCapturelocationData?: React.Dispatch<React.SetStateAction<any | null>>;
-  setCapturelocation?: React.Dispatch<React.SetStateAction<number>>;
 };
 const SupersetComponent = ({
   pagename,
@@ -21,9 +19,7 @@ const SupersetComponent = ({
   btnName,
   tagLine,
   capturelocationData,
-  capturelocation,
-  setCapturelocationData,
-  setCapturelocation
+  setCapturelocationData
 }: SupersetComponentProps) => {
   const {
     currentStep,
@@ -35,7 +31,9 @@ const SupersetComponent = ({
     setCurrentStep,
     setCompleted,
     setStatus,
-    manageVeriyStep
+    manageVeriyStep,
+    getLocation,
+    setGetlocation
   } = useStore();
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -54,15 +52,26 @@ const SupersetComponent = ({
     currentStep === 8 ? setFinish(true) : '';
   };
 
-  const captureLocation = () => {
-    setCapturelocation?.((prev) => prev + 1);
+  const increase = () => {
+    if (
+      capturelocationData?.coordinates?.lat !== undefined &&
+      capturelocationData?.coordinates?.lat !== 'nothing'
+    ) {
+      setCurrentStep(currentStep + 1);
+    }
   };
-  const handleOnclick = capturelocation === 0 ? captureLocation : handleStepbtn;
+  useEffect(() => {
+    increase();
+  }, [capturelocationData]);
+
+  const captureLocation = () => {
+    setGetlocation(true);
+  };
+  const handleOnclick = currentStep === 1 ? captureLocation : handleStepbtn;
 
   const showInfromation = () => {
     setShowModal(true);
   };
-  console.log(capturelocationData);
 
   return (
     <div className="p-8">
@@ -98,8 +107,8 @@ const SupersetComponent = ({
             ? true
             : false
         }
-        capturelocation={capturelocation}
-        setCapturelocationData={setCapturelocationData}>
+        setCapturelocationData={setCapturelocationData}
+        getLocation={getLocation}>
         {btnName}
       </ButtonGlobal>
 

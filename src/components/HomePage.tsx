@@ -27,7 +27,6 @@ const HomePage = () => {
   const { currentStep, panStatus, fetchData, finish, setFinish, setFetchData } = useStore();
 
   const [capturelocationData, setCapturelocationData] = useState<any | null>();
-  const [capturelocation, setCapturelocation] = useState<number>(0);
   return (
     <div className="h-screens py-7 w-full px-24">
       <div className="flex items-center">
@@ -44,9 +43,7 @@ const HomePage = () => {
                     btnName="Start Location Capture"
                     pagename="Location Capturing"
                     capturelocationData={capturelocationData}
-                    capturelocation={capturelocation}
-                    setCapturelocationData={setCapturelocationData}
-                    setCapturelocation={setCapturelocation}>
+                    setCapturelocationData={setCapturelocationData}>
                     <LoctionCapture />
                   </SupersetComponent>
                 ) : currentStep === 2 ? (

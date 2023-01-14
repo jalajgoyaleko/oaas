@@ -8,12 +8,13 @@ type ModalProps = {
   attentionmsg?: any;
 };
 const Modal = ({ showModal, setShowModal, handleOnclick, attentionmsg }: ModalProps) => {
-  const { setCameraStatus, setManageVeriyStepinital } = useStore();
+  const { setCameraStatus, setManageVeriyStepinital, setFetchData } = useStore();
   const handleproceed = () => {
     setShowModal(false);
     handleOnclick?.();
     setCameraStatus(false);
     setManageVeriyStepinital();
+    setFetchData(true);
   };
   return (
     <>

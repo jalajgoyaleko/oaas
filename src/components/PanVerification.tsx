@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import camera from '../assets/icons/camera.svg';
 import imageicon from '../assets/icons/imageicon.svg';
 import filledcamera from '../assets/icons/filledcamera.svg';
@@ -9,9 +9,41 @@ import Camera from './Common/Camera';
 import { useStore } from '../store/zustand';
 
 const PanVerification = () => {
-  const { cameraStatus, uploadedImage, imge, setUploadedImage, setCameraStatus, setFetchData } =
-    useStore();
-  console.log('uploadedImage', uploadedImage);
+  const {
+    cameraStatus,
+    uploadedImage,
+    imge,
+    setUploadedImage,
+    setCameraStatus,
+    setSelectedFile,
+    selectedFile,
+    preview,
+    setPreview,
+    setManageVeriyStep,
+    setManageVeriyStepback
+  } = useStore();
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e: any) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    setSelectedFile(e.target.files[0]);
+    setManageVeriyStep();
+  };
+
+  const clearSelectedImg = () => {
+    setSelectedFile(undefined), setManageVeriyStepback();
+  };
 
   return (
     <div className="mt-8">
@@ -28,7 +60,6 @@ const PanVerification = () => {
                   className="documentbtn mt-8"
                   onClick={() => {
                     setUploadedImage(uploadedImage + 1);
-                    setFetchData(true);
                   }}>
                   <img src={imageicon} className="w-[18px] h-[18px] mr-2" />
                   Browse
@@ -81,7 +112,7 @@ const PanVerification = () => {
               step to proceed with next option.
             </div>
           </div>
-        ) : uploadedImage === 1 ? (
+        ) : uploadedImage === 4 ? (
           <>
             <div className="relative p-3 text-sm text-black border border-darkgray rounded-md max-w[36rem]">
               <span className="">{imge?.slice(0, 40)}</span>
@@ -105,12 +136,29 @@ const PanVerification = () => {
           </>
         ) : (
           <>
-            <div className="relative p-3 text-sm text-black border border-darkgray rounded-md max-w[36rem]">
-              <span className="">{imge?.slice(0, 40)}</span>
+            <div
+              className={`relative p-2 text-sm text-black border border-darkgray rounded-md max-w[36rem]`}>
+              {!selectedFile ? (
+                <div>
+                  <input type="file" onChange={onSelectFile} />
+                </div>
+              ) : (
+                <div className="flex justify-start">
+                  <img src={preview} className="w-8 h-8" />
+                  <span className="flex flex-col ml-2">
+                    <div className="text-xs text-extrdarkgray font-sans font-[300]">Pan Copy</div>
+                    {selectedFile?.name}
+                  </span>
+                </div>
+              )}
             </div>
-            <ButtonGlobal className="cancel">
-              <img src={crossicon} className="w-[9px] h-[9px]" />
-            </ButtonGlobal>
+            {selectedFile ? (
+              <ButtonGlobal className="cancel text-white" onClick={() => clearSelectedImg()}>
+                X
+              </ButtonGlobal>
+            ) : (
+              ''
+            )}
           </>
         )}
       </div>

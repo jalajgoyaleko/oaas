@@ -9,14 +9,12 @@ type Zustand = {
   fetchData: boolean;
   finish: boolean;
   panStatusResult: string;
-  capturelocation: number;
-  capturelocationData: any;
   imge: any | null;
   cameraStatus: boolean;
   manageVeriyStep: number;
+  selectedFile: any;
+  setSelectedFile: (input: any) => void;
   setImg: (input: any) => void;
-  setCapturelocationData: (input: any) => void;
-  setCapturelocation: (input: number) => void;
   setPanStatusResult: (input: string) => void;
   setFinish: (input: boolean) => void;
   setFetchData: (input: boolean) => void;
@@ -29,9 +27,22 @@ type Zustand = {
   setManageVeriyStep: () => void;
   setManageVeriyStepback: () => void;
   setManageVeriyStepinital: () => void;
+
+  getLocation: boolean;
+  setGetlocation: (input: boolean) => void;
+
+  preview: '';
+  setPreview: (input: any) => void;
 };
 
 export const useStore = create<Zustand>((set) => ({
+  getLocation: false,
+  setGetlocation: (input: boolean) => set(() => ({ getLocation: input })),
+  selectedFile: '',
+  setSelectedFile: (input: any) => set(() => ({ selectedFile: input })),
+
+  preview: '',
+  setPreview: (input: any) => set(() => ({ preview: input })),
   currentStep: 0,
   completed: false,
   status: 'In Progress',
@@ -40,12 +51,8 @@ export const useStore = create<Zustand>((set) => ({
   fetchData: false,
   finish: false,
   panStatusResult: 'Good Match',
-  capturelocation: 0,
-  capturelocationData: {},
   imge: null,
   setImg: (input: any) => set(() => ({ imge: input })),
-  setCapturelocationData: (input: any) => set(() => ({ capturelocationData: input })),
-  setCapturelocation: (input: number) => set(() => ({ capturelocation: input })),
   setPanStatusResult: (input: string) => set(() => ({ panStatusResult: input })),
   setFinish: (input: boolean) => set(() => ({ finish: input })),
   setFetchData: (input: boolean) => set(() => ({ fetchData: input })),

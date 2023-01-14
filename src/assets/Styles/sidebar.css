@@ -29,7 +29,7 @@
   @apply flex flex-col w-full h-full;
 }
 .cancel {
-  @apply flex absolute text-xs -right-2.5 -top-2.5 bg-black hover:bg-black focus:outline-none font-medium rounded-full pl-2 pr-2 py-[8px] dark:bg-sky;
+  @apply flex absolute text-xs -right-2.5 -top-2.5 bg-black hover:bg-black focus:outline-none font-medium rounded-full pl-2 pr-2 py-[4px] dark:bg-sky;
 }
 
 .documentimgstyle {
