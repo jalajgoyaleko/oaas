@@ -47,3 +47,16 @@
 .side {
   @apply h-0 w-0 mt-4 border-t-white border-b-white border-r-red border-r-[12px] border-t-[8px] border-b-[8px];
 }
+
+li {
+  list-style-type: none;
+  position: relative; /* It's needed for setting position to absolute in the next rule. */
+}
+
+li::before {
+  content: '•';
+  position: absolute;
+  left: -0.6em;
+  top: -0.4em; /* Adjust this value so that it appears where you want. */
+  font-size: 2em; /* Adjust this value so that it appears what size you want. */
+}

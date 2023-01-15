@@ -33,6 +33,13 @@ type Zustand = {
 
   preview: '';
   setPreview: (input: any) => void;
+
+  panVerificationfailed: number;
+  setPanVerificationfailed: (input: number) => void;
+  setPanVerificationdone: (input: number) => void;
+
+  isYourPan: boolean;
+  setIsYourPan: (input: boolean) => void;
 };
 
 export const useStore = create<Zustand>((set) => ({
@@ -40,6 +47,13 @@ export const useStore = create<Zustand>((set) => ({
   setGetlocation: (input: boolean) => set(() => ({ getLocation: input })),
   selectedFile: '',
   setSelectedFile: (input: any) => set(() => ({ selectedFile: input })),
+
+  panVerificationfailed: 0,
+  setPanVerificationfailed: (input: number) => set(() => ({ panVerificationfailed: input })),
+  setPanVerificationdone: (input: number) => set(() => ({ panVerificationfailed: input })),
+
+  isYourPan: false,
+  setIsYourPan: (input: boolean) => set(() => ({ isYourPan: input })),
 
   preview: '',
   setPreview: (input: any) => set(() => ({ preview: input })),

@@ -8,7 +8,7 @@ const PanAdharMatch = () => {
   return (
     <>
       {panStatus === 0 ? (
-        <ul className="list-disc pt-2 pl-5">
+        <ul className="list-disc pt-2 pl-5 text-[16px] font-[300]">
           <li className="pb-2">Please click the button below to start matching your details.</li>
           <li className="pb-2">It is required to for verification purpose.</li>
           <li className="pb-2">Minimum match requirement is 60%</li>

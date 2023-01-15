@@ -8,8 +8,13 @@ type ModalProps = {
   attentionmsg?: any;
 };
 const Modal = ({ showModal, setShowModal, handleOnclick, attentionmsg }: ModalProps) => {
-  const { setCameraStatus, setManageVeriyStepinital, setFetchData, setManageVeriyStepback } =
-    useStore();
+  const {
+    setCameraStatus,
+    setManageVeriyStepinital,
+    setFetchData,
+    setSelectedFile,
+    setManageVeriyStepback
+  } = useStore();
   const handleproceed = () => {
     setShowModal(false);
     handleOnclick?.();
@@ -17,6 +22,7 @@ const Modal = ({ showModal, setShowModal, handleOnclick, attentionmsg }: ModalPr
     setManageVeriyStepinital();
     setFetchData(true);
     setManageVeriyStepback();
+    setSelectedFile(undefined);
   };
   return (
     <>

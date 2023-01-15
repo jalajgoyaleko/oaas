@@ -108,7 +108,6 @@ const Camera = ({
       setRecordedChunks?.([]);
     }
   }, [recordedChunks]);
-  console.log('type, cameratype', type, cameraType);
 
   return (
     <span>

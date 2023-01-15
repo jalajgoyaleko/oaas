@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import camera from '../assets/icons/camera.svg';
 import imageicon from '../assets/icons/imageicon.svg';
 import filledcamera from '../assets/icons/filledcamera.svg';
-import crossicon from '../assets/icons/cross.svg';
 import alert from '../assets/icons/alert.svg';
 import ButtonGlobal from './Common/ButtonGlobal';
 import Camera from './Common/Camera';
@@ -12,7 +11,6 @@ const PanVerification = () => {
   const {
     cameraStatus,
     uploadedImage,
-    imge,
     setUploadedImage,
     setCameraStatus,
     setSelectedFile,
@@ -20,7 +18,9 @@ const PanVerification = () => {
     preview,
     setPreview,
     setManageVeriyStep,
-    setManageVeriyStepback
+    setManageVeriyStepback,
+    panVerificationfailed,
+    setIsYourPan
   } = useStore();
   useEffect(() => {
     if (!selectedFile) {
@@ -42,7 +42,8 @@ const PanVerification = () => {
   };
 
   const clearSelectedImg = () => {
-    setSelectedFile(undefined), setManageVeriyStepback();
+    setSelectedFile(undefined);
+    setManageVeriyStepback();
   };
 
   return (
@@ -70,14 +71,17 @@ const PanVerification = () => {
               </div>
             </div>
           )
-        ) : uploadedImage === 2 ? (
+        ) : panVerificationfailed === 3 ? (
           <>
-            <div className="relative p-3 text-sm text-black border border-darkgray rounded-md max-w[36rem]">
-              <span className="">{imge?.slice(0, 40)}</span>
+            <div className="relative p-[5px] text-sm text-black border border-darkgray rounded-md max-w[36rem]">
+              <div className="flex justify-start">
+                <img src={preview} className="w-8 h-8" />
+                <span className="flex flex-col ml-2">
+                  <div className="text-xs text-extrdarkgray font-sans font-[300]">Pan Copy</div>
+                  {selectedFile?.name}
+                </span>
+              </div>
             </div>
-            <ButtonGlobal className="cancel">
-              <img src={crossicon} className="w-[9px] h-[9px]" />
-            </ButtonGlobal>
             <div className="block w-full p-3 mt-5 text-sm text-extrdarkgray border border-darkgray rounded-md">
               <div className="mt-1 mb-3">
                 <span className="font-[400] text-lg text-black">Your PAN Details</span>
@@ -95,36 +99,50 @@ const PanVerification = () => {
               </div>
             </div>
           </>
-        ) : uploadedImage === 3 ? (
-          <div className="max-w-[55rem] mb-7">
+        ) : panVerificationfailed === 1 ? (
+          <div className="max-w-[57rem] mb-7">
             <div className="flex">
-              <div className="w-[37rem] mr-3 p-3 text-sm text-black border rounded-md bg-lightred border-red">
-                Hello
+              <div className="w-[37rem] mr-3 p-[5px] text-sm text-black border rounded-md bg-lightred border-red">
+                <div className="flex justify-start">
+                  <img src={preview} className="w-8 h-8" />
+                  <span className="flex flex-col ml-2">
+                    <div className="text-xs text-extrdarkgray font-sans font-[300]">Pan Copy</div>
+                    {selectedFile?.name}
+                  </span>
+                </div>
               </div>
               <div className="side"></div>
-              <div className="max-w-[15rem] flex justify-center items-center p-2 text-white text-[12px] rounded-md bg-red">
+              <div className="w-[11rem] flex justify-center items-center p-2 text-white text-[12px] rounded-md bg-red">
                 You have 1 attempt left
               </div>
             </div>
-            <div className="mt-2 text-[12px] max-w-[37rem] text-extrdarkgray flex">
+            <div className="mt-2 text-[12px] max-w-[37rem] text-extrdarkgray flex font-sans">
               <img src={alert} alt="alert" className="w-6 h-6 mr-3" /> We couldn&lsquo;t fetch
               details from PAN. Please upload a clear copy of PAN to proceed. You can also skip this
               step to proceed with next option.
             </div>
           </div>
-        ) : uploadedImage === 4 ? (
+        ) : panVerificationfailed === 2 ? (
           <>
-            <div className="relative p-3 text-sm text-black border border-darkgray rounded-md max-w[36rem]">
-              <span className="">{imge?.slice(0, 40)}</span>
+            <div className="relative p-[5px] text-sm text-black border border-darkgray rounded-md max-w[36rem]">
+              <div className="flex justify-start">
+                <img src={preview} className="w-8 h-8" />
+                <span className="flex flex-col ml-2">
+                  <div className="text-xs text-extrdarkgray font-sans font-[300]">Pan Copy</div>
+                  {selectedFile?.name}
+                </span>
+              </div>
             </div>
-            <div className="block w-full p-3 mt-5 text-sm text-extrdarkgray border border-darkgray rounded-md">
+            <div className="block w-full mb-6 p-3 mt-5 text-sm text-extrdarkgray border border-darkgray rounded-md">
               <div className="flex justify-between items-center">
                 <div className="mt-1 mb-3">
-                  <span className="font-semibold text-black">Is this you PAN</span>
-                  <div className="text-lg mt-2">BJGD6432G</div>
+                  <span className="font-[500] text-black">Is this your PAN</span>
+                  <div className="text-md mt-2">BJGD6432G</div>
                 </div>
                 <div>
-                  <ButtonGlobal className="bg-sky border-sky border-[1px] hover:bg-black text-white py-1 px-6 rounded mr-3">
+                  <ButtonGlobal
+                    className="bg-sky border-sky border-[1px] hover:bg-black text-white py-1 px-6 rounded mr-3"
+                    onClick={() => (setIsYourPan(true), setManageVeriyStep())}>
                     Yes
                   </ButtonGlobal>
                   <ButtonGlobal className="bg-white shadow-2xl border-sky border-[1px] hover:bg-white text-sky py-1 px-6 rounded">
@@ -134,10 +152,10 @@ const PanVerification = () => {
               </div>
             </div>
           </>
-        ) : (
+        ) : panVerificationfailed === 0 || panVerificationfailed === 4 ? (
           <>
             <div
-              className={`relative p-2 text-sm text-black border border-darkgray rounded-md max-w[36rem]`}>
+              className={`relative p-2 mb-8 text-sm text-black border border-darkgray rounded-md max-w[36rem]`}>
               {!selectedFile ? (
                 <div>
                   <input type="file" onChange={onSelectFile} />
@@ -160,6 +178,8 @@ const PanVerification = () => {
               ''
             )}
           </>
+        ) : (
+          ''
         )}
       </div>
     </div>
