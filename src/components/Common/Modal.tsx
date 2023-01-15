@@ -13,7 +13,9 @@ const Modal = ({ showModal, setShowModal, handleOnclick, attentionmsg }: ModalPr
     setManageVeriyStepinital,
     setFetchData,
     setSelectedFile,
-    setManageVeriyStepback
+    setManageVeriyStepback,
+    setUploadedImage,
+    setPanVerificationfailed
   } = useStore();
   const handleproceed = () => {
     setShowModal(false);
@@ -23,6 +25,8 @@ const Modal = ({ showModal, setShowModal, handleOnclick, attentionmsg }: ModalPr
     setFetchData(true);
     setManageVeriyStepback();
     setSelectedFile(undefined);
+    setUploadedImage(0);
+    setPanVerificationfailed(0);
   };
   return (
     <>

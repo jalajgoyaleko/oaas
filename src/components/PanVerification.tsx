@@ -20,7 +20,9 @@ const PanVerification = () => {
     setManageVeriyStep,
     setManageVeriyStepback,
     panVerificationfailed,
-    setIsYourPan
+    setPanVerificationfailed,
+    setIsYourPan,
+    isYourPan
   } = useStore();
   useEffect(() => {
     if (!selectedFile) {
@@ -30,7 +32,7 @@ const PanVerification = () => {
     const objectUrl = URL.createObjectURL(selectedFile);
     setPreview(objectUrl);
     return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
+  }, [selectedFile, panVerificationfailed]);
 
   const onSelectFile = (e: any) => {
     if (!e.target.files || e.target.files.length === 0) {
@@ -139,16 +141,22 @@ const PanVerification = () => {
                   <span className="font-[500] text-black">Is this your PAN</span>
                   <div className="text-md mt-2">BJGD6432G</div>
                 </div>
-                <div>
-                  <ButtonGlobal
-                    className="bg-sky border-sky border-[1px] hover:bg-black text-white py-1 px-6 rounded mr-3"
-                    onClick={() => (setIsYourPan(true), setManageVeriyStep())}>
-                    Yes
-                  </ButtonGlobal>
-                  <ButtonGlobal className="bg-white shadow-2xl border-sky border-[1px] hover:bg-white text-sky py-1 px-6 rounded">
-                    No
-                  </ButtonGlobal>
-                </div>
+                {isYourPan === false ? (
+                  <div>
+                    <ButtonGlobal
+                      className="bg-sky border-sky border-[1px] hover:bg-black text-white py-1 px-6 rounded mr-3"
+                      onClick={() => (setIsYourPan(true), setManageVeriyStep())}>
+                      Yes
+                    </ButtonGlobal>
+                    <ButtonGlobal
+                      className="bg-white shadow-2xl border-sky border-[1px] hover:bg-white text-sky py-1 px-6 rounded"
+                      onClick={() => (setPanVerificationfailed(0), setSelectedFile(undefined))}>
+                      No
+                    </ButtonGlobal>
+                  </div>
+                ) : (
+                  ''
+                )}
               </div>
             </div>
           </>

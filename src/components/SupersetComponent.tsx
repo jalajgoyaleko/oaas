@@ -66,7 +66,7 @@ const SupersetComponent = ({
   };
   useEffect(() => {
     increase();
-  }, [capturelocationData]);
+  }, [capturelocationData, panVerificationfailed]);
 
   const captureLocation = () => {
     setGetlocation(true);
@@ -74,7 +74,12 @@ const SupersetComponent = ({
   const handleOnclick = currentStep === 1 ? captureLocation : handleStepbtn;
 
   const showInfromation = () => {
+    // comment this to show pan verify failed screens
+
     setShowModal(true);
+
+    // comment this code to show pan verify success screens and camera function proper
+
     // panVerificationfailed <= 3
     //   ? setPanVerificationfailed(panVerificationfailed + 1)
     //   : setShowModal(true);

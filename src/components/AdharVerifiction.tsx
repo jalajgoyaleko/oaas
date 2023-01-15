@@ -14,7 +14,6 @@ const AdharVerifiction = () => {
     setCameraStatus(true);
     setCameraType(aadharImage);
   };
-  console.log('cameraType', cameraType);
   return (
     <div className="mt-10 flex text-center">
       {cameraStatus === true ? (
