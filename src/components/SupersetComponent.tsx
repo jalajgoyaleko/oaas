@@ -112,7 +112,8 @@ const SupersetComponent = ({
       {children}
       <ButtonGlobal
         className={
-          (manageVeriyStep === 0 && btnName === 'Verify PAN') || btnName === 'Verify Aadhaar'
+          (manageVeriyStep === 0 && btnName === 'Verify PAN') ||
+          (manageVeriyStep === 0 && btnName === 'Verify Aadhaar')
             ? 'bg-darkgray text-white mt-4 py-2 px-8 rounded'
             : 'bg-sky hover:bg-black text-white font-semibold mt-4 py-2 px-8 rounded'
         }
@@ -120,7 +121,8 @@ const SupersetComponent = ({
           btnName === 'Verify PAN' || btnName === 'Verify Aadhaar' ? showInfromation : handleOnclick
         }
         disabled={
-          (manageVeriyStep === 0 && btnName === 'Verify PAN') || btnName === 'Verify Aadhaar'
+          (manageVeriyStep === 0 && btnName === 'Verify PAN') ||
+          (manageVeriyStep === 0 && btnName === 'Verify Aadhaar')
             ? true
             : panVerificationfailed === 2 && manageVeriyStep === 0
             ? true

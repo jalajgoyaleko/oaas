@@ -23,9 +23,9 @@ const VideoKYC = () => {
           type="videoRecord"
         />
       ) : (
-        <>
+        <div className="flex w-full">
           <img src={selfie} alt="selfie icon" className="w-20 h-20" />
-          <div className="relative w-[50%] ml-4">
+          <div className="relative w-[60%] ml-4 flex justify-center items-center">
             <InputGlobal
               type="search"
               id="search"
@@ -33,13 +33,11 @@ const VideoKYC = () => {
               placeholder="Take a live photo/video with ID proof"
               value={imge}
             />
-            <ButtonGlobal
-              className="documentbtn mt-8 right-2.5"
-              onClick={() => setCameraStatus(true)}>
+            <ButtonGlobal className="vidoKyCambtn" onClick={() => setCameraStatus(true)}>
               <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
             </ButtonGlobal>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

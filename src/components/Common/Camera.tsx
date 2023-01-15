@@ -13,7 +13,7 @@ type CameraProps = {
   setCapturing?: React.Dispatch<React.SetStateAction<boolean>>;
   recordedChunks?: any;
   setRecordedChunks?: React.Dispatch<React.SetStateAction<any>>;
-  type?: string;
+  type: string;
   cameraType?: string;
   handleCamera?: (input: string) => void;
 };
@@ -114,12 +114,12 @@ const Camera = ({
       {imge === null ? (
         <>
           <span className="flex">
-            {type === 'Pan' ? (
+            {type === 'Pan' || type === 'videoRecord' ? (
               <Webcam
                 audio={false}
                 mirrored={true}
-                height={590}
-                width={590}
+                height={type === 'videoRecord' ? 500 : 590}
+                width={type === 'videoRecord' ? 500 : 590}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}

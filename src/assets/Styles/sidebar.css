@@ -41,7 +41,11 @@
 }
 
 .videoKyc {
-  @apply block w-full py-3 pl-2 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed;
+  @apply w-full py-3 pl-2 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed;
+}
+
+.vidoKyCambtn {
+  @apply text-white text-xs bg-sky hover:bg-black focus:ring-4 focus:outline-none focus:ring-sky font-medium rounded-md pl-2 pr-2 py-[6px] w-fit flex justify-center items-center right-2.5 absolute;
 }
 
 .side {
