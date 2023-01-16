@@ -5,7 +5,7 @@ import filledcamera from '../../assets/icons/filledcamera.svg';
 import retry from '../../assets/Images/retry.png';
 import { useStore } from '../../store/zustand';
 import camera from '../../assets/icons/camera.svg';
-import imageicon from '../../assets/icons/imageicon.svg';
+import Uploadfile from './Uploadfile';
 
 type CameraProps = {
   mediaRecorderRef?: any | null;
@@ -27,14 +27,7 @@ const Camera = ({
   cameraType,
   handleCamera
 }: CameraProps) => {
-  const {
-    imge,
-    setImg,
-    setManageVeriyStep,
-    setManageVeriyStepback,
-    uploadedImage,
-    setUploadedImage
-  } = useStore();
+  const { imge, setImg, setManageVeriyStep, setManageVeriyStepback } = useStore();
   const videoConstraints = {
     width: { min: 1280 },
     height: { min: 720 },
@@ -127,27 +120,31 @@ const Camera = ({
               />
             ) : cameraType === 'front' ? (
               <>
-                <Webcam
-                  audio={false}
-                  mirrored={true}
-                  height={340}
-                  width={340}
-                  ref={webcamRef}
-                  screenshotFormat="image/jpeg"
-                  videoConstraints={videoConstraints}
-                  className="rounded-[10px]"
-                />
-                <div className="documentimgstyle w-[40%] h-[190px] ml-4">
+                <div className="flex flex-col">
+                  <Webcam
+                    audio={false}
+                    mirrored={true}
+                    height={340}
+                    width={340}
+                    ref={webcamRef}
+                    screenshotFormat="image/jpeg"
+                    videoConstraints={videoConstraints}
+                    className="rounded-[10px]"
+                  />
+                  <span className={`flex flex-col items-end mt-3`}>
+                    <ButtonGlobal
+                      onClick={capture}
+                      className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                      <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
+                    </ButtonGlobal>
+                  </span>
+                </div>
+                <div className="documentimgstyle w-[40%] h-[190px] ml-4 text-center">
                   <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
                   <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
                   <div className="flex">
-                    <ButtonGlobal
-                      className="documentbtn mt-4"
-                      onClick={() => {
-                        setUploadedImage(uploadedImage + 1);
-                      }}>
-                      <img src={imageicon} className="w-[18px] h-[18px] mr-2" />
-                      Browse
+                    <ButtonGlobal className="documentbtn mt-4">
+                      <Uploadfile />
                     </ButtonGlobal>
                     <ButtonGlobal
                       className="documentbtn mt-4"
@@ -159,74 +156,85 @@ const Camera = ({
               </>
             ) : cameraType === 'back' ? (
               <>
-                <div className="documentimgstyle w-[40%] h-[190px] mr-4">
+                <div className="documentimgstyle w-[40%] h-[190px] mr-4 text-center">
                   <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
                   <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
                   <div className="flex">
-                    <ButtonGlobal
-                      className="documentbtn mt-4"
-                      onClick={() => {
-                        setUploadedImage(uploadedImage + 1);
-                      }}>
-                      <img src={imageicon} className="w-[18px] h-[18px] mr-2" />
-                      Browse
+                    <ButtonGlobal className="documentbtn mt-4">
+                      <Uploadfile />
                     </ButtonGlobal>
                     <ButtonGlobal
                       className="documentbtn mt-4"
-                      onClick={() => handleCamera?.('back')}>
+                      onClick={() => handleCamera?.('front')}>
                       <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
                     </ButtonGlobal>
                   </div>
                 </div>
-                <Webcam
-                  audio={false}
-                  mirrored={true}
-                  height={340}
-                  width={340}
-                  ref={webcamRef}
-                  screenshotFormat="image/jpeg"
-                  videoConstraints={videoConstraints}
-                  className="rounded-[10px]"
-                />
+                <div className="flex flex-col">
+                  <Webcam
+                    audio={false}
+                    mirrored={true}
+                    height={340}
+                    width={340}
+                    ref={webcamRef}
+                    screenshotFormat="image/jpeg"
+                    videoConstraints={videoConstraints}
+                    className="rounded-[10px]"
+                  />
+                  <span className={`flex flex-col justify-end mt-3`}>
+                    <ButtonGlobal
+                      onClick={capture}
+                      className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                      <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
+                    </ButtonGlobal>
+                  </span>
+                </div>
               </>
             ) : (
               ''
             )}
           </span>
-          {type !== 'videoRecord' ? (
-            <span className={`flex ${type === 'Pan' ? 'justify-end' : 'justify-center'} mt-3`}>
-              <ButtonGlobal
-                onClick={capture}
-                className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
-                <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
-              </ButtonGlobal>
-            </span>
-          ) : (
+          {type !== 'Aadhaar' ? (
             <>
-              {capturing ? (
-                <ButtonGlobal
-                  onClick={handleStopCaptureClick}
-                  className="bg-sky text-white block w-[47%] p-3 pl-11 rounded-md mt-2 mr-2">
-                  Stop Capture
-                </ButtonGlobal>
+              {type !== 'videoRecord' ? (
+                <span
+                  className={`flex ${type !== 'Aadhaar' ? 'justify-end' : 'justify-center'} mt-3`}>
+                  <ButtonGlobal
+                    onClick={capture}
+                    className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                    <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
+                  </ButtonGlobal>
+                </span>
               ) : (
-                <ButtonGlobal
-                  onClick={handleStartCaptureClick}
-                  className="bg-sky text-white block w-[47%] p-3 pl-11 rounded-md mt-2 mr-2">
-                  Start Capture
-                </ButtonGlobal>
-              )}
-              {recordedChunks.length > 0 && (
-                <ButtonGlobal
-                  onClick={handleDownload}
-                  className="bg-sky text-white block w-[47%] p-3 pl-11 rounded-md mt-2 mr-2">
-                  Download
-                </ButtonGlobal>
+                <span className="flex justify-end mt-3">
+                  {capturing ? (
+                    <ButtonGlobal
+                      onClick={handleStopCaptureClick}
+                      className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                      Stop Capture
+                    </ButtonGlobal>
+                  ) : (
+                    <ButtonGlobal
+                      onClick={handleStartCaptureClick}
+                      className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                      Start Capture
+                    </ButtonGlobal>
+                  )}
+                  {recordedChunks.length > 0 && (
+                    <ButtonGlobal
+                      onClick={handleDownload}
+                      className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem] ml-2">
+                      Download
+                    </ButtonGlobal>
+                  )}
+                </span>
               )}
             </>
+          ) : (
+            ''
           )}
         </>
-      ) : (
+      ) : type !== 'Aadhaar' ? (
         <>
           <img src={imge} alt="screenshot" className="rounded-[10px]" />
           <span className="flex justify-end mt-3">
@@ -237,6 +245,60 @@ const Camera = ({
             </ButtonGlobal>
           </span>
         </>
+      ) : cameraType === 'front' ? (
+        <div className="flex">
+          <div>
+            <img src={imge} alt="screenshot" className="rounded-[10px]" />
+            <span className="flex flex-col justify-end items-end mt-3">
+              <ButtonGlobal
+                onClick={handleRetake}
+                className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                <img src={retry} className="w-[16px] h-[16px] mr-1" /> Re-Capture
+              </ButtonGlobal>
+            </span>
+          </div>
+          <div className="documentimgstyle w-[40%] h-[190px] ml-4 text-center">
+            <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
+            <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
+            <div className="flex">
+              <ButtonGlobal className="documentbtn mt-4">
+                <Uploadfile />
+              </ButtonGlobal>
+              <ButtonGlobal
+                className="documentbtn mt-4"
+                onClick={() => (setImg(null), handleCamera?.('back'))}>
+                <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
+              </ButtonGlobal>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="flex">
+          <div className="documentimgstyle w-[40%] h-[190px] mr-4 text-center">
+            <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
+            <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
+            <div className="flex">
+              <ButtonGlobal className="documentbtn mt-4">
+                <Uploadfile />
+              </ButtonGlobal>
+              <ButtonGlobal
+                className="documentbtn mt-4"
+                onClick={() => (setImg(null), handleCamera?.('front'))}>
+                <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
+              </ButtonGlobal>
+            </div>
+          </div>
+          <div>
+            <img src={imge} alt="screenshot" className="rounded-[10px]" />
+            <span className="flex flex-col justify-end items-start mt-3">
+              <ButtonGlobal
+                onClick={handleRetake}
+                className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                <img src={retry} className="w-[16px] h-[16px] mr-1" /> Re-Capture
+              </ButtonGlobal>
+            </span>
+          </div>
+        </div>
       )}
     </span>
   );

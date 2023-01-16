@@ -15,7 +15,8 @@ const Modal = ({ showModal, setShowModal, handleOnclick, attentionmsg }: ModalPr
     setSelectedFile,
     setManageVeriyStepback,
     setUploadedImage,
-    setPanVerificationfailed
+    setPanVerificationfailed,
+    setImg
   } = useStore();
   const handleproceed = () => {
     setShowModal(false);
@@ -27,6 +28,7 @@ const Modal = ({ showModal, setShowModal, handleOnclick, attentionmsg }: ModalPr
     setSelectedFile(undefined);
     setUploadedImage(0);
     setPanVerificationfailed(0);
+    setImg(null);
   };
   return (
     <>

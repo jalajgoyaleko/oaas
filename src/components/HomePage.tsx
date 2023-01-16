@@ -29,10 +29,6 @@ const HomePage = () => {
   const [capturelocationData, setCapturelocationData] = useState<any | null>();
   const [stepsStatus, setStepsStatus] = useState<any>([]);
 
-  stepsStatus.map((val: any) => {
-    console.log(val);
-  });
-
   return (
     <div className="h-screens py-7 w-full px-24">
       <div className="flex items-center">

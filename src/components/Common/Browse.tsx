@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useStore } from '../../store/zustand';
 import alert from '../../assets/icons/alert.svg';
 import ButtonGlobal from './ButtonGlobal';
@@ -17,31 +17,13 @@ const Browse = ({ copyType }: Browse) => {
     setPanVerificationfailed,
     setSelectedFile,
     setManageVeriyStepback,
-    setPreview
+    setUploadedImage
   } = useStore();
-
-  useEffect(() => {
-    if (!selectedFile) {
-      setPreview(undefined);
-      return;
-    }
-    const objectUrl = URL.createObjectURL(selectedFile);
-    setPreview(objectUrl);
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile, panVerificationfailed]);
-
-  const onSelectFile = (e: any) => {
-    if (!e.target.files || e.target.files.length === 0) {
-      setSelectedFile(undefined);
-      return;
-    }
-    setSelectedFile(e.target.files[0]);
-    setManageVeriyStep();
-  };
 
   const clearSelectedImg = () => {
     setSelectedFile(undefined);
     setManageVeriyStepback();
+    setUploadedImage(0);
   };
   return (
     <div>
@@ -134,13 +116,9 @@ const Browse = ({ copyType }: Browse) => {
         </>
       ) : panVerificationfailed === 0 || panVerificationfailed === 4 ? (
         <>
-          <div
-            className={`relative p-2 mb-8 text-sm text-black border border-darkgray rounded-md max-w[36rem]`}>
-            {!selectedFile ? (
-              <div>
-                <input type="file" onChange={onSelectFile} />
-              </div>
-            ) : (
+          {selectedFile ? (
+            <div
+              className={`relative p-2 mb-8 text-sm text-black border border-darkgray rounded-md max-w[36rem]`}>
               <div className="flex justify-start">
                 <img src={preview} className="w-8 h-8" />
                 <span className="flex flex-col ml-2">
@@ -148,8 +126,10 @@ const Browse = ({ copyType }: Browse) => {
                   {selectedFile?.name}
                 </span>
               </div>
-            )}
-          </div>
+            </div>
+          ) : (
+            ''
+          )}
           {selectedFile ? (
             <ButtonGlobal className="cancel text-white" onClick={() => clearSelectedImg()}>
               X

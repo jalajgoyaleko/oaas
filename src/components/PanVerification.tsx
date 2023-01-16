@@ -1,14 +1,14 @@
 import React from 'react';
 import camera from '../assets/icons/camera.svg';
-import imageicon from '../assets/icons/imageicon.svg';
 import filledcamera from '../assets/icons/filledcamera.svg';
 import ButtonGlobal from './Common/ButtonGlobal';
 import Camera from './Common/Camera';
 import { useStore } from '../store/zustand';
 import Browse from './Common/Browse';
+import Uploadfile from './Common/Uploadfile';
 
 const PanVerification = () => {
-  const { cameraStatus, uploadedImage, setUploadedImage, setCameraStatus } = useStore();
+  const { cameraStatus, uploadedImage, setCameraStatus } = useStore();
 
   return (
     <div className="mt-8">
@@ -21,13 +21,8 @@ const PanVerification = () => {
               <img src={camera} className="w-[3rem] h-[3rem] flex-col mb-6" />
               <div className="">Drag and drop copy of PAN Card or you can</div>
               <div className="flex">
-                <ButtonGlobal
-                  className="documentbtn mt-8"
-                  onClick={() => {
-                    setUploadedImage(uploadedImage + 1);
-                  }}>
-                  <img src={imageicon} className="w-[18px] h-[18px] mr-2" />
-                  Browse
+                <ButtonGlobal className="documentbtn mt-8">
+                  <Uploadfile />
                 </ButtonGlobal>
                 <ButtonGlobal className="documentbtn mt-8" onClick={() => setCameraStatus(true)}>
                   <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera

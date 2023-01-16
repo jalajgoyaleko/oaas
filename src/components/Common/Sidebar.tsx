@@ -50,7 +50,6 @@ const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
       </div>
       <div className="pt-5 pr-5 pb-5 pl-5 bg-white rounded-b-2xl">
         {steps?.map((step: any, i: any) => {
-          console.log('progress step', skippedStep, i);
           return (
             <ButtonGlobal
               key={i}

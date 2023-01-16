@@ -44,7 +44,6 @@ const SupersetComponent = ({
     setManageVeriyStepback
   } = useStore();
   const [showModal, setShowModal] = useState<boolean>(false);
-  console.log(stepsStatus);
 
   const handleStatus = () => {
     setCurrentStep(currentStep + 1);
