@@ -11,7 +11,9 @@ type SupersetComponentProps = {
   btnName: string;
   tagLine?: string;
   capturelocationData?: any;
+  stepsStatus: any;
   setCapturelocationData?: React.Dispatch<React.SetStateAction<any | null>>;
+  setStepsStatus: React.Dispatch<React.SetStateAction<any>>;
 };
 const SupersetComponent = ({
   pagename,
@@ -20,7 +22,9 @@ const SupersetComponent = ({
   btnName,
   tagLine,
   capturelocationData,
-  setCapturelocationData
+  stepsStatus,
+  setCapturelocationData,
+  setStepsStatus
 }: SupersetComponentProps) => {
   const {
     currentStep,
@@ -40,17 +44,21 @@ const SupersetComponent = ({
     setManageVeriyStepback
   } = useStore();
   const [showModal, setShowModal] = useState<boolean>(false);
+  console.log(stepsStatus);
 
   const handleStatus = () => {
     setCurrentStep(currentStep + 1);
     setStatus('Skipped');
+
+    setStepsStatus?.([...stepsStatus, { progress: 'Skipped', step: currentStep }]);
   };
   const handleStepbtn = () => {
     currentStep === steps.length + 1
       ? setCompleted(true)
       : panStatus === 0 || panStatus === 1 || (panStatus === 2 && finish === false)
       ? setCurrentStep(currentStep + 1)
-      : setCurrentStep(currentStep);
+      : // setStepsStatus?.([...stepsStatus, { progress: 'Completed', step: currentStep }])
+        setCurrentStep(currentStep);
     setPanStatus(panStatus === 2 ? panStatus : panStatus + 1);
     btnName === 'Next' ? setPanStatusResult('Good Match') : setPanStatusResult('Matching Failed');
     currentStep === 8 ? setFinish(true) : '';
@@ -62,6 +70,7 @@ const SupersetComponent = ({
       capturelocationData?.coordinates?.lat !== 'nothing'
     ) {
       setCurrentStep(currentStep + 1);
+      // setStepsStatus?.([...stepsStatus, { progress: 'Completed', step: currentStep }]);
     }
   };
   useEffect(() => {

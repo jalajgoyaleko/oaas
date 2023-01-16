@@ -27,13 +27,19 @@ const HomePage = () => {
   const { currentStep, panStatus, fetchData, finish, setFinish, setFetchData } = useStore();
 
   const [capturelocationData, setCapturelocationData] = useState<any | null>();
+  const [stepsStatus, setStepsStatus] = useState<any>([]);
+
+  stepsStatus.map((val: any) => {
+    console.log(val);
+  });
+
   return (
     <div className="h-screens py-7 w-full px-24">
       <div className="flex items-center">
         <div className="containerboxover relative">
           <div className="boxover">
             <div className="flex justify-between">
-              <Sidebar steps={steps} />
+              <Sidebar steps={steps} stepsStatus={stepsStatus} />
               <div className="flex w-full rounded-2xl ml-8 bg-white relative">
                 {currentStep === 0 ? (
                   <Welcome steps={steps} />
@@ -43,7 +49,9 @@ const HomePage = () => {
                     btnName="Start Location Capture"
                     pagename="Location Capturing"
                     capturelocationData={capturelocationData}
-                    setCapturelocationData={setCapturelocationData}>
+                    setCapturelocationData={setCapturelocationData}
+                    stepsStatus={stepsStatus}
+                    setStepsStatus={setStepsStatus}>
                     <LoctionCapture />
                   </SupersetComponent>
                 ) : currentStep === 2 ? (
@@ -51,7 +59,9 @@ const HomePage = () => {
                     steps={steps}
                     btnName="Verify PAN"
                     pagename="PAN Verification"
-                    tagLine="Upload your PAN copy to verify your business. Accepted format are ">
+                    tagLine="Upload your PAN copy to verify your business. Accepted format are "
+                    stepsStatus={stepsStatus}
+                    setStepsStatus={setStepsStatus}>
                     <PanVerification />
                   </SupersetComponent>
                 ) : currentStep === 3 ? (
@@ -59,7 +69,9 @@ const HomePage = () => {
                     steps={steps}
                     btnName="Verify Aadhaar"
                     pagename="Aadhaar Verification"
-                    tagLine="Upload your Aadhar Copy front and back to verify yourself. Accepted format are ">
+                    tagLine="Upload your Aadhar Copy front and back to verify yourself. Accepted format are "
+                    stepsStatus={stepsStatus}
+                    setStepsStatus={setStepsStatus}>
                     <AdharVerifiction />
                   </SupersetComponent>
                 ) : currentStep === 4 ? (
@@ -68,7 +80,9 @@ const HomePage = () => {
                     btnName={`${
                       panStatus === 0 ? 'Start Matching' : panStatus === 1 ? 'Next' : 'Retry'
                     }`}
-                    pagename="PAN - Aadhaar Matching">
+                    pagename="PAN - Aadhaar Matching"
+                    stepsStatus={stepsStatus}
+                    setStepsStatus={setStepsStatus}>
                     <PanAdharMatch />
                   </SupersetComponent>
                 ) : currentStep === 5 ? (
@@ -76,7 +90,9 @@ const HomePage = () => {
                     steps={steps}
                     btnName="Next"
                     pagename="Business Details"
-                    tagLine="Upload your PAN copy to verify your business. Accepted format are ">
+                    tagLine="Upload your PAN copy to verify your business. Accepted format are "
+                    stepsStatus={stepsStatus}
+                    setStepsStatus={setStepsStatus}>
                     <Business />
                   </SupersetComponent>
                 ) : currentStep === 6 ? (
@@ -85,7 +101,9 @@ const HomePage = () => {
                     btnName="Next"
                     pagename="Video KYC"
                     tagLine="Thanks for completing your personal and address verification. Take a selfie of 5-10 seconds
-                to complete the eKYC process.">
+                to complete the eKYC process."
+                    stepsStatus={stepsStatus}
+                    setStepsStatus={setStepsStatus}>
                     <VideoKYC />
                   </SupersetComponent>
                 ) : (
@@ -93,7 +111,9 @@ const HomePage = () => {
                     steps={steps}
                     btnName="Submit"
                     pagename="Onboarding Status"
-                    tagLine="Below are the details of the completion status of your onboarding.">
+                    tagLine="Below are the details of the completion status of your onboarding."
+                    stepsStatus={stepsStatus}
+                    setStepsStatus={setStepsStatus}>
                     <OnboardingStatus />
                   </SupersetComponent>
                 )}

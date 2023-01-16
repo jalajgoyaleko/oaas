@@ -6,9 +6,18 @@ import { useStore } from '../../store/zustand';
 
 type StepperProps = {
   steps: string[];
+  stepsStatus: any;
 };
-const Sidebar = ({ steps }: StepperProps) => {
-  const { currentStep, completed, status, setCurrentStep } = useStore();
+const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
+  const { currentStep, completed, setCurrentStep } = useStore();
+  // let progress: string;
+  let skippedStep: any;
+  stepsStatus.map((val: any) => {
+    // progress = val.progress;
+    skippedStep = val.step;
+    return val;
+  });
+
   return (
     <div className="bg-white rounded-2xl">
       <div className="p-5 bg-sky rounded-t-2xl">
@@ -41,6 +50,7 @@ const Sidebar = ({ steps }: StepperProps) => {
       </div>
       <div className="pt-5 pr-5 pb-5 pl-5 bg-white rounded-b-2xl">
         {steps?.map((step: any, i: any) => {
+          console.log('progress step', skippedStep, i);
           return (
             <ButtonGlobal
               key={i}
@@ -52,9 +62,7 @@ const Sidebar = ({ steps }: StepperProps) => {
               }}>
               <span className="flex pb-5">
                 <span className="step">
-                  {currentStep === i + 1 ? (
-                    i + 1
-                  ) : currentStep < i + 1 ? (
+                  {currentStep === i + 1 || currentStep < i + 1 || skippedStep > i ? (
                     i + 1
                   ) : (
                     <img src={CompleteMark} alt="complete mark" className="w-[15px] h-[11px]" />
@@ -62,17 +70,25 @@ const Sidebar = ({ steps }: StepperProps) => {
                 </span>{' '}
                 <span>
                   <p className="text-black ml-2 pb-2">{step}</p>
+                  {stepsStatus.map((val: any) => {
+                    return (
+                      <>
+                        {val.step === i + 1 ? (
+                          val.progress === 'Skipped' ? (
+                            <div className="stepStatus text-red bg-white border-red border-2">
+                              {val.progress}
+                            </div>
+                          ) : (
+                            ''
+                          )
+                        ) : (
+                          ''
+                        )}
+                      </>
+                    );
+                  })}
                   {currentStep === i + 1 ? (
-                    <div
-                      className={`w-[80px] rounded-full h-[20px] ml-2 text-xs flex justify-center items-center ${
-                        status === 'Skipped'
-                          ? 'text-red bg-white border-red border-2'
-                          : 'text-white bg-orange'
-                      }`}>
-                      {status}
-                    </div>
-                  ) : currentStep < i + 1 ? (
-                    ''
+                    <div className="stepStatus text-white bg-orange">In Progress</div>
                   ) : (
                     ''
                   )}
