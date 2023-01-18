@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoctionCapture = () => {
   return (
-    <ul className="list-disc pt-2 pl-5 text-[16px] font-[300]">
+    <ul className="pt-2 pl-5 text-[18px] sm:text-[16px] font-[300]">
       <li className="pb-2">
         Please click the button below to allow browser to capture your location.
       </li>

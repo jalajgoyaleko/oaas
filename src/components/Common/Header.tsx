@@ -3,7 +3,7 @@ import Logo from '../../assets/Images/logo.png';
 
 const Header = () => {
   return (
-    <div className="w-full px-24 h-[56px] z-10 bg-white">
+    <div className="w-full px-5 sm:px-24 h-[56px] z-10 bg-white">
       <div className="px-2 flex justify-between items-center w-full h-full">
         <div className="flex items-ceter">
           <div className="text-sm font-500 mr-4 sm:text-2lg">

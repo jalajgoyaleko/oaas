@@ -99,8 +99,8 @@ const SupersetComponent = ({
   };
 
   return (
-    <div className="p-8">
-      <div className="text-[22px] font-[400]">{pagename}</div>
+    <div className="sm:p-8">
+      <div className="text-[22px] font-[500] sm:font-[400]">{pagename}</div>
       {currentStep === 2 ||
       currentStep === 3 ||
       currentStep === 5 ||
@@ -118,46 +118,51 @@ const SupersetComponent = ({
         ''
       )}
       {children}
-      <ButtonGlobal
-        className={
-          (manageVeriyStep === 0 && btnName === 'Verify PAN') ||
-          (manageVeriyStep === 0 && btnName === 'Verify Aadhaar')
-            ? 'bg-darkgray text-white mt-4 py-2 px-8 rounded'
-            : 'bg-sky hover:bg-black text-white font-semibold mt-4 py-2 px-8 rounded'
-        }
-        onClick={
-          btnName === 'Verify PAN' || btnName === 'Verify Aadhaar' ? showInfromation : handleOnclick
-        }
-        disabled={
-          (manageVeriyStep === 0 && btnName === 'Verify PAN') ||
-          (manageVeriyStep === 0 && btnName === 'Verify Aadhaar')
-            ? true
-            : panVerificationfailed === 2 && manageVeriyStep === 0
-            ? true
-            : false
-        }
-        setCapturelocationData={setCapturelocationData}
-        getLocation={getLocation}>
-        {panVerificationfailed === 1 ? (
-          <div className="flex justify-center items-center" onClick={handleRetryPanImg}>
-            <img src={retry} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
-          </div>
-        ) : panVerificationfailed === 2 ? (
-          'Proceed'
-        ) : panVerificationfailed === 3 ? (
-          <div>Next</div>
-        ) : (
-          btnName
-        )}
-      </ButtonGlobal>
-
-      {currentStep === steps.length + 1 || currentStep === 7 ? (
-        ''
-      ) : (
-        <ButtonGlobal className="font-semibold ml-10" onClick={handleStatus}>
-          Skip this step
+      <span className="flex flex-col items-center sm:block">
+        <ButtonGlobal
+          className={
+            (manageVeriyStep === 0 && btnName === 'Verify PAN') ||
+            (manageVeriyStep === 0 && btnName === 'Verify Aadhaar')
+              ? 'bg-darkgray text-white mt-4 py-2 px-8 rounded'
+              : 'bg-sky hover:bg-black text-white font-semibold mt-4 py-2 px-8 rounded w-[20rem] sm:w-fit'
+          }
+          onClick={
+            btnName === 'Verify PAN' || btnName === 'Verify Aadhaar'
+              ? showInfromation
+              : handleOnclick
+          }
+          disabled={
+            (manageVeriyStep === 0 && btnName === 'Verify PAN') ||
+            (manageVeriyStep === 0 && btnName === 'Verify Aadhaar')
+              ? true
+              : panVerificationfailed === 2 && manageVeriyStep === 0
+              ? true
+              : false
+          }
+          setCapturelocationData={setCapturelocationData}
+          getLocation={getLocation}
+        >
+          {panVerificationfailed === 1 ? (
+            <div className="flex justify-center items-center" onClick={handleRetryPanImg}>
+              <img src={retry} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
+            </div>
+          ) : panVerificationfailed === 2 ? (
+            'Proceed'
+          ) : panVerificationfailed === 3 ? (
+            <div>Next</div>
+          ) : (
+            btnName
+          )}
         </ButtonGlobal>
-      )}
+
+        {currentStep === steps.length + 1 || currentStep === 7 ? (
+          ''
+        ) : (
+          <ButtonGlobal className="font-semibold mt-6 sm:ml-10" onClick={handleStatus}>
+            Skip this step
+          </ButtonGlobal>
+        )}
+      </span>
       <Modal
         showModal={showModal}
         setShowModal={setShowModal}
