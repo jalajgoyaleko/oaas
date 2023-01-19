@@ -41,7 +41,7 @@
 }
 
 .documentbtn {
-  @apply text-white text-xs bottom-1.5 bg-sky hover:bg-black focus:ring-4 focus:outline-none focus:ring-sky font-medium rounded-md pl-2 pr-2 py-[6px] w-fit flex mr-2 justify-center items-center;
+  @apply text-white text-xs bottom-1.5 bg-sky font-medium rounded-md pl-2 pr-2 py-[6px] w-fit flex mr-2 justify-center items-center;
 }
 
 .videoKyc {
@@ -67,4 +67,9 @@ li::before {
   left: -0.6em;
   top: -0.4em;
   font-size: 2em;
+}
+
+/* Mobile css */
+.mobile_secnd_head {
+  @apply block shadow-xl;
 }

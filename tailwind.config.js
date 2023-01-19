@@ -17,8 +17,9 @@ module.exports = {
       pink: '#FF4081'
     },
     boxShadow: {
+      xl: '0 20px 25px -20px rgb(0 0 0 / 0.1)',
       '3xl': '0 35px 60px -15px #00C34133',
-      '2xl': '0px 0px 7px -2px #1F5AA7'
+      '2xl': '0px 0px 7px -2px #1F5AA7',
     },
     container: {
       center: true,

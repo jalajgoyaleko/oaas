@@ -106,13 +106,14 @@ const Camera = ({
     <span>
       {imge === null ? (
         <>
-          <span className="flex">
+          <span
+            className={`${type === 'Pan' || type === 'videoRecord' ? 'flex justify-end' : 'flex'}`}>
             {type === 'Pan' || type === 'videoRecord' ? (
               <Webcam
                 audio={false}
                 mirrored={true}
-                height={type === 'videoRecord' ? 500 : 590}
-                width={type === 'videoRecord' ? 500 : 590}
+                height={type === 'videoRecord' ? 500 : 500}
+                width={type === 'videoRecord' ? 500 : 500}
                 ref={webcamRef}
                 screenshotFormat="image/jpeg"
                 videoConstraints={videoConstraints}

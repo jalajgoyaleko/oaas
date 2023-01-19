@@ -40,7 +40,7 @@ const HomePage = () => {
             <span className="hidden sm:block md:block lg:block xl:block">
               <Sidebar steps={steps} stepsStatus={stepsStatus} />
             </span>
-            <div className={`${currentStep !== 0 ? 'block' : 'hidden'} sm:hidden`}>Step 1</div>
+
             <div className="flex w-full rounded-2xl sm:ml-8 sm:bg-white relative">
               {currentStep === 0 ? (
                 <Welcome steps={steps} />

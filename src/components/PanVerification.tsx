@@ -12,18 +12,30 @@ const PanVerification = () => {
 
   return (
     <div className="mt-8">
-      <div className="relative">
+      <div className="relative sm:hidden block" onClick={() => setCameraStatus(true)}>
         {uploadedImage === 0 ? (
           cameraStatus === true ? (
             <Camera type="Pan" />
           ) : (
             <div className="documentimgstyle w-[100%] h-[330px]">
               <img src={camera} className="w-[3rem] h-[3rem] flex-col mb-6" />
-              <div className="">Drag and drop copy of PAN Card or you can</div>
-              <div className="flex">
-                <ButtonGlobal className="documentbtn mt-8">
-                  <Uploadfile />
-                </ButtonGlobal>
+              Upload PAN copy by clicking here
+            </div>
+          )
+        ) : (
+          <Browse copyType="Pan Copy" />
+        )}
+      </div>
+      <div className="relative hidden sm:block">
+        {uploadedImage === 0 ? (
+          cameraStatus === true ? (
+            <Camera type="Pan" />
+          ) : (
+            <div className="documentimgstyle w-[100%] h-[330px]">
+              <img src={camera} className="w-[3rem] h-[3rem] flex-col mb-6" />
+              Drag and drop copy of PAN Card or you can
+              <div className="hidden sm:flex">
+                <Uploadfile />
                 <ButtonGlobal className="documentbtn mt-8" onClick={() => setCameraStatus(true)}>
                   <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
                 </ButtonGlobal>

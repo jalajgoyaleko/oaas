@@ -99,14 +99,14 @@ const SupersetComponent = ({
   };
 
   return (
-    <div className="sm:p-8">
+    <div className="pt-8 sm:p-8">
       <div className="text-[22px] font-[500] sm:font-[400]">{pagename}</div>
       {currentStep === 2 ||
       currentStep === 3 ||
       currentStep === 5 ||
       currentStep === 6 ||
       currentStep === 7 ? (
-        <div className="mt-3 text-[14px] font-[300]">
+        <div className="mt-3 text-[16px] sm:text-[14px] font-[400] sm:font-[300]">
           {tagLine}
           {currentStep === 2 || currentStep === 3 || currentStep === 5 ? (
             <span className="text-sky">.jpg, .png, .pdf</span>
@@ -140,8 +140,7 @@ const SupersetComponent = ({
               : false
           }
           setCapturelocationData={setCapturelocationData}
-          getLocation={getLocation}
-        >
+          getLocation={getLocation}>
           {panVerificationfailed === 1 ? (
             <div className="flex justify-center items-center" onClick={handleRetryPanImg}>
               <img src={retry} alt="retry icon" className="w-4 h-4 mr-2" /> Retry

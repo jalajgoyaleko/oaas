@@ -1,6 +1,7 @@
 import create from 'zustand';
 
 type Zustand = {
+  step: string[];
   currentStep: number;
   completed: boolean;
   status: string;
@@ -43,6 +44,15 @@ type Zustand = {
 };
 
 export const useStore = create<Zustand>((set) => ({
+  step: [
+    'Location Capturing',
+    'Pan Verification',
+    'Aadhaar Verification',
+    'PAN - Aadhaar Matching',
+    'Business Details',
+    'Video KYC',
+    'Onboarding Status'
+  ],
   getLocation: false,
   setGetlocation: (input: boolean) => set(() => ({ getLocation: input })),
   selectedFile: '',
