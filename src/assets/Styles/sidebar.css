@@ -78,6 +78,9 @@ li::before {
 .documentimgstylemobl {
   @apply p-4 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed flex flex-col justify-center items-center;
 }
+.videokycmobl {
+  @apply p-5 text-lg text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed flex flex-col justify-center items-center;
+}
 
 .sidemobl {
   @apply h-0 w-0 mt-4 border-t-white border-b-red border-r-white border-l-white border-r-[10px] border-l-[10px] border-b-[12px];

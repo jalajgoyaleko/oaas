@@ -118,13 +118,16 @@ const SupersetComponent = ({
         ''
       )}
       {children}
-      <span className="flex flex-col items-center sm:block">
+      <span
+        className={`flex flex-col items-center ${
+          currentStep === 4 ? `mt-72 sm:mt-0` : ``
+        } sm:block`}>
         <ButtonGlobal
           className={
             (manageVeriyStep === 0 && btnName === 'Verify PAN') ||
             (manageVeriyStep === 0 && btnName === 'Verify Aadhaar')
               ? 'bg-darkgray text-white mt-4 py-2 px-8 rounded'
-              : 'bg-sky hover:bg-black text-white font-semibold mt-4 py-2 px-8 rounded w-[20rem] sm:w-fit'
+              : 'bg-sky hover:bg-black text-white font-semibold mt-4 py-2 px-8 rounded w-[20rem] sm:w-fit text-[16px]'
           }
           onClick={
             btnName === 'Verify PAN' || btnName === 'Verify Aadhaar'
@@ -157,7 +160,9 @@ const SupersetComponent = ({
         {currentStep === steps.length + 1 || currentStep === 7 ? (
           ''
         ) : (
-          <ButtonGlobal className="font-semibold mt-6 sm:ml-10" onClick={handleStatus}>
+          <ButtonGlobal
+            className={`font-semibold sm:ml-10 ${currentStep === 4 ? `mt-10` : `mt-6`}`}
+            onClick={handleStatus}>
             Skip this step
           </ButtonGlobal>
         )}

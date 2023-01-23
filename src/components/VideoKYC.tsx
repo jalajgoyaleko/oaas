@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import filledcamera from '../assets/icons/filledcamera.svg';
 import selfie from '../assets/Images/selfie.png';
+import camera from '../assets/icons/camera.svg';
 import { useStore } from '../store/zustand';
 import ButtonGlobal from './Common/ButtonGlobal';
 import Camera from './Common/Camera';
@@ -23,21 +24,29 @@ const VideoKYC = () => {
           type="videoRecord"
         />
       ) : (
-        <div className="flex w-full">
-          <img src={selfie} alt="selfie icon" className="w-20 h-20" />
-          <div className="relative w-[60%] ml-4 flex justify-center items-center">
-            <InputGlobal
-              type="search"
-              id="search"
-              className="videoKyc"
-              placeholder="Take a live photo/video with ID proof"
-              value={imge}
-            />
-            <ButtonGlobal className="vidoKyCambtn" onClick={() => setCameraStatus(true)}>
-              <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
-            </ButtonGlobal>
+        <>
+          <div className="relative sm:hidden block" onClick={() => setCameraStatus(true)}>
+            <div className="videokycmobl w-[100%] h-[180px] text-center text-[22px]">
+              <img src={camera} className="w-[3rem] h-[3rem] flex-col mb-6" />
+              Click here to take a live photo/video with ID proof
+            </div>
           </div>
-        </div>
+          <div className="hidden sm:flex w-full">
+            <img src={selfie} alt="selfie icon" className="w-20 h-20" />
+            <div className="relative w-[60%] ml-4 flex justify-center items-center">
+              <InputGlobal
+                type="search"
+                id="search"
+                className="videoKyc"
+                placeholder="Take a live photo/video with ID proof"
+                value={imge}
+              />
+              <ButtonGlobal className="vidoKyCambtn" onClick={() => setCameraStatus(true)}>
+                <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
+              </ButtonGlobal>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );
