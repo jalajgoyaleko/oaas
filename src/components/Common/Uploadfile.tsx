@@ -32,7 +32,7 @@ const Uploadfile = () => {
     setManageVeriyStep();
   };
   return (
-    <label htmlFor={'upload-button'} className="documentbtn mt-8 flex w-[4.2rem]">
+    <label htmlFor={'upload-button'} className="documentbtn flex w-[4.2rem]">
       <input
         type="file"
         onChange={onSelectFile}

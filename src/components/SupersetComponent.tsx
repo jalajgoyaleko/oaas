@@ -84,13 +84,13 @@ const SupersetComponent = ({
   const showInfromation = () => {
     // comment this to show pan verify failed screens
 
-    setShowModal(true);
+    // setShowModal(true);
 
     // comment this code to show pan verify success screens and camera function proper
 
-    // panVerificationfailed <= 3
-    //   ? setPanVerificationfailed(panVerificationfailed + 1)
-    //   : setShowModal(true);
+    panVerificationfailed <= 3
+      ? setPanVerificationfailed(panVerificationfailed + 1)
+      : setShowModal(true);
   };
 
   const handleRetryPanImg = () => {
@@ -169,8 +169,8 @@ const SupersetComponent = ({
         attentionmsg={
           btnName === 'Verify PAN' ? (
             <>
-              Are you sure you want to upload this PAN. You will <br /> get only two attempts for
-              PAN verification
+              Are you sure you want to upload this PAN. You will <br className="hidden sm:block" />{' '}
+              get only two attempts for PAN verification
             </>
           ) : btnName === 'Verify Aadhaar' ? (
             <>

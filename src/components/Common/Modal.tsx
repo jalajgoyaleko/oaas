@@ -34,7 +34,7 @@ const Modal = ({ showModal, setShowModal, handleOnclick, attentionmsg }: ModalPr
     <>
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div className="justify-center items-center p-6 flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -47,18 +47,20 @@ const Modal = ({ showModal, setShowModal, handleOnclick, attentionmsg }: ModalPr
                   </span>
                 </button>
                 {/*body*/}
-                <div className="flex flex-col justify-center items-center p-10 text-center">
+                <div className="flex flex-col justify-center items-center p-5 sm:p-10 text-center">
                   <div className="text-xl font-[500]">Attention!</div>
-                  <div className="p-6 text-[16px]">{attentionmsg}</div>
-                  <div className="mt-4">
+                  <div className="p-5 sm:p-6 text-[20px] sm:text-[16px] text-center">
+                    {attentionmsg}
+                  </div>
+                  <div className="mt-6 sm:mt-4">
                     <button
-                      className="bg-sky text-white active:bg-black text-[14px] px-8 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="bg-sky text-white active:bg-black text-[18px] sm:text-[14px] px-8 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block sm:inline-block text-center font-[500] sm:font-normal"
                       type="button"
                       onClick={handleproceed}>
                       Yes, Proceed
                     </button>
                     <button
-                      className="text-red-500 background-transparent px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="background-transparent px-[3.5rem] text-[18px] sm:text-[14px] py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block sm:inline-block mt-7 sm:mt-0 font-[500] sm:font-normal"
                       type="button"
                       onClick={() => setShowModal(false)}>
                       Cancel
