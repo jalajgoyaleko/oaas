@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import camera from '../assets/icons/camera.svg';
 import filledcamera from '../assets/icons/filledcamera.svg';
 import ButtonGlobal from './Common/ButtonGlobal';
@@ -15,6 +15,10 @@ const AdharVerifiction = () => {
     setCameraStatus(true);
     setCameraType(aadharImage);
   };
+  useEffect(() => {
+    setCameraStatus(false);
+  }, []);
+
   return (
     <>
       <div className="relative sm:hidden block mt-8" onClick={() => setCameraStatus(true)}>

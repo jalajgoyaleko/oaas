@@ -13,7 +13,12 @@ import { useStore } from '../store/zustand';
 import Alert from './Common/Alert';
 import Fetching from './Common/Fetching';
 
-const HomePage = () => {
+type HomepageProps = {
+  sideBarToggle: boolean;
+  setSideBarToggle: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const HomePage = ({ sideBarToggle, setSideBarToggle }: HomepageProps) => {
   const steps = [
     'Location Capturing',
     'Pan Verification',
@@ -158,6 +163,16 @@ const HomePage = () => {
       ) : (
         ''
       )}
+      <span className="sm:hidden block">
+        {sideBarToggle ? (
+          <div className="z-20 absolute top-14 sm:top-0 backdrop-blur-[1px] left-0 bottom-0 right-0 rounded-2xl flex justify-center">
+            <Sidebar steps={steps} stepsStatus={stepsStatus} />
+            <div className="w-[25%]" onClick={() => setSideBarToggle((prev) => !prev)}></div>
+          </div>
+        ) : (
+          ''
+        )}
+      </span>
     </>
   );
 };

@@ -19,13 +19,13 @@ const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
   });
 
   return (
-    <div className="bg-white rounded-2xl">
-      <div className="p-5 bg-sky rounded-t-2xl">
+    <div className="w-[75%] sm:w-full sm:rounded-2xl bg-white">
+      <div className="px-5 pt-5 sm:p-5 bg-sky sm:rounded-t-2xl h-[15vh] sm:h-full">
         <div className="flex-col">
           <div className="mb-2 text-base text-white">ONBOARDING PROGRESS</div>
-          <div className="w-[230px] bg-white rounded-full h-2.5 mb-4">
+          <div className="w-[100%] bg-white rounded-full h-[12px] sm:h-2.5 mb-4">
             <div
-              className={`bg-green h-2.5 rounded-full ${
+              className={`bg-green h-[12px] sm:h-2.5 rounded-full ${
                 currentStep === 2
                   ? 'w-[14%]'
                   : currentStep === 3
@@ -42,13 +42,13 @@ const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
                   ? 'w-[100]'
                   : 'w-[0]'
               }`}></div>
-            <div className="text-xs text-end pt-1 text-white">
+            <div className="text-[14px] sm:text-xs text-end pt-1 text-white mt-2 sm:mt-1">
               {currentStep >= 2 ? currentStep - 1 : 0} Steps Completed
             </div>
           </div>
         </div>
       </div>
-      <div className="pt-5 pr-5 pb-5 pl-5 bg-white rounded-b-2xl">
+      <div className="pt-4 pl-3 sm:p-5 bg-white sm:rounded-b-2xl h-[79vh] sm:h-full">
         {steps?.map((step: any, i: any) => {
           return (
             <ButtonGlobal
@@ -59,7 +59,7 @@ const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
               onClick={() => {
                 setCurrentStep(i + 1);
               }}>
-              <span className="flex pb-5">
+              <span className="flex pb-5 items-center">
                 <span className="step">
                   {currentStep === i + 1 || currentStep < i + 1 || skippedStep > i ? (
                     i + 1
@@ -68,7 +68,9 @@ const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
                   )}
                 </span>{' '}
                 <span>
-                  <p className="text-black ml-2 pb-2">{step}</p>
+                  <p className="text-black ml-2 pb-2 pr-2 text-[16px] font-[500] sm:font-normal">
+                    {step}
+                  </p>
                   {stepsStatus.map((val: any) => {
                     return (
                       <>

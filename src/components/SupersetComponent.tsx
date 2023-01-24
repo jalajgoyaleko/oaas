@@ -127,7 +127,7 @@ const SupersetComponent = ({
             (manageVeriyStep === 0 && btnName === 'Verify PAN') ||
             (manageVeriyStep === 0 && btnName === 'Verify Aadhaar')
               ? 'bg-darkgray text-white mt-4 py-2 px-8 rounded'
-              : 'bg-sky hover:bg-black text-white font-semibold mt-4 py-2 px-8 rounded w-[20rem] sm:w-fit text-[16px]'
+              : 'bg-sky hover:bg-black text-white font-semibold mt-4 py-2 px-8 rounded w-[19rem] sm:w-fit text-[16px]'
           }
           onClick={
             btnName === 'Verify PAN' || btnName === 'Verify Aadhaar'

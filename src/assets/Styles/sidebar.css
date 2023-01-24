@@ -3,11 +3,11 @@
 }
 
 .step-item:not(:first-child)::before {
-  @apply content-[''] block bg-gray absolute -top-14 left-4 h-full w-0.5 border border-gray;
+  @apply content-[''] block bg-gray absolute -top-14 sm:left-4 left-6 h-full w-0.5 border border-gray;
 }
 
 .step {
-  @apply w-8 h-8 mb-2 flex items-center justify-center z-10 relative text-black bg-gray rounded-full font-semibold;
+  @apply sm:w-8 w-11 sm:h-8 h-11 mb-2 flex items-center justify-center z-10 relative text-black text-[18px] sm:text-[14px] bg-gray rounded-full font-semibold;
 }
 
 .active .step {
@@ -75,6 +75,10 @@ li::before {
   @apply block shadow-xl;
 }
 
+.mbl_snd_head_step {
+  @apply w-6 h-6 flex items-center justify-center z-10 relative text-white text-[14px] bg-sky rounded-full;
+}
+
 .documentimgstylemobl {
   @apply p-4 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed flex flex-col justify-center items-center;
 }
@@ -83,5 +87,5 @@ li::before {
 }
 
 .sidemobl {
-  @apply h-0 w-0 mt-4 border-t-white border-b-red border-r-white border-l-white border-r-[10px] border-l-[10px] border-b-[12px];
+  @apply h-0 w-0 mt-2 pt-2 border-t-white border-b-red border-r-white border-l-white border-r-[10px] border-l-[10px] border-b-[12px];
 }

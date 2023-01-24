@@ -14,6 +14,8 @@ type Zustand = {
   cameraStatus: boolean;
   manageVeriyStep: number;
   selectedFile: any;
+  sideBarToggle: boolean;
+  setSideBarToggle: () => void;
   setSelectedFile: (input: any) => void;
   setImg: (input: any) => void;
   setPanStatusResult: (input: string) => void;
@@ -90,5 +92,7 @@ export const useStore = create<Zustand>((set) => ({
   setManageVeriyStep: () => set((state) => ({ manageVeriyStep: state.manageVeriyStep + 1 })),
   setManageVeriyStepback: () => set((state) => ({ manageVeriyStep: state.manageVeriyStep - 1 })),
   setManageVeriyStepinital: () => set((state) => ({ manageVeriyStep: state.manageVeriyStep })),
-  setCameraStatus: (input: boolean) => set(() => ({ cameraStatus: input }))
+  setCameraStatus: (input: boolean) => set(() => ({ cameraStatus: input })),
+  sideBarToggle: false,
+  setSideBarToggle: () => set(() => ({}))
 }));

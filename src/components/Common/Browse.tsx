@@ -62,9 +62,9 @@ const Browse = ({ copyType }: Browse) => {
           </div>
         </>
       ) : panVerificationfailed === 1 ? (
-        <div className="max-w-[21.5rem] sm:max-w-[57rem] mb-7">
+        <div className="max-w-[21rem] sm:max-w-[57rem] mb-7">
           <div className="flex">
-            <div className="w-[37rem] mr-3 p-[5px] text-sm text-black border rounded-md bg-lightred border-red">
+            <div className="w-[100%] sm:mr-3 p-[5px] text-sm text-black border rounded-md bg-lightred border-red">
               <div className="flex justify-start">
                 <img src={preview} className="w-8 h-8" />
                 <span className="flex flex-col ml-2">

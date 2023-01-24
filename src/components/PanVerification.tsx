@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import camera from '../assets/icons/camera.svg';
 import filledcamera from '../assets/icons/filledcamera.svg';
 import ButtonGlobal from './Common/ButtonGlobal';
@@ -10,6 +10,9 @@ import Uploadfile from './Common/Uploadfile';
 const PanVerification = () => {
   const { cameraStatus, uploadedImage, setCameraStatus } = useStore();
 
+  useEffect(() => {
+    setCameraStatus(false);
+  }, []);
   return (
     <div className="mt-8">
       <div className="relative sm:hidden block">
@@ -21,7 +24,6 @@ const PanVerification = () => {
               <div className="documentimgstyle w-[100%] h-[180px]">
                 <img src={camera} className="w-[3rem] h-[3rem] flex-col mb-6" />
                 Upload PAN copy by clicking here
-                <Uploadfile />
               </div>
               <div className="flex justify-center">
                 <div className="sidemobl"></div>

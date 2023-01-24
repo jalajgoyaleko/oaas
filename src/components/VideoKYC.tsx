@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import filledcamera from '../assets/icons/filledcamera.svg';
 import selfie from '../assets/Images/selfie.png';
 import camera from '../assets/icons/camera.svg';
@@ -12,6 +12,10 @@ const VideoKYC = () => {
   const mediaRecorderRef = useRef<any | null>(null);
   const [capturing, setCapturing] = useState<boolean>(false);
   const [recordedChunks, setRecordedChunks] = useState([]);
+
+  useEffect(() => {
+    setCameraStatus(false);
+  }, []);
   return (
     <div className="flex items-center mt-8 mb-4">
       {cameraStatus === true ? (

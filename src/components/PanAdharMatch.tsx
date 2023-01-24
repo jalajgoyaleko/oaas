@@ -13,10 +13,10 @@ const PanAdharMatch = () => {
           <li className="pb-2">It is required to for verification purpose.</li>
           <li className="pb-2">Minimum match requirement is 60%</li>
         </ul>
-      ) : panStatusResult === 'Matching Failed not' ? (
+      ) : panStatusResult === 'Matching Failed' ? (
         <div className="flex justify-between items-center">
-          <span className="mt-4 rounded-full flex w-[105px] h-[80px] sm:w-16 sm:h-16 items-center justify-center border-2 border-green">
-            <img src={thumb} alt="tumpup icon" className="w-9 h-9 sm:w-7 sm:h-7" />
+          <span className="mt-4 rounded-full flex px-4 py-3 sm:w-16 sm:h-16 items-center justify-center border-2 border-green">
+            <img src={thumb} alt="tumpup icon" className="w-10 h-10 sm:w-7 sm:h-7" />
           </span>
           <span className="ml-5 mt-2">
             <span className="text-lg font-semibold text-green">Good match</span>{' '}
