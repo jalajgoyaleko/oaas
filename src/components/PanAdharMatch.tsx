@@ -14,25 +14,33 @@ const PanAdharMatch = () => {
           <li className="pb-2">Minimum match requirement is 60%</li>
         </ul>
       ) : panStatusResult === 'Matching Failed' ? (
-        <div className="flex justify-between items-center">
-          <span className="mt-4 rounded-full flex px-4 py-3 sm:w-16 sm:h-16 items-center justify-center border-2 border-green">
-            <img src={thumb} alt="tumpup icon" className="w-10 h-10 sm:w-7 sm:h-7" />
+        <div className="flex mt-4">
+          <span className="w-[20%]">
+            <span className="rounded-[100%] w-[16vw] h-[16vw] sm:w-16 sm:h-16 border-2 border-green flex justify-center items-center">
+              <img src={thumb} alt="tumpup icon" className="w-[35px] h-[35px] sm:w-7 sm:h-7" />
+            </span>
           </span>
-          <span className="ml-5 mt-2">
+          <span className="ml-3">
             <span className="text-lg font-semibold text-green">Good match</span>{' '}
-            <div className="mt-1 font-[400] text-md">
+            <div className="mt-1 font-[400] text-[18px] sm:text-md">
               Your name, PAN and Aadhaar matches by <span className="font-bold text-lg">70%</span>
             </div>
           </span>
         </div>
       ) : (
-        <div className="flex justify-between items-center">
-          <span className="mt-4 rounded-full flex w-[105px] h-[80px] sm:w-16 sm:h-16 items-center justify-center border-2 border-red">
-            <img src={thumpdown} alt="tumpdown icon" className="w-9 h-9 sm:w-7 sm:h-7" />
+        <div className="flex mt-4">
+          <span className="w-[20%]">
+            <span className="rounded-[100%] w-[16vw] h-[16vw] sm:w-16 sm:h-16 border-2 border-red flex justify-center items-center">
+              <img
+                src={thumpdown}
+                alt="tumpdown icon"
+                className="w-[32px] h-[32px] sm:w-7 sm:h-7"
+              />
+            </span>
           </span>
-          <span className="ml-5 mt-2">
-            <span className="text-lg font-semibold text-red">Matching Failed</span>{' '}
-            <div className="mt-1 font-[400] text-md">
+          <span className="ml-3 sm:ml-5">
+            <span className="text-lg font-[500] text-red">Matching Failed</span>{' '}
+            <div className="mt-1 font-[400] text-[18px] sm:text-md">
               Your name, PAN and Aadhaar matches by <span className="font-bold text-lg">30%</span>
             </div>
             <div className="text-red block sm:hidden mt-2">You have 1 attempt left</div>

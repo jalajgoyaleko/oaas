@@ -23,6 +23,7 @@ const PanVerification = () => {
             <>
               <div className="documentimgstyle w-[100%] h-[180px]">
                 <img src={camera} className="w-[3rem] h-[3rem] flex-col mb-6" />
+                <Uploadfile />
                 Upload PAN copy by clicking here
               </div>
               <div className="flex justify-center">
