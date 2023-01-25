@@ -46,7 +46,7 @@ const VideoKYC = () => {
                 value={imge}
               />
               <ButtonGlobal className="vidoKyCambtn" onClick={() => setCameraStatus(true)}>
-                <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
+                <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
               </ButtonGlobal>
             </div>
           </div>

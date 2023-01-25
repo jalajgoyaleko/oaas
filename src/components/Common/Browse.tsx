@@ -40,7 +40,9 @@ const Browse = ({ copyType }: Browse) => {
           </div>
           <div className="block w-full p-3 mt-5 text-sm text-extrdarkgray border border-darkgray rounded-md">
             <div className="mt-1 mb-3">
-              <span className="font-[600] sm:font-[400] text-lg text-black">Your PAN Details</span>
+              <span className="font-[600] sm:font-[500] text-lg sm:text-sm text-black">
+                Your PAN Details
+              </span>
               <div className="font-[450] sm:font-normal">
                 Below are the details as per PAN record.
               </div>
@@ -64,7 +66,7 @@ const Browse = ({ copyType }: Browse) => {
       ) : panVerificationfailed === 1 ? (
         <div className="max-w-[21rem] sm:max-w-[57rem] mb-7">
           <div className="flex">
-            <div className="w-[100%] sm:mr-3 p-[5px] text-sm text-black border rounded-md bg-lightred border-red">
+            <div className="w-[100%] sm:w-[32rem] sm:mr-3 p-[5px] text-sm text-black border rounded-md bg-lightred border-red">
               <div className="flex justify-start">
                 <img src={preview} className="w-8 h-8" />
                 <span className="flex flex-col ml-2">
@@ -74,11 +76,11 @@ const Browse = ({ copyType }: Browse) => {
               </div>
             </div>
             <div className="side"></div>
-            <div className="hidden sm:w-[11rem] sm:flex justify-center items-center p-2 text-white text-[12px] rounded-md bg-red">
+            <div className="hidden sm:w-[10rem] sm:flex justify-center items-center p-2 text-white text-[12px] rounded-md bg-red">
               You have 1 attempt left
             </div>
           </div>
-          <div className="mt-2 text-[14px] sm:text-[12px] max-w-[37rem] text-extrdarkgray flex font-sans">
+          <div className="mt-2 text-[14px] sm:text-[12px] max-w-[37rem] sm:max-w-[32rem] text-extrdarkgray flex font-sans">
             <img src={alert} alt="alert" className="w-6 h-6 mr-3" />
             <div>
               We couldn&lsquo;t fetch details from PAN. Please upload a clear copy of PAN to

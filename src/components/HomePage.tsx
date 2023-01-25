@@ -21,7 +21,7 @@ type HomepageProps = {
 const HomePage = ({ sideBarToggle, setSideBarToggle }: HomepageProps) => {
   const steps = [
     'Location Capturing',
-    'Pan Verification',
+    'PAN Verification',
     'Aadhaar Verification',
     'PAN - Aadhaar Matching',
     'Business Details',

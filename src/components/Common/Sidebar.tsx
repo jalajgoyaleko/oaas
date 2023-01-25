@@ -9,11 +9,9 @@ type StepperProps = {
   stepsStatus: any;
 };
 const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
-  const { currentStep, completed, setCurrentStep } = useStore();
-  // let progress: string;
+  const { currentStep, completed, setCurrentStepInput } = useStore();
   let skippedStep: any;
   stepsStatus.map((val: any) => {
-    // progress = val.progress;
     skippedStep = val.step;
     return val;
   });
@@ -43,7 +41,7 @@ const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
                   : 'w-[0]'
               }`}></div>
             <div className="text-[14px] sm:text-xs text-end pt-1 text-white mt-2 sm:mt-1">
-              {currentStep >= 2 ? currentStep - 1 : 0} Steps Completed
+              {currentStep >= 2 ? currentStep : 0} Steps Completed
             </div>
           </div>
         </div>
@@ -57,7 +55,7 @@ const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
                 (i + 1 < currentStep || completed) && 'complete'
               }`}
               onClick={() => {
-                setCurrentStep(i + 1);
+                setCurrentStepInput(i + 1);
               }}>
               <span className="flex pb-5 items-center">
                 <span className="step">

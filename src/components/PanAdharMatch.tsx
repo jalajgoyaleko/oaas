@@ -5,6 +5,7 @@ import { useStore } from '../store/zustand';
 
 const PanAdharMatch = () => {
   const { panStatus, panStatusResult } = useStore();
+
   return (
     <>
       {panStatus === 0 ? (
@@ -15,13 +16,13 @@ const PanAdharMatch = () => {
         </ul>
       ) : panStatusResult === 'Matching Failed' ? (
         <div className="flex mt-4">
-          <span className="w-[20%]">
+          <span className="w-[20%] sm:w-fit">
             <span className="rounded-[100%] w-[16vw] h-[16vw] sm:w-16 sm:h-16 border-2 border-green flex justify-center items-center">
               <img src={thumb} alt="tumpup icon" className="w-[35px] h-[35px] sm:w-7 sm:h-7" />
             </span>
           </span>
           <span className="ml-3">
-            <span className="text-lg font-semibold text-green">Good match</span>{' '}
+            <span className="text-lg font-semibold text-green">Good match</span>
             <div className="mt-1 font-[400] text-[18px] sm:text-md">
               Your name, PAN and Aadhaar matches by <span className="font-bold text-lg">70%</span>
             </div>
@@ -29,7 +30,7 @@ const PanAdharMatch = () => {
         </div>
       ) : (
         <div className="flex mt-4">
-          <span className="w-[20%]">
+          <span className="w-[20%] sm:w-fit">
             <span className="rounded-[100%] w-[16vw] h-[16vw] sm:w-16 sm:h-16 border-2 border-red flex justify-center items-center">
               <img
                 src={thumpdown}

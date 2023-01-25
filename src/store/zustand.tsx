@@ -15,6 +15,8 @@ type Zustand = {
   manageVeriyStep: number;
   selectedFile: any;
   sideBarToggle: boolean;
+  cameraType: string;
+  setCameraType: (input: string) => void;
   setSideBarToggle: () => void;
   setSelectedFile: (input: any) => void;
   setImg: (input: any) => void;
@@ -25,11 +27,14 @@ type Zustand = {
   setUploadedImage: (input: number) => void;
   setStatus: (input: string) => void;
   setCompleted: (input: boolean) => void;
-  setCurrentStep: (input: number) => void;
+  setCurrentStepPlus: () => void;
+  setCurrentStepMinus: () => void;
+  setCurrentStepInitial: () => void;
   setCameraStatus: (input: boolean) => void;
   setManageVeriyStep: () => void;
   setManageVeriyStepback: () => void;
   setManageVeriyStepinital: () => void;
+  setCurrentStepInput: (input: number) => void;
 
   getLocation: boolean;
   setGetlocation: (input: boolean) => void;
@@ -86,7 +91,10 @@ export const useStore = create<Zustand>((set) => ({
   setUploadedImage: (input: number) => set(() => ({ uploadedImage: input })),
   setStatus: (input: string) => set(() => ({ status: input })),
   setCompleted: (input: boolean) => set(() => ({ completed: input })),
-  setCurrentStep: (input: number) => set(() => ({ currentStep: input })),
+  setCurrentStepPlus: () => set((state) => ({ currentStep: state.currentStep + 1 })),
+  setCurrentStepMinus: () => set((state) => ({ currentStep: state.currentStep - 1 })),
+  setCurrentStepInitial: () => set((state) => ({ currentStep: state.currentStep })),
+  setCurrentStepInput: (input: number) => set(() => ({ currentStep: input })),
   cameraStatus: false,
   manageVeriyStep: 0,
   setManageVeriyStep: () => set((state) => ({ manageVeriyStep: state.manageVeriyStep + 1 })),
@@ -94,5 +102,8 @@ export const useStore = create<Zustand>((set) => ({
   setManageVeriyStepinital: () => set((state) => ({ manageVeriyStep: state.manageVeriyStep })),
   setCameraStatus: (input: boolean) => set(() => ({ cameraStatus: input })),
   sideBarToggle: false,
-  setSideBarToggle: () => set(() => ({}))
+  setSideBarToggle: () => set(() => ({})),
+
+  cameraType: '',
+  setCameraType: (input: string) => set(() => ({ cameraType: input }))
 }));

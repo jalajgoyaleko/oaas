@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import camera from '../assets/icons/camera.svg';
 import filledcamera from '../assets/icons/filledcamera.svg';
 import ButtonGlobal from './Common/ButtonGlobal';
@@ -8,13 +8,8 @@ import Browse from './Common/Browse';
 import Uploadfile from './Common/Uploadfile';
 
 const AdharVerifiction = () => {
-  const { cameraStatus, uploadedImage, setCameraStatus } = useStore();
-  const [cameraType, setCameraType] = useState<string>('');
+  const { cameraStatus, uploadedImage, setCameraStatus, cameraType, setCameraType } = useStore();
 
-  const handleCamera = (aadharImage: any) => {
-    setCameraStatus(true);
-    setCameraType(aadharImage);
-  };
   useEffect(() => {
     setCameraStatus(false);
   }, []);
@@ -52,7 +47,7 @@ const AdharVerifiction = () => {
       <div className="mt-10 relative">
         {uploadedImage === 0 ? (
           cameraStatus === true ? (
-            <Camera type="Aadhaar" cameraType={cameraType} handleCamera={handleCamera} />
+            <Camera type="Aadhaar" cameraType={cameraType} />
           ) : (
             <div className="hidden sm:flex text-center">
               <div className="documentimgstyle w-[38%] h-[190px] mr-4">
@@ -60,8 +55,10 @@ const AdharVerifiction = () => {
                 <div className="text-sm">Drag and drop front copy of Aadhaar or you can</div>
                 <div className="flex mt-4">
                   <Uploadfile />
-                  <ButtonGlobal className="documentbtn" onClick={() => handleCamera('front')}>
-                    <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
+                  <ButtonGlobal
+                    className="documentbtn"
+                    onClick={() => (setCameraStatus(true), setCameraType('front'))}>
+                    <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
                   </ButtonGlobal>
                 </div>
               </div>
@@ -70,8 +67,10 @@ const AdharVerifiction = () => {
                 <div className="text-sm">Drag and drop back copy of Aadhaar or you can</div>
                 <div className="flex mt-4">
                   <Uploadfile />
-                  <ButtonGlobal className="documentbtn" onClick={() => handleCamera('back')}>
-                    <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
+                  <ButtonGlobal
+                    className="documentbtn"
+                    onClick={() => (setCameraStatus(true), setCameraType('back'))}>
+                    <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
                   </ButtonGlobal>
                 </div>
               </div>

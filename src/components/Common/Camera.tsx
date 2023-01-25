@@ -4,8 +4,9 @@ import ButtonGlobal from './ButtonGlobal';
 import filledcamera from '../../assets/icons/filledcamera.svg';
 import retry from '../../assets/Images/retry.png';
 import { useStore } from '../../store/zustand';
-import camera from '../../assets/icons/camera.svg';
-import Uploadfile from './Uploadfile';
+import Frontcam from './Frontcam';
+import Backcam from './Backcam';
+import FrontBackcapture from './FrontBackcapture';
 
 type CameraProps = {
   mediaRecorderRef?: any | null;
@@ -15,7 +16,6 @@ type CameraProps = {
   setRecordedChunks?: React.Dispatch<React.SetStateAction<any>>;
   type: string;
   cameraType?: string;
-  handleCamera?: (input: string) => void;
 };
 const Camera = ({
   capturing,
@@ -24,8 +24,7 @@ const Camera = ({
   recordedChunks,
   setRecordedChunks,
   type,
-  cameraType,
-  handleCamera
+  cameraType
 }: CameraProps) => {
   const { imge, setImg, setManageVeriyStep, setManageVeriyStepback } = useStore();
   const videoConstraints = {
@@ -140,37 +139,11 @@ const Camera = ({
                     </ButtonGlobal>
                   </span>
                 </div>
-                <div className="documentimgstyle w-[40%] h-[190px] ml-4 text-center">
-                  <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
-                  <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
-                  <div className="flex">
-                    <ButtonGlobal className="documentbtn mt-4">
-                      <Uploadfile />
-                    </ButtonGlobal>
-                    <ButtonGlobal
-                      className="documentbtn mt-4"
-                      onClick={() => handleCamera?.('back')}>
-                      <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
-                    </ButtonGlobal>
-                  </div>
-                </div>
+                <FrontBackcapture type="back" />
               </>
             ) : cameraType === 'back' ? (
               <>
-                <div className="documentimgstyle w-[40%] h-[190px] mr-4 text-center">
-                  <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
-                  <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
-                  <div className="flex">
-                    <ButtonGlobal className="documentbtn mt-4">
-                      <Uploadfile />
-                    </ButtonGlobal>
-                    <ButtonGlobal
-                      className="documentbtn mt-4"
-                      onClick={() => handleCamera?.('front')}>
-                      <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
-                    </ButtonGlobal>
-                  </div>
-                </div>
+                <FrontBackcapture type="front" />
                 <div className="flex flex-col">
                   <Webcam
                     audio={false}
@@ -247,59 +220,9 @@ const Camera = ({
           </span>
         </>
       ) : cameraType === 'front' ? (
-        <div className="flex">
-          <div>
-            <img src={imge} alt="screenshot" className="rounded-[10px]" />
-            <span className="flex flex-col justify-end items-end mt-3">
-              <ButtonGlobal
-                onClick={handleRetake}
-                className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
-                <img src={retry} className="w-[16px] h-[16px] mr-1" /> Re-Capture
-              </ButtonGlobal>
-            </span>
-          </div>
-          <div className="documentimgstyle w-[40%] h-[190px] ml-4 text-center">
-            <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
-            <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
-            <div className="flex">
-              <ButtonGlobal className="documentbtn mt-4">
-                <Uploadfile />
-              </ButtonGlobal>
-              <ButtonGlobal
-                className="documentbtn mt-4"
-                onClick={() => (setImg(null), handleCamera?.('back'))}>
-                <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
-              </ButtonGlobal>
-            </div>
-          </div>
-        </div>
+        <Frontcam handleRetake={handleRetake} />
       ) : (
-        <div className="flex">
-          <div className="documentimgstyle w-[40%] h-[190px] mr-4 text-center">
-            <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
-            <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
-            <div className="flex">
-              <ButtonGlobal className="documentbtn mt-4">
-                <Uploadfile />
-              </ButtonGlobal>
-              <ButtonGlobal
-                className="documentbtn mt-4"
-                onClick={() => (setImg(null), handleCamera?.('front'))}>
-                <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
-              </ButtonGlobal>
-            </div>
-          </div>
-          <div>
-            <img src={imge} alt="screenshot" className="rounded-[10px]" />
-            <span className="flex flex-col justify-end items-start mt-3">
-              <ButtonGlobal
-                onClick={handleRetake}
-                className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
-                <img src={retry} className="w-[16px] h-[16px] mr-1" /> Re-Capture
-              </ButtonGlobal>
-            </span>
-          </div>
-        </div>
+        <Backcam handleRetake={handleRetake} />
       )}
     </span>
   );

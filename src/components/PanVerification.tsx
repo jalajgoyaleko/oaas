@@ -15,7 +15,7 @@ const PanVerification = () => {
   }, []);
   return (
     <div className="mt-8">
-      <div className="relative sm:hidden block">
+      <div className="relative sm:hidden block" onClick={() => setCameraStatus(true)}>
         {uploadedImage === 0 ? (
           cameraStatus === true ? (
             <Camera type="Pan" />
@@ -23,7 +23,6 @@ const PanVerification = () => {
             <>
               <div className="documentimgstyle w-[100%] h-[180px]">
                 <img src={camera} className="w-[3rem] h-[3rem] flex-col mb-6" />
-                <Uploadfile />
                 Upload PAN copy by clicking here
               </div>
               <div className="flex justify-center">
@@ -49,7 +48,7 @@ const PanVerification = () => {
               <div className="hidden sm:flex mt-8">
                 <Uploadfile />
                 <ButtonGlobal className="documentbtn" onClick={() => setCameraStatus(true)}>
-                  <img src={filledcamera} className="w-[18px] h-[18px] mr-2" /> Open Camera
+                  <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
                 </ButtonGlobal>
               </div>
             </div>

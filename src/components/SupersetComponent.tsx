@@ -33,7 +33,8 @@ const SupersetComponent = ({
     setPanStatusResult,
     setFinish,
     setPanStatus,
-    setCurrentStep,
+    setCurrentStepPlus,
+    setCurrentStepInitial,
     setCompleted,
     setStatus,
     manageVeriyStep,
@@ -46,7 +47,7 @@ const SupersetComponent = ({
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const handleStatus = () => {
-    setCurrentStep(currentStep + 1);
+    setCurrentStepPlus();
     setStatus('Skipped');
 
     setStepsStatus?.([...stepsStatus, { progress: 'Skipped', step: currentStep }]);
@@ -55,12 +56,14 @@ const SupersetComponent = ({
     currentStep === steps.length + 1
       ? setCompleted(true)
       : panStatus === 0 || panStatus === 1 || (panStatus === 2 && finish === false)
-      ? setCurrentStep(currentStep + 1)
+      ? currentStep < 7
+        ? setCurrentStepPlus()
+        : setFinish(true)
       : // setStepsStatus?.([...stepsStatus, { progress: 'Completed', step: currentStep }])
-        setCurrentStep(currentStep);
+        setCurrentStepInitial();
     setPanStatus(panStatus === 2 ? panStatus : panStatus + 1);
     btnName === 'Next' ? setPanStatusResult('Good Match') : setPanStatusResult('Matching Failed');
-    currentStep === 8 ? setFinish(true) : '';
+    currentStep <= 7 ? setCompleted(true) : '';
   };
 
   const increase = () => {
@@ -68,7 +71,7 @@ const SupersetComponent = ({
       capturelocationData?.coordinates?.lat !== undefined &&
       capturelocationData?.coordinates?.lat !== 'nothing'
     ) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStepPlus();
       // setStepsStatus?.([...stepsStatus, { progress: 'Completed', step: currentStep }]);
     }
   };
@@ -84,13 +87,13 @@ const SupersetComponent = ({
   const showInfromation = () => {
     // comment this to show pan verify failed screens
 
-    // setShowModal(true);
+    setShowModal(true);
 
     // comment this code to show pan verify success screens and camera function proper
 
-    panVerificationfailed <= 3
-      ? setPanVerificationfailed(panVerificationfailed + 1)
-      : setShowModal(true);
+    // panVerificationfailed <= 3
+    //   ? setPanVerificationfailed(panVerificationfailed + 1)
+    //   : setShowModal(true);
   };
 
   const handleRetryPanImg = () => {
