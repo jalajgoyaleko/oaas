@@ -139,13 +139,7 @@ const HomePage = ({ sideBarToggle, setSideBarToggle }: HomepageProps) => {
 
             {finish === true ? (
               <span className="hidden sm:block">
-                {finish === true ? (
-                  <span className="hidden sm:block">
-                    <Alert />
-                  </span>
-                ) : (
-                  ''
-                )}
+                <Alert />
               </span>
             ) : (
               ''

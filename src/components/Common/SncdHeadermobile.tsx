@@ -37,9 +37,9 @@ const SncdHeadermobile = ({ handleSidebarToggle }: SncdHeadermobileProps) => {
         <span className="w-[100%] flex justify-center">
           {steps.map((val, index) => {
             return (
-              <>
+              <span key={index}>
                 {currentStep - 1 === index ? (
-                  <span key={index} className="flex">
+                  <span className="flex">
                     <span className="mbl_snd_head_step mr-2">{index + 1}</span>
                     <span>
                       <div className="text-[18px] text-sky font-[500]">{val}</div>
@@ -49,7 +49,7 @@ const SncdHeadermobile = ({ handleSidebarToggle }: SncdHeadermobileProps) => {
                 ) : (
                   ''
                 )}
-              </>
+              </span>
             );
           })}
         </span>

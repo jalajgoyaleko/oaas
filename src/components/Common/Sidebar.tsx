@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/Styles/sidebar.css';
 import CompleteMark from '../../assets/icons/completemark.svg';
 import ButtonGlobal from './ButtonGlobal';
 import { useStore } from '../../store/zustand';
@@ -49,51 +48,52 @@ const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
       <div className="pt-4 pl-3 sm:p-5 bg-white sm:rounded-b-2xl h-[79vh] sm:h-full">
         {steps?.map((step: any, i: any) => {
           return (
-            <ButtonGlobal
-              key={i}
-              className={`step-item ${currentStep === i + 1 && 'active'} ${
-                (i + 1 < currentStep || completed) && 'complete'
-              }`}
-              onClick={() => {
-                setCurrentStepInput(i + 1);
-              }}>
-              <span className="flex pb-5 items-center">
-                <span className="step">
-                  {currentStep === i + 1 || currentStep < i + 1 || skippedStep < i ? (
-                    i + 1
-                  ) : (
-                    <img src={CompleteMark} alt="complete mark" className="w-[15px] h-[11px]" />
-                  )}
-                </span>
-                <span>
-                  <p className="text-black ml-2 pb-2 pr-2 text-[16px] font-[500] sm:font-normal">
-                    {step}
-                  </p>
-                  {stepsStatus.map((val: any) => {
-                    return (
-                      <>
-                        {val.step === i + 1 ? (
-                          val.progress === 'Skipped' ? (
-                            <div className="stepStatus text-red bg-white border-red border-2">
-                              {val.progress}
-                            </div>
+            <span key={i}>
+              <ButtonGlobal
+                className={`step-item ${currentStep === i + 1 && 'active'} ${
+                  (i + 1 < currentStep || completed) && 'complete'
+                }`}
+                onClick={() => {
+                  setCurrentStepInput(i + 1);
+                }}>
+                <span className="flex pb-5 items-center">
+                  <span className="step">
+                    {currentStep === i + 1 || currentStep < i + 1 || skippedStep < i ? (
+                      i + 1
+                    ) : (
+                      <img src={CompleteMark} alt="complete mark" className="w-[15px] h-[11px]" />
+                    )}
+                  </span>
+                  <span>
+                    <p className="text-black ml-2 pb-2 pr-2 text-[16px] font-[500] sm:font-normal">
+                      {step}
+                    </p>
+                    {stepsStatus.map((val: any, index: any) => {
+                      return (
+                        <span key={index}>
+                          {val.step === i + 1 ? (
+                            val.progress === 'Skipped' ? (
+                              <div className="stepStatus text-red bg-white border-red border-2">
+                                {val.progress}
+                              </div>
+                            ) : (
+                              ''
+                            )
                           ) : (
                             ''
-                          )
-                        ) : (
-                          ''
-                        )}
-                      </>
-                    );
-                  })}
-                  {currentStep === i + 1 ? (
-                    <div className="stepStatus text-white bg-orange">In Progress</div>
-                  ) : (
-                    ''
-                  )}
+                          )}
+                        </span>
+                      );
+                    })}
+                    {currentStep === i + 1 ? (
+                      <div className="stepStatus text-white bg-orange">In Progress</div>
+                    ) : (
+                      ''
+                    )}
+                  </span>
                 </span>
-              </span>
-            </ButtonGlobal>
+              </ButtonGlobal>
+            </span>
           );
         })}
       </div>

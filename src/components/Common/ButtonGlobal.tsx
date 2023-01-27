@@ -5,7 +5,6 @@ type BtnProps = {
   className: string;
   onClick?: any;
   children?: React.ReactNode;
-  key?: number;
   disabled?: boolean;
   setCapturelocationData?: React.Dispatch<React.SetStateAction<any | null>>;
   getLocation?: boolean;
@@ -14,7 +13,6 @@ type BtnProps = {
 const ButtonGlobal = ({
   className,
   children,
-  key,
   onClick,
   disabled,
   setCapturelocationData,
@@ -25,10 +23,12 @@ const ButtonGlobal = ({
     setCapturelocationData?.(location);
   };
 
-  getLocation === true ? hndlCapturLoction() : '';
+  if (getLocation === true) {
+    hndlCapturLoction();
+  }
 
   return (
-    <button className={className} onClick={onClick} key={key} disabled={disabled}>
+    <button className={className} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );
