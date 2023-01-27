@@ -5,8 +5,10 @@ import ButtonGlobal from './Common/ButtonGlobal';
 
 type WelcomeProps = {
   steps: string[];
+  stepsStatus: any;
+  setStepsStatus: React.Dispatch<React.SetStateAction<any>>;
 };
-const Welcome = ({ steps }: WelcomeProps) => {
+const Welcome = ({ steps, stepsStatus, setStepsStatus }: WelcomeProps) => {
   const { currentStep, setCompleted, setCurrentStepPlus } = useStore();
   return (
     <div className="w-full min-h-[80vh] sm:min-h-[85%] flex items-center justify-center bg-white rounded-2xl">
@@ -26,7 +28,13 @@ const Welcome = ({ steps }: WelcomeProps) => {
         <ButtonGlobal
           className="bg-sky hover:bg-black text-white font-bold mt-6 sm:mt-8 py-2 px-8 rounded"
           onClick={() => {
-            currentStep === steps.length + 1 ? setCompleted(true) : setCurrentStepPlus();
+            currentStep === steps.length + 1
+              ? setCompleted(true)
+              : (setCurrentStepPlus(),
+                setStepsStatus([
+                  ...stepsStatus,
+                  { progress: 'In Progress', step: currentStep + 1 }
+                ]));
           }}>
           {currentStep === steps.length + 1 ? 'Done' : 'Start Onboarding'}
         </ButtonGlobal>

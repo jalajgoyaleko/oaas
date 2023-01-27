@@ -50,20 +50,21 @@ const SupersetComponent = ({
     setCurrentStepPlus();
     setStatus('Skipped');
 
-    setStepsStatus?.([...stepsStatus, { progress: 'Skipped', step: currentStep }]);
+    setStepsStatus([...stepsStatus, { progress: 'Skipped', step: currentStep }]);
   };
   const handleStepbtn = () => {
     currentStep === steps.length + 1
       ? setCompleted(true)
       : panStatus === 0 || panStatus === 1 || (panStatus === 2 && finish === false)
       ? currentStep < 7
-        ? setCurrentStepPlus()
+        ? (setCurrentStepPlus(),
+          setStepsStatus([...stepsStatus, { progress: 'Completed', step: currentStep }]))
         : setFinish(true)
       : // setStepsStatus?.([...stepsStatus, { progress: 'Completed', step: currentStep }])
         setCurrentStepInitial();
     setPanStatus(panStatus === 2 ? panStatus : panStatus + 1);
     btnName === 'Next' ? setPanStatusResult('Good Match') : setPanStatusResult('Matching Failed');
-    currentStep <= 7 ? setCompleted(true) : '';
+    currentStep >= 7 ? setCompleted(true) : '';
   };
 
   const increase = () => {
@@ -72,7 +73,9 @@ const SupersetComponent = ({
       capturelocationData?.coordinates?.lat !== 'nothing'
     ) {
       setCurrentStepPlus();
-      // setStepsStatus?.([...stepsStatus, { progress: 'Completed', step: currentStep }]);
+      setStepsStatus([...stepsStatus, { progress: 'Completed', step: currentStep }]);
+    } else {
+      console.log('error', capturelocationData);
     }
   };
   useEffect(() => {

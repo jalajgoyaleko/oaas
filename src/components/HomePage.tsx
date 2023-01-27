@@ -48,7 +48,11 @@ const HomePage = ({ sideBarToggle, setSideBarToggle }: HomepageProps) => {
 
               <div className="flex w-full rounded-2xl sm:ml-8 sm:bg-white relative">
                 {currentStep === 0 ? (
-                  <Welcome steps={steps} />
+                  <Welcome
+                    steps={steps}
+                    stepsStatus={stepsStatus}
+                    setStepsStatus={setStepsStatus}
+                  />
                 ) : currentStep === 1 ? (
                   <SupersetComponent
                     steps={steps}
