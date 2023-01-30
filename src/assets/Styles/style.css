@@ -220,3 +220,43 @@ li::before {
   @apply bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem];
 }
 /* Backcam */
+
+/* Browse */
+
+.brws_img_div {
+  @apply relative p-[5px] text-sm text-black border border-darkgray rounded-md;
+}
+
+.brws_detls {
+  @apply block w-full p-3 mt-5 text-sm text-extrdarkgray border border-darkgray rounded-md;
+}
+.brws_detls_spn {
+  @apply font-[600] sm:font-[500] text-lg sm:text-sm text-black;
+}
+
+.brws_detls_name {
+  @apply text-black text-[18px] sm:text-[14px] font-[400] mt-2;
+}
+.brws_detls_attmp {
+  @apply hidden sm:w-[10rem] sm:flex justify-center items-center p-2 text-white text-[12px] rounded-md bg-red;
+}
+.brws_detls_attmp_msg {
+  @apply mt-2 text-[14px] sm:text-[12px] max-w-[37rem] sm:max-w-[32rem] text-extrdarkgray flex font-sans;
+}
+
+.brws_detls_pan {
+  @apply text-black text-[18px] sm:text-[14px] font-[400] mt-2;
+}
+
+.brws_detls_err {
+  @apply w-[100%] sm:w-[32rem] sm:mr-3 p-[5px] text-sm text-black border rounded-md bg-lightred border-red;
+}
+
+.brws_detls_err_div {
+  @apply text-xs text-extrdarkgray font-sans font-[300];
+}
+
+.brws_btn {
+  @apply border-sky border-[1px] py-1 px-6 rounded text-[16px];
+}
+/* Browse */
