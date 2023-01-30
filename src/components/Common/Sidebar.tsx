@@ -48,11 +48,12 @@ const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
       <div className="pt-4 pl-3 sm:p-5 bg-white sm:rounded-b-2xl h-[79vh] sm:h-full">
         {steps?.map((step: any, i: any) => {
           return (
-            <span key={i}>
+            <span
+              key={i}
+              className={`step-item ${currentStep === i + 1 && 'active'} ${
+                (i + 1 < currentStep || completed) && 'complete'
+              }`}>
               <ButtonGlobal
-                className={`step-item ${currentStep === i + 1 && 'active'} ${
-                  (i + 1 < currentStep || completed) && 'complete'
-                }`}
                 onClick={() => {
                   setCurrentStepInput(i + 1);
                 }}>

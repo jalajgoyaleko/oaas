@@ -8,16 +8,8 @@ type SncdHeadermobileProps = {
 };
 
 const SncdHeadermobile = ({ handleSidebarToggle }: SncdHeadermobileProps) => {
-  const { currentStep, setCurrentStepMinus } = useStore();
-  const steps = [
-    'Location Capturing',
-    'PAN Verification',
-    'Aadhaar Verification',
-    'PAN - Aadhaar Matching',
-    'Business Details',
-    'Video KYC',
-    'Onboarding Status'
-  ];
+  const { steps, currentStep, setCurrentStepMinus } = useStore();
+
   return (
     <div
       className={`${

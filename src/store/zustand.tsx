@@ -4,7 +4,7 @@ type Zustand = {
   imge: any | null;
   selectedFile: any;
   preview: any;
-  step: string[];
+  steps: string[];
   status: string;
   cameraType: string;
   panStatusResult: string;
@@ -47,7 +47,7 @@ type Zustand = {
 };
 
 export const useStore = create<Zustand>((set) => ({
-  step: [
+  steps: [
     'Location Capturing',
     'Pan Verification',
     'Aadhaar Verification',

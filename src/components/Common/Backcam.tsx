@@ -28,9 +28,7 @@ const Backcam = ({ handleRetake }: BackcamProps) => {
       <div>
         <img src={imge} alt="screenshot" className="rounded-[10px]" />
         <span className="flex flex-col justify-end items-start mt-3">
-          <ButtonGlobal
-            onClick={handleRetake}
-            className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+          <ButtonGlobal onClick={handleRetake} className="backcam_rty_btn">
             <img src={retry} className="w-[16px] h-[16px] mr-1" /> Re-Capture
           </ButtonGlobal>
         </span>

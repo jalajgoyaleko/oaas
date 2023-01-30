@@ -19,17 +19,7 @@ type HomepageProps = {
 };
 
 const HomePage = ({ sideBarToggle, setSideBarToggle }: HomepageProps) => {
-  const steps = [
-    'Location Capturing',
-    'PAN Verification',
-    'Aadhaar Verification',
-    'PAN - Aadhaar Matching',
-    'Business Details',
-    'Video KYC',
-    'Onboarding Status'
-  ];
-  const { currentStep, panStatus, fetchData, finish } = useStore();
-
+  const { currentStep, panStatus, fetchData, finish, steps } = useStore();
   const [capturelocationData, setCapturelocationData] = useState<any | null>();
   const [stepsStatus, setStepsStatus] = useState<any>([]);
 
@@ -45,7 +35,6 @@ const HomePage = ({ sideBarToggle, setSideBarToggle }: HomepageProps) => {
               <span className="hidden sm:block md:block lg:block xl:block">
                 <Sidebar steps={steps} stepsStatus={stepsStatus} />
               </span>
-
               <div className="flex w-full rounded-2xl sm:ml-8 sm:bg-white relative">
                 {currentStep === 0 ? (
                   <Welcome
@@ -163,7 +152,7 @@ const HomePage = ({ sideBarToggle, setSideBarToggle }: HomepageProps) => {
       )}
       <span className="sm:hidden block">
         {sideBarToggle ? (
-          <div className="z-20 absolute top-14 sm:top-0 backdrop-blur-[1px] left-0 bottom-0 right-0 rounded-2xl flex justify-center">
+          <div className="mbl_sidebar">
             <Sidebar steps={steps} stepsStatus={stepsStatus} />
             <div className="w-[25%]" onClick={() => setSideBarToggle((prev) => !prev)}></div>
           </div>

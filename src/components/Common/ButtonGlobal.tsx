@@ -2,12 +2,14 @@ import React from 'react';
 import UseGeoLocation from '../CustomHooks/UseGeoLocation';
 
 type BtnProps = {
-  className: string;
+  className?: string;
   onClick?: any;
   children?: React.ReactNode;
   disabled?: boolean;
   setCapturelocationData?: React.Dispatch<React.SetStateAction<any | null>>;
   getLocation?: boolean;
+  type?: any;
+  id?: string;
 };
 
 const ButtonGlobal = ({
@@ -16,7 +18,9 @@ const ButtonGlobal = ({
   onClick,
   disabled,
   setCapturelocationData,
-  getLocation
+  getLocation,
+  type,
+  id
 }: BtnProps) => {
   const hndlCapturLoction = () => {
     const location = UseGeoLocation();
@@ -28,7 +32,7 @@ const ButtonGlobal = ({
   }
 
   return (
-    <button className={className} onClick={onClick} disabled={disabled}>
+    <button className={className} id={id} onClick={onClick} disabled={disabled} type={type}>
       {children}
     </button>
   );

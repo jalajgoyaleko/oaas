@@ -7,8 +7,8 @@ const OnboardingStatus = () => {
   return (
     <>
       <div className="flex justify-between mt-8">
-        <span className="rounded-full flex w-[100px] h-[70px] sm:w-16 sm:h-16 items-center justify-center border-2 border-green">
-          <img src={thumb} alt="tumpup icon" className="w-9 h-9 sm:w-7 sm:h-7" />
+        <span className="onbord_thump_icn">
+          <img src={thumb} alt="thump up icon" className="w-9 h-9 sm:w-7 sm:h-7" />
         </span>
         <span className="flex flex-col ml-5">
           <span className="text-lg font-semibold text-green">64% Completed</span>
@@ -18,28 +18,26 @@ const OnboardingStatus = () => {
               <div className="text-sm text-extrdarkgray">Skipped</div>
               <div className="text-md text-black font-bold">Aadhaar Verification</div>
             </span>
-            <ButtonGlobal className="flex items-center justify-center bg-sky  hover:bg-black text-white font-semibold w-28 h-8 px-5 rounded">
+            <ButtonGlobal className="onbord_rty_btn">
               <img src={retry} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
             </ButtonGlobal>
           </span>
-          <span className="hidden sm:flex mt-8 mb-4 items-center justify-between w-[60%]">
+          <span className="onbord_disqual_spn">
             <span className="flex-col">
               <span className="text-sm text-extrdarkgray">Disqualified</span>
               <div className="text-md text-black font-bold">Video KYC</div>
             </span>
-            <div className="w-fit rounded-full p-2 text-xs text-center text-red bg-white border-red border-2">
-              No Attempts Left
-            </div>
+            <div className="onbord_attmp_msg">No Attempts Left</div>
           </span>
         </span>
       </div>
       <div className="sm:hidden border-2 border-gray rounded-2xl mt-6">
-        <span className=" flex items-center justify-between w-[100%] border-b-2 border-gray p-5">
+        <span className="onbord_disqual_spn_mbl">
           <span className="flex-col">
             <div className="text-md text-extrdarkgray">Skipped</div>
             <div className="text-md text-black font-bold">Aadhaar Verification</div>
           </span>
-          <ButtonGlobal className="flex items-center justify-center bg-sky  hover:bg-black text-white font-[400] w-28 h-8 px-2 rounded text-[18px] py-5">
+          <ButtonGlobal className="onbord_rty_btn_mbl">
             <img src={retry} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
           </ButtonGlobal>
         </span>
@@ -48,9 +46,7 @@ const OnboardingStatus = () => {
             <span className="text-md text-extrdarkgray">Disqualified</span>
             <div className="text-md text-black font-bold">Video KYC</div>
           </span>
-          <div className="w-fit rounded-full py-2 px-5 text-[14px] text-center text-red bg-white border-red border-2">
-            No Attempts Left
-          </div>
+          <div className="onbord_attmp_msg_mbl">No Attempts Left</div>
         </span>
       </div>
     </>

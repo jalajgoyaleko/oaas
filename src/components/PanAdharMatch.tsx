@@ -17,7 +17,7 @@ const PanAdharMatch = () => {
       ) : panStatusResult === 'Matching Failed' ? (
         <div className="flex mt-4">
           <span className="w-[20%] sm:w-fit">
-            <span className="rounded-[100%] w-[16vw] h-[16vw] sm:w-16 sm:h-16 border-2 border-green flex justify-center items-center">
+            <span className="panaadhar_thumb border-green">
               <img src={thumb} alt="tumpup icon" className="w-[35px] h-[35px] sm:w-7 sm:h-7" />
             </span>
           </span>
@@ -31,7 +31,7 @@ const PanAdharMatch = () => {
       ) : (
         <div className="flex mt-4">
           <span className="w-[20%] sm:w-fit">
-            <span className="rounded-[100%] w-[16vw] h-[16vw] sm:w-16 sm:h-16 border-2 border-red flex justify-center items-center">
+            <span className="panaadhar_thumb border-red">
               <img
                 src={thumpdown}
                 alt="tumpdown icon"

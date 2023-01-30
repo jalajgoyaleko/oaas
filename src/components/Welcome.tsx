@@ -11,13 +11,9 @@ type WelcomeProps = {
 const Welcome = ({ steps, stepsStatus, setStepsStatus }: WelcomeProps) => {
   const { currentStep, setCompleted, setCurrentStepPlus } = useStore();
   return (
-    <div className="w-full min-h-[80vh] sm:min-h-[85%] flex items-center justify-center bg-white rounded-2xl">
+    <div className="welcome">
       <div className="items-center text-center text-black">
-        <img
-          src={WelcomeIcon}
-          alt="welcome icon"
-          className="flex items-center text-center h-48 w-48 sm:h-52 sm:w-52 mr-auto ml-auto sm:mt-auto mb-6 sm:mb-6"
-        />
+        <img src={WelcomeIcon} alt="welcome icon" className="welcome_img" />
         <b className="text-[24px]">Welcome!</b>
         <p className="sm:font-normal text-[18px] pt-2 pl-4 pr-4">
           <span className="sm:block">
@@ -26,7 +22,7 @@ const Welcome = ({ steps, stepsStatus, setStepsStatus }: WelcomeProps) => {
           <span className="sm:block"> We ensure, you&apos;ll be assisted at every step.</span>
         </p>
         <ButtonGlobal
-          className="bg-sky hover:bg-black text-white font-bold mt-6 sm:mt-8 py-2 px-8 rounded"
+          className="welcome_btn"
           onClick={() => {
             currentStep === steps.length + 1
               ? setCompleted(true)

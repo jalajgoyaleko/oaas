@@ -26,11 +26,9 @@ const PanVerification = () => {
                 Upload PAN copy by clicking here
               </div>
               <div className="flex justify-center">
-                <div className="sidemobl"></div>
+                <div className="side_arrow_alt"></div>
               </div>
-              <div className="flex justify-center items-center p-3 text-white text-[16px] rounded-md bg-red">
-                You will get two attempts for PAN verification
-              </div>
+              <div className="attmp_alt">You will get two attempts for PAN verification</div>
             </>
           )
         ) : (

@@ -8,7 +8,7 @@ import Browse from './Common/Browse';
 import Uploadfile from './Common/Uploadfile';
 
 const AdharVerifiction = () => {
-  const { cameraStatus, uploadedImage, setCameraStatus, cameraType, setCameraType } = useStore();
+  const { cameraStatus, uploadedImage, cameraType, setCameraStatus, setCameraType } = useStore();
 
   useEffect(() => {
     setCameraStatus(false);
@@ -33,9 +33,9 @@ const AdharVerifiction = () => {
                 </div>
               </div>
               <div className="flex justify-center">
-                <div className="sidemobl"></div>
+                <div className="side_arrow_alt"></div>
               </div>
-              <div className="flex justify-center items-center p-3 text-white text-[16px] rounded-md bg-red">
+              <div className="attmp_alt">
                 You will get only one attempt for Aadhaar verification
               </div>
             </>
