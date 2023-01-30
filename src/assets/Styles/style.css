@@ -131,7 +131,7 @@ li::before {
 /* Onboarding */
 
 .onbord_thump_icn {
-  @apply rounded-full flex w-[100px] h-[70px] sm:w-16 sm:h-16 items-center justify-center border-2 border-green;
+  @apply rounded-[100%] w-[16vw] h-[16vw] sm:w-16 sm:h-16 flex items-center justify-center border-2 border-green;
 }
 
 .onbord_rty_btn {

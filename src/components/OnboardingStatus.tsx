@@ -6,9 +6,11 @@ import ButtonGlobal from './Common/ButtonGlobal';
 const OnboardingStatus = () => {
   return (
     <>
-      <div className="flex justify-between mt-8">
-        <span className="onbord_thump_icn">
-          <img src={thumb} alt="thump up icon" className="w-9 h-9 sm:w-7 sm:h-7" />
+      <div className="flex mt-8">
+        <span className="w-[20%] sm:w-fit">
+          <span className="onbord_thump_icn">
+            <img src={thumb} alt="thump up icon" className="w-[35px] h-[35px] sm:w-7 sm:h-7" />
+          </span>
         </span>
         <span className="flex flex-col ml-5">
           <span className="text-lg font-semibold text-green">64% Completed</span>
