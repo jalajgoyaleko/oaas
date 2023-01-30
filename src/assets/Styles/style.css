@@ -260,3 +260,112 @@ li::before {
   @apply border-sky border-[1px] py-1 px-6 rounded text-[16px];
 }
 /* Browse */
+
+/* Camera */
+
+.cam_btn {
+  @apply bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem];
+}
+/* Camera */
+
+/* Capture img */
+
+.capture_im {
+  @apply md:container lg:container h-full w-full justify-center items-center flex flex-col;
+}
+
+/* Capture img */
+
+/* Fetching */
+
+.fetching {
+  @apply z-20 absolute top-[7.5rem] sm:top-0 backdrop-blur-[70px] left-0 bottom-0 right-0 sm:rounded-2xl flex flex-col items-center justify-center;
+}
+
+.fetching_spn {
+  @apply w-32 h-32 items-center justify-center flex rounded-full border-4 border-green;
+}
+
+.fetching_spn_spn {
+  @apply w-24 h-24 items-center justify-center flex rounded-full bg-white drop-shadow-2xl;
+}
+
+.fetching_spn_img {
+  @apply w-24 h-24 items-center justify-center flex flex-col rounded-full;
+}
+.fetching_msg {
+  @apply mt-4 text-black text-[16px] sm:text-[16px] font-[500] sm:font-normal text-center sm:text-start p-2;
+}
+/* Fetching */
+
+/* Header */
+
+.header {
+  @apply w-full px-5 sm:px-24 h-[56px] z-10 bg-white;
+}
+
+.header_div {
+  @apply px-2 flex justify-between items-center w-full h-full;
+}
+
+.header_img_div {
+  @apply text-sm font-[500] mr-4;
+}
+/* Header */
+
+/* Modal */
+
+.modal {
+  @apply justify-center items-center p-6 flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none;
+}
+.modal_content {
+  @apply border-0 rounded-lg relative flex flex-col w-full bg-white outline-none focus:outline-none;
+}
+
+.modal_close_btn {
+  @apply flex absolute text-lg -right-2.5 -top-2.5 bg-black text-white focus:outline-none font-medium rounded-full p-2 dark:bg-sky;
+}
+
+.modal_close_btn_spn {
+  @apply w-[8px] h-[8px] text-xl flex justify-center items-center;
+}
+
+.modal_attntn {
+  @apply flex flex-col justify-center items-center p-5 sm:p-10 text-center;
+}
+
+.modal_attntn_msg {
+  @apply p-5 sm:p-6 text-[20px] sm:text-[16px] text-center;
+}
+
+.modal_attn_proc_btn {
+  @apply bg-sky text-white active:bg-black text-[18px] sm:text-[14px] px-8 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block sm:inline-block text-center font-[500] sm:font-normal;
+}
+
+.modal_cancl_btn {
+  @apply px-[3.5rem] text-[18px] sm:text-[14px] py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block sm:inline-block mt-7 sm:mt-0 font-[500] sm:font-normal;
+}
+/* Modal */
+
+/* Sidebar */
+
+.sidebar {
+  @apply px-5 pt-5 sm:p-5 bg-sky sm:rounded-t-2xl h-[15vh] sm:h-full;
+}
+
+.sidebar_step_circl {
+  @apply w-[100%] bg-white rounded-full h-[12px] sm:h-2.5 mb-4;
+}
+
+.sidebar_step_indictr {
+  @apply text-[14px] sm:text-xs text-end pt-1 text-white mt-2 sm:mt-1;
+}
+
+.sidebar_step_name {
+  @apply pt-4 pl-3 sm:p-5 bg-white sm:rounded-b-2xl h-[79vh] sm:h-full;
+}
+
+.sidebar_step_num {
+  @apply text-black ml-2 pb-2 pr-2 text-[16px] font-[500] sm:font-normal;
+}
+/* Sidebar */

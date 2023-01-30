@@ -132,9 +132,7 @@ const Camera = ({
                     className="rounded-[10px]"
                   />
                   <span className={`flex flex-col items-end mt-3`}>
-                    <ButtonGlobal
-                      onClick={capture}
-                      className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                    <ButtonGlobal onClick={capture} className="cam_btn">
                       <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
                     </ButtonGlobal>
                   </span>
@@ -156,9 +154,7 @@ const Camera = ({
                     className="rounded-[10px]"
                   />
                   <span className={`flex flex-col justify-end mt-3`}>
-                    <ButtonGlobal
-                      onClick={capture}
-                      className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                    <ButtonGlobal onClick={capture} className="cam_btn">
                       <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
                     </ButtonGlobal>
                   </span>
@@ -173,31 +169,23 @@ const Camera = ({
               {type !== 'videoRecord' ? (
                 <span
                   className={`flex ${type !== 'Aadhaar' ? 'justify-end' : 'justify-center'} mt-3`}>
-                  <ButtonGlobal
-                    onClick={capture}
-                    className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                  <ButtonGlobal onClick={capture} className="cam_btn">
                     <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
                   </ButtonGlobal>
                 </span>
               ) : (
                 <span className="flex justify-end mt-3">
                   {capturing ? (
-                    <ButtonGlobal
-                      onClick={handleStopCaptureClick}
-                      className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                    <ButtonGlobal onClick={handleStopCaptureClick} className="cam_btn">
                       Stop Capture
                     </ButtonGlobal>
                   ) : (
-                    <ButtonGlobal
-                      onClick={handleStartCaptureClick}
-                      className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+                    <ButtonGlobal onClick={handleStartCaptureClick} className="cam_btn">
                       Start Capture
                     </ButtonGlobal>
                   )}
                   {recordedChunks.length > 0 && (
-                    <ButtonGlobal
-                      onClick={handleDownload}
-                      className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem] ml-2">
+                    <ButtonGlobal onClick={handleDownload} className="cam_btn ml-2">
                       Download
                     </ButtonGlobal>
                   )}
@@ -212,9 +200,7 @@ const Camera = ({
         <>
           <img src={imge} alt="screenshot" className="rounded-[10px]" />
           <span className="flex justify-end mt-3">
-            <ButtonGlobal
-              onClick={handleRetake}
-              className="bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem]">
+            <ButtonGlobal onClick={handleRetake} className="cam_btn">
               <img src={retry} className="w-[16px] h-[16px] mr-1" /> Re-Capture
             </ButtonGlobal>
           </span>

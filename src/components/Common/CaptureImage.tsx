@@ -43,7 +43,7 @@ const CaptureImage = ({ showModal }: CaptureProps) => {
   };
 
   return (
-    <div className="md:container lg:container h-full w-full justify-center items-center flex flex-col">
+    <div className="capture_im">
       <video ref={videoRef}></video>
       <button onClick={getUsercamera} className="bg-sky p-3 text-white rounded-md m-3">
         Open camera

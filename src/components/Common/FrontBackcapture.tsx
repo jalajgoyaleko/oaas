@@ -16,7 +16,7 @@ const FrontBackcapture = ({ type }: FrontBackcaptureProps) => {
         type === 'back' ? 'ml-4' : 'mr-4'
       } text-center`}>
       <img src={camera} className="w-[2rem] h-[2rem] flex-col mb-4" />
-      <div className="text-sm">{`Drag and drop back copy of Aadhaar or you can`}</div>
+      <div className="text-sm">Drag and drop back copy of Aadhaar or you can</div>
       <div className="flex mt-4">
         <Uploadfile />
         <ButtonGlobal className="documentbtn" onClick={() => setCameraType(type)}>
