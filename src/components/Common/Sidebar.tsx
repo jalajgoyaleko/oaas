@@ -9,11 +9,16 @@ type StepperProps = {
 };
 const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
   const { currentStep, completed, setCurrentStepInput } = useStore();
-  let skippedStep: any;
+  let skippedStep: any = '';
+  let progress: any;
   stepsStatus.map((val: any) => {
     skippedStep = val.step;
+    progress = val.progress;
     return val;
   });
+
+  console.log('steps', stepsStatus);
+  console.log('skippedStep, progress', skippedStep, progress);
 
   return (
     <div className="w-[75%] sm:w-full sm:rounded-2xl bg-white">
@@ -50,9 +55,13 @@ const Sidebar = ({ steps, stepsStatus }: StepperProps) => {
           return (
             <span
               key={i}
-              className={`step-item ${currentStep === i + 1 && 'active'} ${
-                (i + 1 < currentStep || completed) && 'complete'
-              }`}>
+              className={`step-item ${currentStep === i + 1 && 'active'} ${stepsStatus.map(
+                (val: any) => {
+                  return val.step === i + 1 && val.progress === 'Skipped'
+                    ? 'complete'
+                    : 'step-item';
+                }
+              )}`}>
               <ButtonGlobal
                 onClick={() => {
                   setCurrentStepInput(i + 1);

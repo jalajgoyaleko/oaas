@@ -57,8 +57,7 @@ const SupersetComponent = ({
       ? setCompleted(true)
       : panStatus === 0 || panStatus === 1 || (panStatus === 2 && finish === false)
       ? currentStep < 7
-        ? (setCurrentStepPlus(),
-          setStepsStatus([...stepsStatus, { progress: 'Completed', step: currentStep }]))
+        ? setCurrentStepPlus()
         : setFinish(true)
       : // setStepsStatus?.([...stepsStatus, { progress: 'Completed', step: currentStep }])
         setCurrentStepInitial();
@@ -73,7 +72,6 @@ const SupersetComponent = ({
       capturelocationData?.coordinates?.lat !== 'nothing'
     ) {
       setCurrentStepPlus();
-      setStepsStatus([...stepsStatus, { progress: 'Completed', step: currentStep }]);
     } else {
       console.log('error', capturelocationData);
     }
