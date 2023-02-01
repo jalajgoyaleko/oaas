@@ -1,7 +1,18 @@
 {
-  "name": "oaas",
+  "name": "oaaseko",
   "version": "0.1.0",
   "private": true,
+  "description": "Onboarding-as-a-Service Widget",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jalajgoyaleko/oaas"
+  },
+  "author": "Jalaj goyal <jalaj.goyal@eko.co.in>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jalajgoyaleko/oaas/issues"
+  },
+  "homepage": "https://github.com/jalajgoyaleko/oaas#readme",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.5",
@@ -29,7 +40,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "prepare": "npm run build"
   },
   "eslintConfig": {
     "extends": [
