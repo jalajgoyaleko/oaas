@@ -1,7 +1,6 @@
 {
   "name": "oaaseko",
   "version": "0.1.0",
-  "private": true,
   "description": "Onboarding-as-a-Service Widget",
   "repository": {
     "type": "git",
