@@ -1,12 +1,12 @@
 {
   "name": "oaaseko",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Onboarding-as-a-Service Widget",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jalajgoyaleko/oaas"
   },
-  "main": "build/index.html",
+  "main": "build",
   "author": "Jalaj goyal <jalaj.goyal@eko.co.in>",
   "license": "MIT",
   "bugs": {
