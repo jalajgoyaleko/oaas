@@ -16,7 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "declaration": true,
-    "outDir": "./lib"
+    "outDir": "./build"
   },
   "include": ["src"],
   "exclude": ["node_modules"]
