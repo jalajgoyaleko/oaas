@@ -1,6 +1,6 @@
 {
   "name": "oaaseko",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "Onboarding-as-a-Service Widget",
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "react-webcam": "^7.0.1",
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4",
+    "webpack": "^5.75.0",
     "zustand": "^4.1.5"
   },
   "scripts": {
