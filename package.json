@@ -10,6 +10,11 @@
   "files": [
     "dist/**/*"
   ],
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
   "author": "Jalaj goyal <jalaj.goyal@eko.co.in>",
   "license": "MIT",
   "bugs": {
