@@ -3,18 +3,13 @@ import { useStore } from '../../store/zustand';
 import ButtonGlobal from './ButtonGlobal';
 import alert from './../../assets/Images/alert.png';
 
-export interface Alert {
-  src: any;
-  className?: string;
-}
-
 const Alert = () => {
   const { setFinish } = useStore();
   return (
     <div className="alert_comn">
       <span className="alert_comn_spn_img">
         <span className="alert_comn_snd_spn">
-          <img src={alert} alt="alert" className="object-cover w-12 h-12" />
+          <img src={alert} alt="alert" className="w-12 h-12" />
         </span>
       </span>
       <span className="mt-4 font-bold text-black text-xl">Alert!</span>
