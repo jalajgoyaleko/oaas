@@ -150,17 +150,19 @@ const SupersetComponent = ({
           }
           setCapturelocationData={setCapturelocationData}
           getLocation={getLocation}>
-          {panVerificationfailed === 1 ? (
-            <div className="flex justify-center items-center" onClick={handleRetryPanImg}>
-              <img src={String(retry)} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
-            </div>
-          ) : panVerificationfailed === 2 ? (
-            'Proceed'
-          ) : panVerificationfailed === 3 ? (
-            <div>Next</div>
-          ) : (
-            btnName
-          )}
+          <>
+            {panVerificationfailed === 1 ? (
+              <div className="flex justify-center items-center" onClick={handleRetryPanImg}>
+                <img src={String(retry)} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
+              </div>
+            ) : panVerificationfailed === 2 ? (
+              'Proceed'
+            ) : panVerificationfailed === 3 ? (
+              <div>Next</div>
+            ) : (
+              btnName
+            )}
+          </>
         </ButtonGlobal>
 
         {currentStep === steps.length + 1 || currentStep === 7 ? (

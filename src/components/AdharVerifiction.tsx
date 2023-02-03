@@ -58,7 +58,9 @@ const AdharVerifiction = () => {
                   <ButtonGlobal
                     className="documentbtn"
                     onClick={() => (setCameraStatus(true), setCameraType('front'))}>
-                    <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
+                    <>
+                      <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
+                    </>
                   </ButtonGlobal>
                 </div>
               </div>
@@ -70,7 +72,9 @@ const AdharVerifiction = () => {
                   <ButtonGlobal
                     className="documentbtn"
                     onClick={() => (setCameraStatus(true), setCameraType('back'))}>
-                    <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
+                    <>
+                      <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
+                    </>
                   </ButtonGlobal>
                 </div>
               </div>

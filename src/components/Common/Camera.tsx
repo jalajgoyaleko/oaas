@@ -133,7 +133,9 @@ const Camera = ({
                   />
                   <span className={`flex flex-col items-end mt-3`}>
                     <ButtonGlobal onClick={capture} className="cam_btn">
-                      <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
+                      <>
+                        <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
+                      </>
                     </ButtonGlobal>
                   </span>
                 </div>
@@ -155,7 +157,9 @@ const Camera = ({
                   />
                   <span className={`flex flex-col justify-end mt-3`}>
                     <ButtonGlobal onClick={capture} className="cam_btn">
-                      <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
+                      <>
+                        <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
+                      </>
                     </ButtonGlobal>
                   </span>
                 </div>
@@ -170,7 +174,9 @@ const Camera = ({
                 <span
                   className={`flex ${type !== 'Aadhaar' ? 'justify-end' : 'justify-center'} mt-3`}>
                   <ButtonGlobal onClick={capture} className="cam_btn">
-                    <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
+                    <>
+                      <img src={filledcamera} className="w-[16px] h-[16px] mr-1" /> Capture
+                    </>
                   </ButtonGlobal>
                 </span>
               ) : (
@@ -201,7 +207,9 @@ const Camera = ({
           <img src={imge} alt="screenshot" className="rounded-[10px]" />
           <span className="flex justify-end mt-3">
             <ButtonGlobal onClick={handleRetake} className="cam_btn">
-              <img src={String(retry)} className="w-[16px] h-[16px] mr-1" /> Re-Capture
+              <>
+                <img src={String(retry)} className="w-[16px] h-[16px] mr-1" /> Re-Capture
+              </>
             </ButtonGlobal>
           </span>
         </>

@@ -46,7 +46,9 @@ const PanVerification = () => {
               <div className="hidden sm:flex mt-8">
                 <Uploadfile />
                 <ButtonGlobal className="documentbtn" onClick={() => setCameraStatus(true)}>
-                  <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
+                  <>
+                    <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
+                  </>
                 </ButtonGlobal>
               </div>
             </div>

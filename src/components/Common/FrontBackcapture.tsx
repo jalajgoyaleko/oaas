@@ -20,7 +20,9 @@ const FrontBackcapture = ({ type }: FrontBackcaptureProps) => {
       <div className="flex mt-4">
         <Uploadfile />
         <ButtonGlobal className="documentbtn" onClick={() => setCameraType(type)}>
-          <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
+          <>
+            <img src={filledcamera} className="h-[2vh] mr-2" /> Open Camera
+          </>
         </ButtonGlobal>
       </div>
     </div>
