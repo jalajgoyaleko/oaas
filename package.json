@@ -1,6 +1,6 @@
 {
   "name": "oaaseko",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Onboarding-as-a-Service Widget",
   "repository": {
     "type": "git",
@@ -10,17 +10,11 @@
   "files": [
     "dist/**/*"
   ],
-  "babel": {
-    "presets": [
-      "@babel/preset-react"
-    ]
-  },
   "author": "Jalaj goyal <jalaj.goyal@eko.co.in>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jalajgoyaleko/oaas/issues"
   },
-  "homepage": "https://github.com/jalajgoyaleko/oaas#readme",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.5",
