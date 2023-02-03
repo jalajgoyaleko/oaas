@@ -201,7 +201,7 @@ const Camera = ({
           <img src={imge} alt="screenshot" className="rounded-[10px]" />
           <span className="flex justify-end mt-3">
             <ButtonGlobal onClick={handleRetake} className="cam_btn">
-              <img src={retry} className="w-[16px] h-[16px] mr-1" /> Re-Capture
+              <img src={String(retry)} className="w-[16px] h-[16px] mr-1" /> Re-Capture
             </ButtonGlobal>
           </span>
         </>

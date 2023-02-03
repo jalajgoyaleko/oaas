@@ -36,7 +36,7 @@ const VideoKYC = () => {
             </div>
           </div>
           <div className="hidden sm:flex w-full">
-            <img src={selfie} alt="selfie icon" className="w-20 h-20" />
+            <img src={String(selfie)} alt="selfie icon" className="w-20 h-20" />
             <div className="relative w-[60%] ml-4 flex justify-center items-center">
               <InputGlobal
                 type="search"

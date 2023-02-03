@@ -21,7 +21,7 @@ const OnboardingStatus = () => {
               <div className="text-md text-black font-bold">Aadhaar Verification</div>
             </span>
             <ButtonGlobal className="onbord_rty_btn">
-              <img src={retry} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
+              <img src={String(retry)} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
             </ButtonGlobal>
           </span>
           <span className="onbord_disqual_spn">
@@ -40,7 +40,7 @@ const OnboardingStatus = () => {
             <div className="text-md text-black font-bold">Aadhaar Verification</div>
           </span>
           <ButtonGlobal className="onbord_rty_btn_mbl">
-            <img src={retry} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
+            <img src={String(retry)} alt="retry icon" className="w-4 h-4 mr-2" /> Retry
           </ButtonGlobal>
         </span>
         <span className="sm:hidden flex p-5 items-center justify-between w-[100%]">

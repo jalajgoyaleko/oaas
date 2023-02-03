@@ -13,7 +13,7 @@ const Welcome = ({ steps, stepsStatus, setStepsStatus }: WelcomeProps) => {
   return (
     <div className="welcome">
       <div className="items-center text-center text-black">
-        <img src={WelcomeIcon} alt="welcome icon" className="welcome_img" />
+        <img src={String(WelcomeIcon)} alt="welcome icon" className="welcome_img" />
         <b className="text-[24px]">Welcome!</b>
         <p className="sm:font-normal text-[18px] pt-2 pl-4 pr-4">
           <span className="sm:block">
