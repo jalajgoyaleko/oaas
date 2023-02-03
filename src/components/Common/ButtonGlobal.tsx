@@ -4,7 +4,7 @@ import UseGeoLocation from '../CustomHooks/UseGeoLocation';
 type BtnProps = {
   className?: string;
   onClick?: any;
-  children?: React.ReactNode;
+  children?: JSX.Element | string | React.ReactNode;
   disabled?: boolean;
   setCapturelocationData?: React.Dispatch<React.SetStateAction<any | null>>;
   getLocation?: boolean;
