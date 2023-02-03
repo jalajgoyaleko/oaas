@@ -1,10 +1,13 @@
 {
   "name": "oaaseko",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Onboarding-as-a-Service Widget",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jalajgoyaleko/oaas"
+  },
+  "resolutions": {
+    "@types/react": "^18.0.0"
   },
   "main": "dist/index.tsx",
   "files": [
