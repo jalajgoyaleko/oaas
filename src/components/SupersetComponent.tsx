@@ -7,7 +7,7 @@ import retry from '../assets/Images/retry.png';
 type SupersetComponentProps = {
   pagename: string;
   steps: string[];
-  children?: React.ReactNode;
+  children?: React.ReactElement;
   btnName: string;
   tagLine?: string;
   capturelocationData?: any;

@@ -2,7 +2,7 @@ import React from 'react';
 
 type LabelProps = {
   className: string;
-  children?: React.ReactNode;
+  children?: React.ReactElement;
 };
 const Labelglobal = ({ className, children }: LabelProps) => {
   return <label className={className}>{children}</label>;
