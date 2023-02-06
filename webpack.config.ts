@@ -7,7 +7,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'babel-loader',
+        loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
           presets: ['es2015']
