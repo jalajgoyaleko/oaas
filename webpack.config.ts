@@ -10,10 +10,14 @@ module.exports = {
     rules: [
       {
         loader: 'babel-loader',
-        test: /\.js$|jsx/,
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: '/node_modules/'
       }
     ]
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
   },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
