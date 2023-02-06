@@ -4,26 +4,16 @@ module.exports = {
   entry: './src/index.tsx',
   devtool: 'inline-source-map',
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.ts$/,
-        loaders: ['ts-loader']
-      },
-      {
-        test: /\.css$/,
-        loaders: ['style-loader', 'css-loader']
+        test: /\.tsx?$/,
+        use: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015']
+        }
       }
     ]
-    // rules: [
-    //   {
-    //     test: /\.tsx?$/,
-    //     use: 'babel-loader',
-    //     exclude: /node_modules/,
-    //     query: {
-    //       presets: ['es2015']
-    //     }
-    //   }
-    // ]
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
