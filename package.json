@@ -1,6 +1,6 @@
 {
   "name": "oaaseko",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Onboarding-as-a-Service Widget",
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "html-webpack-plugin": "^5.5.0",
     "prettier": "^2.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

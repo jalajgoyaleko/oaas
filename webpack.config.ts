@@ -1,25 +1,22 @@
+const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
-  devtool: 'inline-source-map',
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015']
-        }
-      }
-    ]
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js']
-  },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
-  }
+    path: path.resolve('dist'),
+    filename: 'bundle.js'
+  },
+
+  module: {
+    rules: [{ test: /\.tsx?$/, loader: 'babel-loader', exclude: '/node_modules/' }]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      filename: './public/index.html',
+      inject: 'body'
+    })
+  ]
 };
