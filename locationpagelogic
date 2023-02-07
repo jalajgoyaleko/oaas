@@ -1,0 +1,22 @@
+const [getLocation, setGetlocation] = useState<boolean>(false);
+
+  const handleStatus = () => {
+    setCurrentStep(currentStep + 1);
+    setStatus('Skipped');
+  };
+  const handleStepbtn = () => {
+    setGetlocation(true);
+  };
+
+  const increase = () => {
+    if (
+      capturelocationData?.coordinates?.lat !== undefined &&
+      capturelocationData?.coordinates?.lat !== 'nothing'
+    ) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+  useEffect(() => {
+    increase();
+  }, [capturelocationData]);
+

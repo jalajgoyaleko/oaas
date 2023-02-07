@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './components/Common/Header';
+import SncdHeadermobile from './components/Common/SncdHeadermobile';
+import HomePage from './components/HomePage';
+import { useStore } from './store/zustand';
 
 function App() {
+  const { currentStep } = useStore();
+  const [sideBarToggle, setSideBarToggle] = useState<boolean>(false);
+  const handleSidebarToggle = () => {
+    setSideBarToggle((prev) => !prev);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`${currentStep === 0 ? 'bg-gray' : 'bg-white'} sm:bg-gray w-full min-h-screen`}>
+      <Header />
+      <SncdHeadermobile handleSidebarToggle={handleSidebarToggle} />
+      <HomePage sideBarToggle={sideBarToggle} setSideBarToggle={setSideBarToggle} />
     </div>
   );
 }
