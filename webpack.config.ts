@@ -3,20 +3,27 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: {
+    javascript: './src/index.tsx',
+    html: './index.html'
+  },
   output: {
-    path: path.resolve('dist'),
-    filename: 'bundle.js'
+    path: __dirname + '/dist',
+    filename: 'index.tsx'
   },
   module: {
     loader: [
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loaders: ['react-hot', 'babel-loader?presets[]=react,presets[]=es2015'],
         query: {
           presets: ['es2015', 'react']
         }
+      },
+      {
+        test: /\.html$/,
+        loader: 'file?name=[name].[ext]'
       }
     ]
   },
