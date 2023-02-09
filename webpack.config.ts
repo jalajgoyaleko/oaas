@@ -1,8 +1,7 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+require('webpack');
 
 module.exports = {
+  context: __dirname + '/src',
   entry: {
     javascript: './src/index.tsx',
     html: './index.html'
@@ -26,10 +25,5 @@ module.exports = {
         loader: 'file?name=[name].[ext]'
       }
     ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html'
-    })
-  ]
+  }
 };
