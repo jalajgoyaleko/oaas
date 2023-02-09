@@ -8,11 +8,16 @@ module.exports = {
     path: path.resolve('dist'),
     filename: 'bundle.js'
   },
-
   module: {
-    rules: [
-      { test: /\.css$/, use: 'css-loader', exclude: '/node_modules/' },
-      { test: /\.ts$/, use: 'ts-loader', exclude: '/node_modules/' }
+    loader: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015', 'react']
+        }
+      }
     ]
   },
   plugins: [
